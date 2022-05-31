@@ -3,11 +3,91 @@ guid: 3cfeb592ff7a67a4bb45e6e2b767b1e8
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object10Mat
+    second: {fileID: 2100000, guid: ffa7b3d0ad1d1cb41b88def26ed172bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object11Mat
+    second: {fileID: 2100000, guid: d1ed0638167e64849b74bda3bcf872da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object12Mat
+    second: {fileID: 2100000, guid: b568683b26782944b9e115a0af3c163b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object13Mat
+    second: {fileID: 2100000, guid: d38ab2f35d73de34c845f9b473abc811, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object14Mat
+    second: {fileID: 2100000, guid: 057b203ce37552a44835ca6dee16949d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object15Mat
+    second: {fileID: 2100000, guid: 04d40e2179fdd5d428c3248dfab01f78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object16Mat
+    second: {fileID: 2100000, guid: 2ef2345240890024c8a8a3dec1876dac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object1Mat
+    second: {fileID: 2100000, guid: 40ccddb752aa55547bdaaa748e884cf3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object2Mat
+    second: {fileID: 2100000, guid: a10fc9cad4cc71c4d838acc982b0aa51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object3Mat
+    second: {fileID: 2100000, guid: f687d6aa72e60e346b513d909ac23e44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object4Mat
+    second: {fileID: 2100000, guid: d25c5cdf93e5e544aa7914d34e8e8407, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object5Mat
+    second: {fileID: 2100000, guid: d3b0f0410cf7ee949b19cb6952774deb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object6Mat
+    second: {fileID: 2100000, guid: c88085ba09983fc43b90505461d3fa91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object7Mat
+    second: {fileID: 2100000, guid: ec3926141f77c174fa0f9aafab3cd936, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object8Mat
+    second: {fileID: 2100000, guid: 60c8299927c0d3644bb6f717847578f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: object9Mat
+    second: {fileID: 2100000, guid: ab408d22d19574e4386b11efc38db125, type: 2}
   materials:
-    materialImportMode: 2
-    materialName: 0
-    materialSearch: 1
+    materialImportMode: 1
+    materialName: 1
+    materialSearch: 2
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
