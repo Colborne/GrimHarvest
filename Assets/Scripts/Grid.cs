@@ -15,7 +15,7 @@ public class Grid : MonoBehaviour
 
         Vector3 result = new Vector3(
             (float)xCount * size,
-            (float)yCount * size,
+            .5f, //(float)yCount * size
             (float)zCount * size);
 
         result += transform.position;
