@@ -3405,7 +3405,7 @@ Transform:
   m_GameObject: {fileID: 1129000279}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.032972, y: 0.49999905, z: -6.06}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3715,10 +3715,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementInput: {x: 0, y: 0}
   mouseInput: {x: 0, y: 0}
+  scrollInput: 0
   moveAmount: 0
   verticalInput: 0
   horizontalInput: 0
   interactInput: 0
+  isInteracting: 0
 --- !u!4 &1167879386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d033118395054d418fec0d6dbbf05de,
@@ -3752,8 +3754,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placement: {fileID: 1129000283}
-  plant: {fileID: 1263178973995979531, guid: 6832bb1f57475414bbd2bfc43ae6d11f, type: 3}
+  plant:
+  - {fileID: 6029193838556608344, guid: f9a9fab058c8fd745b399a824452721a, type: 3}
+  - {fileID: 6194563774051894357, guid: 925b25921c001e54d8d6d049bbe91946, type: 3}
+  - {fileID: 1263178973995979531, guid: 6832bb1f57475414bbd2bfc43ae6d11f, type: 3}
+  - {fileID: 7852602782497323175, guid: a72e721e031b6af44b225851db705c7a, type: 3}
+  - {fileID: 7852602782497323175, guid: 9a3df6c1a4b7e0f4e9ff7448d6d05a67, type: 3}
   player: {fileID: 1167879379}
+  currentPlant: 0
 --- !u!1001 &1177766128
 PrefabInstance:
   m_ObjectHideFlags: 0

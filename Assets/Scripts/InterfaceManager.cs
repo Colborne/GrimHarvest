@@ -52,7 +52,7 @@ public class InterfaceManager : MonoBehaviour
 
     private void Update()
     {
-        if ( inputManager.interactInput && inDialogue)
+        if (inputManager.interactInput && inDialogue)
         {
             if (canExit)
             {
