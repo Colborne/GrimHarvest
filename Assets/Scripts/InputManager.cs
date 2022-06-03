@@ -14,6 +14,11 @@ public class InputManager : MonoBehaviour
     public float verticalInput;
     public float horizontalInput;
     public bool interactInput;
+    public bool toolbar1Input;
+    public bool toolbar2Input;
+    public bool toolbar3Input;
+    public bool toolbar4Input;
+    public bool toolbar5Input;
     public bool isInteracting = false;
     private void Awake() 
     {
@@ -32,6 +37,16 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.MouseWheel.performed += i => scrollInput = i.ReadValue<float>();
             playerControls.PlayerActions.Interact.performed += i => interactInput = true;
             playerControls.PlayerActions.Interact.canceled += i => interactInput = false;
+            playerControls.PlayerActions.Toolbar1.performed += i => toolbar1Input = true;
+            playerControls.PlayerActions.Toolbar1.canceled += i => toolbar1Input = false;
+            playerControls.PlayerActions.Toolbar2.performed += i => toolbar2Input = true;
+            playerControls.PlayerActions.Toolbar2.canceled += i => toolbar2Input = false;
+            playerControls.PlayerActions.Toolbar3.performed += i => toolbar3Input = true;
+            playerControls.PlayerActions.Toolbar3.canceled += i => toolbar3Input = false;
+            playerControls.PlayerActions.Toolbar4.performed += i => toolbar4Input = true;
+            playerControls.PlayerActions.Toolbar4.canceled += i => toolbar4Input = false;
+            playerControls.PlayerActions.Toolbar5.performed += i => toolbar5Input = true;
+            playerControls.PlayerActions.Toolbar5.canceled += i => toolbar5Input = false;
         }
         playerControls.Enable();
     }

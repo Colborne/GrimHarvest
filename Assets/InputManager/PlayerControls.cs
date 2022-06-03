@@ -136,6 +136,51 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Toolbar1"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d666802-bce6-4b40-85ee-13c0ab77df43"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toolbar2"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc77d080-cd75-4edc-9e1b-a5f8ff5bf587"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toolbar3"",
+                    ""type"": ""Button"",
+                    ""id"": ""9be16b31-86e5-4d94-9700-561cc7bb1855"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toolbar4"",
+                    ""type"": ""Button"",
+                    ""id"": ""299bcde9-5064-4cf5-8fde-21c5a8daad2c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toolbar5"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4040673-28b6-4384-9b13-2dedfc676937"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -160,6 +205,61 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""MouseWheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""949b73e1-bf23-4c5e-b414-be739bf6292c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toolbar1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a1fe31e-5fdf-4c2b-932b-b5b1dd020292"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toolbar2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""480668d5-4a19-4078-a992-17403d6614b0"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toolbar3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5d2ae1c-857e-4adb-9320-a44958dddb84"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toolbar4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a55cd356-5471-40b3-bd68-a440c98ab747"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toolbar5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -174,6 +274,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
         m_PlayerActions_MouseWheel = m_PlayerActions.FindAction("MouseWheel", throwIfNotFound: true);
+        m_PlayerActions_Toolbar1 = m_PlayerActions.FindAction("Toolbar1", throwIfNotFound: true);
+        m_PlayerActions_Toolbar2 = m_PlayerActions.FindAction("Toolbar2", throwIfNotFound: true);
+        m_PlayerActions_Toolbar3 = m_PlayerActions.FindAction("Toolbar3", throwIfNotFound: true);
+        m_PlayerActions_Toolbar4 = m_PlayerActions.FindAction("Toolbar4", throwIfNotFound: true);
+        m_PlayerActions_Toolbar5 = m_PlayerActions.FindAction("Toolbar5", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -276,12 +381,22 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Interact;
     private readonly InputAction m_PlayerActions_MouseWheel;
+    private readonly InputAction m_PlayerActions_Toolbar1;
+    private readonly InputAction m_PlayerActions_Toolbar2;
+    private readonly InputAction m_PlayerActions_Toolbar3;
+    private readonly InputAction m_PlayerActions_Toolbar4;
+    private readonly InputAction m_PlayerActions_Toolbar5;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
         public InputAction @MouseWheel => m_Wrapper.m_PlayerActions_MouseWheel;
+        public InputAction @Toolbar1 => m_Wrapper.m_PlayerActions_Toolbar1;
+        public InputAction @Toolbar2 => m_Wrapper.m_PlayerActions_Toolbar2;
+        public InputAction @Toolbar3 => m_Wrapper.m_PlayerActions_Toolbar3;
+        public InputAction @Toolbar4 => m_Wrapper.m_PlayerActions_Toolbar4;
+        public InputAction @Toolbar5 => m_Wrapper.m_PlayerActions_Toolbar5;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -297,6 +412,21 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @MouseWheel.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
                 @MouseWheel.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
                 @MouseWheel.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
+                @Toolbar1.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar1;
+                @Toolbar1.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar1;
+                @Toolbar1.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar1;
+                @Toolbar2.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar2;
+                @Toolbar2.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar2;
+                @Toolbar2.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar2;
+                @Toolbar3.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar3;
+                @Toolbar3.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar3;
+                @Toolbar3.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar3;
+                @Toolbar4.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar4;
+                @Toolbar4.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar4;
+                @Toolbar4.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar4;
+                @Toolbar5.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar5;
+                @Toolbar5.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar5;
+                @Toolbar5.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar5;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -307,6 +437,21 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @MouseWheel.started += instance.OnMouseWheel;
                 @MouseWheel.performed += instance.OnMouseWheel;
                 @MouseWheel.canceled += instance.OnMouseWheel;
+                @Toolbar1.started += instance.OnToolbar1;
+                @Toolbar1.performed += instance.OnToolbar1;
+                @Toolbar1.canceled += instance.OnToolbar1;
+                @Toolbar2.started += instance.OnToolbar2;
+                @Toolbar2.performed += instance.OnToolbar2;
+                @Toolbar2.canceled += instance.OnToolbar2;
+                @Toolbar3.started += instance.OnToolbar3;
+                @Toolbar3.performed += instance.OnToolbar3;
+                @Toolbar3.canceled += instance.OnToolbar3;
+                @Toolbar4.started += instance.OnToolbar4;
+                @Toolbar4.performed += instance.OnToolbar4;
+                @Toolbar4.canceled += instance.OnToolbar4;
+                @Toolbar5.started += instance.OnToolbar5;
+                @Toolbar5.performed += instance.OnToolbar5;
+                @Toolbar5.canceled += instance.OnToolbar5;
             }
         }
     }
@@ -320,5 +465,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnInteract(InputAction.CallbackContext context);
         void OnMouseWheel(InputAction.CallbackContext context);
+        void OnToolbar1(InputAction.CallbackContext context);
+        void OnToolbar2(InputAction.CallbackContext context);
+        void OnToolbar3(InputAction.CallbackContext context);
+        void OnToolbar4(InputAction.CallbackContext context);
+        void OnToolbar5(InputAction.CallbackContext context);
     }
 }
