@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-public class ShovelManager : MonoBehaviour
+public class WaterManager : MonoBehaviour
 {    
     private Grid grid;
     private InputManager inputManager;
     public Transform placement;
-    public GameObject soil;
+    public Material watered;
     public GameObject player;
 
     private void Awake()
@@ -17,29 +17,28 @@ public class ShovelManager : MonoBehaviour
     {
         placement.position = grid.GetNearestPointOnGrid(player.transform.position + player.transform.forward);
         placement.rotation = Quaternion.identity;
-        placement.GetComponent<MeshFilter>().sharedMesh = soil.GetComponent<MeshFilter>().sharedMesh;
+        
         if (inputManager.interactInput)
         {
             inputManager.interactInput = false;
-            if(checkIfPosEmpty(placement.position))
-                Dig(player.transform.position + player.transform.forward);
+            if(CheckIfSoil(placement.position))
+                Water(player.transform.position + player.transform.forward);
         }
     }
 
-    private void Dig(Vector3 clickPoint)
+    private void Water(Vector3 clickPoint)
     {
-        var placed = Instantiate(soil);
-        placed.transform.position = grid.GetNearestPointOnGrid(clickPoint);
+        placement.GetComponent<MeshRenderer>().material = watered;
     }
 
-    public bool checkIfPosEmpty(Vector3 targetPos)
+    public bool CheckIfSoil(Vector3 targetPos)
     {
-        GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag("Ground");
+        GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag("Soil");
         foreach(GameObject current in allMovableThings)
         {
             if(current.transform.position == targetPos)
-                return false;
+                return true;
         }
-        return true;
+        return false;
     }
 }
