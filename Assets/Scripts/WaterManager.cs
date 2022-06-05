@@ -21,24 +21,26 @@ public class WaterManager : MonoBehaviour
         if (inputManager.interactInput)
         {
             inputManager.interactInput = false;
-            if(CheckIfSoil(placement.position))
-                Water(player.transform.position + player.transform.forward);
+            Water(CheckIfSoil(placement.position));
         }
     }
 
-    private void Water(Vector3 clickPoint)
+    private void Water(GameObject obj)
     {
-        placement.GetComponent<MeshRenderer>().material = watered;
+        if(obj != null){
+            obj.GetComponent<MeshRenderer>().material = watered;
+            obj.GetComponent<Soil>().watered = true;
+        }
     }
 
-    public bool CheckIfSoil(Vector3 targetPos)
+    public GameObject CheckIfSoil(Vector3 targetPos)
     {
         GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag("Soil");
         foreach(GameObject current in allMovableThings)
         {
             if(current.transform.position == targetPos)
-                return true;
+                return current;
         }
-        return false;
+        return null;
     }
 }

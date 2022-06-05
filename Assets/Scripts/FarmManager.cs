@@ -32,7 +32,7 @@ public class FarmManager : MonoBehaviour
         if (inputManager.interactInput)
         {
             inputManager.interactInput = false;
-            if(checkIfPosEmpty(placement.position))
+            if(CheckIfPosEmpty(placement.position) && CheckIfSoil(placement.position))
                 Plant(player.transform.position + player.transform.forward);
         }
     }
@@ -44,7 +44,7 @@ public class FarmManager : MonoBehaviour
         placed.transform.Rotate(new Vector3(placed.transform.rotation.x, Random.Range(0f,360f), placed.transform.rotation.z));
     }
 
-    public bool checkIfPosEmpty(Vector3 targetPos)
+    public bool CheckIfPosEmpty(Vector3 targetPos)
     {
         GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag("Plant");
         foreach(GameObject current in allMovableThings)
@@ -53,5 +53,16 @@ public class FarmManager : MonoBehaviour
                 return false;
         }
         return true;
+    }
+
+    public bool CheckIfSoil(Vector3 targetPos)
+    {
+        GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag("Soil");
+        foreach(GameObject current in allMovableThings)
+        {
+            if(current.transform.position == targetPos)
+                return true;
+        }
+        return false;
     }
 }

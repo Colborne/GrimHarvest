@@ -998,12 +998,12 @@ PrefabInstance:
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
@@ -1018,12 +1018,12 @@ PrefabInstance:
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 115.11
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 3001387942230458809, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
@@ -4687,7 +4687,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167879379}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22262917495621f448de699cae43cad8, type: 3}
+  m_Script: {fileID: 11500000, guid: aaa949519bc28dc49ab380a5bd246059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentTool: 0
@@ -4697,6 +4697,21 @@ MonoBehaviour:
   - {fileID: 465630444}
   - {fileID: 1175326618}
   - {fileID: 516487363}
+--- !u!114 &1167879391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167879379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8cd72644ad203346bebaa0a101effd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placement: {fileID: 1129000283}
+  watered: {fileID: 2100000, guid: a86767fac4cd7dd4b915eb25341d61ad, type: 2}
+  player: {fileID: 1167879379}
 --- !u!1 &1175326616
 GameObject:
   m_ObjectHideFlags: 0

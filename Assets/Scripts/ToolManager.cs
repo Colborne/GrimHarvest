@@ -53,7 +53,7 @@ public class ToolManager : MonoBehaviour
             waterManager.enabled = true;
         }
         else if(tool == 2)
-                {
+        {
             farmManager.enabled = false;
             shovelManager.enabled = true;
             waterManager.enabled = false;

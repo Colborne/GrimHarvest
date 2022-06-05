@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2194841256171922465}
   - component: {fileID: 1456181060168265970}
   - component: {fileID: 7860969639149722626}
+  - component: {fileID: 2496696729763879287}
   m_Layer: 0
   m_Name: Soil
   m_TagString: Soil
@@ -83,3 +84,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2496696729763879287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174428809451249815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384f8222c7049e9448473deaee21adc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
