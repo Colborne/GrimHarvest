@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 public class WaterManager : MonoBehaviour
 {    
-    private Grid grid;
-    private InputManager inputManager;
+    Grid grid;
+    InputManager inputManager;
     public Transform placement;
     public Material watered;
     public GameObject player;
+    public GameObject effect;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class WaterManager : MonoBehaviour
         if(obj != null){
             obj.GetComponent<MeshRenderer>().material = watered;
             obj.GetComponent<Soil>().watered = true;
+            Instantiate(effect, player.transform.position + player.transform.forward + player.transform.up, player.transform.rotation);
         }
     }
 

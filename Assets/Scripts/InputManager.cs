@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
 {    
     PlayerControls playerControls;
     AnimatorManager animatorManager;
+    ToolManager toolManager;
     public Vector2 movementInput;
     public Vector2 mouseInput;
     public float scrollInput;
@@ -24,6 +25,7 @@ public class InputManager : MonoBehaviour
     {
         //player = GetComponent<Player>();
         animatorManager = GetComponent<AnimatorManager>();
+        toolManager = GetComponent<ToolManager>();
     }
 
     private void OnEnable() 
@@ -62,7 +64,7 @@ public class InputManager : MonoBehaviour
 
     public void HandleAllInputs()
     {
-        isInteracting = animatorManager.animator.GetBool("isPlanting");
+        isInteracting = animatorManager.animator.GetBool("isInteracting");
 
         HandleMovementInput();
         HandlePlanting();
@@ -81,8 +83,21 @@ public class InputManager : MonoBehaviour
     {
         if(interactInput)
         {
-            animatorManager.animator.SetBool("isPlanting", true);
-            animatorManager.animator.CrossFade("Plant", 0f);
+            if(toolManager.currentTool == 0)
+            {
+                animatorManager.animator.SetBool("isInteracting", true);
+                animatorManager.animator.CrossFade("Hoe", 0f);
+            }
+            else if(toolManager.currentTool == 1)
+            {
+                animatorManager.animator.SetBool("isInteracting", true);
+                animatorManager.animator.CrossFade("Plant", 0f);
+            }
+            else if(toolManager.currentTool == 2)
+            {
+                animatorManager.animator.SetBool("isInteracting", true);
+                animatorManager.animator.CrossFade("Axe", 0f);
+            }
         }
     }
 }

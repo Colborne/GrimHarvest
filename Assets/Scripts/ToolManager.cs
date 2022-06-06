@@ -40,23 +40,23 @@ public class ToolManager : MonoBehaviour
 
     void SelectTool(int tool)
     {
-        if(tool == 0)
+        if(tool == 0) //Soil
+        {
+            farmManager.enabled = false;
+            shovelManager.enabled = true;
+            waterManager.enabled = false;
+        }
+        else if(tool == 1) //Plant
         {
             farmManager.enabled = true;
             shovelManager.enabled = false;
             waterManager.enabled = false;
         }
-        else if(tool == 1)
+        else if(tool == 2) //Water
         {
             farmManager.enabled = false;
             shovelManager.enabled = false;
             waterManager.enabled = true;
-        }
-        else if(tool == 2)
-        {
-            farmManager.enabled = false;
-            shovelManager.enabled = true;
-            waterManager.enabled = false;
         }
         else if(tool == 3)        
         {

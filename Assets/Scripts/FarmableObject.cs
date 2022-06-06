@@ -16,4 +16,5 @@ public class FarmableObject : MonoBehaviour
         if(transform.localScale.x < 1)
             StartCoroutine(GrowthCycle(growthTime));  
     }
+
 }
