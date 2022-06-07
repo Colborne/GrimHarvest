@@ -9,6 +9,7 @@ TagManager:
   - Plant
   - Soil
   - Ground
+  - Stone
   layers:
   - Default
   - TransparentFX

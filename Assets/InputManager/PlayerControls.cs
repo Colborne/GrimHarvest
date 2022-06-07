@@ -181,6 +181,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toolbar6"",
+                    ""type"": ""Button"",
+                    ""id"": ""d3f0e0c0-5930-450d-be9e-db256fb906f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -260,6 +269,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Toolbar5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""919b820d-ed3d-457b-a756-bc6c0486221f"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toolbar6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -279,6 +299,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_Toolbar3 = m_PlayerActions.FindAction("Toolbar3", throwIfNotFound: true);
         m_PlayerActions_Toolbar4 = m_PlayerActions.FindAction("Toolbar4", throwIfNotFound: true);
         m_PlayerActions_Toolbar5 = m_PlayerActions.FindAction("Toolbar5", throwIfNotFound: true);
+        m_PlayerActions_Toolbar6 = m_PlayerActions.FindAction("Toolbar6", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -386,6 +407,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Toolbar3;
     private readonly InputAction m_PlayerActions_Toolbar4;
     private readonly InputAction m_PlayerActions_Toolbar5;
+    private readonly InputAction m_PlayerActions_Toolbar6;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -397,6 +419,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Toolbar3 => m_Wrapper.m_PlayerActions_Toolbar3;
         public InputAction @Toolbar4 => m_Wrapper.m_PlayerActions_Toolbar4;
         public InputAction @Toolbar5 => m_Wrapper.m_PlayerActions_Toolbar5;
+        public InputAction @Toolbar6 => m_Wrapper.m_PlayerActions_Toolbar6;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -427,6 +450,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Toolbar5.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar5;
                 @Toolbar5.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar5;
                 @Toolbar5.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar5;
+                @Toolbar6.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar6;
+                @Toolbar6.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar6;
+                @Toolbar6.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar6;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -452,6 +478,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Toolbar5.started += instance.OnToolbar5;
                 @Toolbar5.performed += instance.OnToolbar5;
                 @Toolbar5.canceled += instance.OnToolbar5;
+                @Toolbar6.started += instance.OnToolbar6;
+                @Toolbar6.performed += instance.OnToolbar6;
+                @Toolbar6.canceled += instance.OnToolbar6;
             }
         }
     }
@@ -470,5 +499,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnToolbar3(InputAction.CallbackContext context);
         void OnToolbar4(InputAction.CallbackContext context);
         void OnToolbar5(InputAction.CallbackContext context);
+        void OnToolbar6(InputAction.CallbackContext context);
     }
 }

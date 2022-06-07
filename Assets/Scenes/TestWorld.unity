@@ -1490,7 +1490,7 @@ PrefabInstance:
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 115.11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
@@ -3703,6 +3703,7 @@ MonoBehaviour:
   toolbar3Input: 0
   toolbar4Input: 0
   toolbar5Input: 0
+  toolbar6Input: 0
   isInteracting: 0
 --- !u!4 &1167879386 stripped
 Transform:
