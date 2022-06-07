@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-public class ShovelManager : MonoBehaviour
+public class HoeManager : MonoBehaviour
 {    
     private Grid grid;
     private InputManager inputManager;
@@ -21,7 +21,10 @@ public class ShovelManager : MonoBehaviour
         if (inputManager.interactInput)
         {
             inputManager.interactInput = false;
-            if(checkIfPosEmpty(placement.position))
+            if(CheckIfPosEmpty(placement.position, "Ground") 
+            && CheckIfPosEmpty(placement.position, "Plant") 
+            && CheckIfPosEmpty(placement.position, "Stone") 
+            && CheckIfPosEmpty(placement.position, "Soil"))
                 Dig(player.transform.position + player.transform.forward);
         }
     }
@@ -32,9 +35,9 @@ public class ShovelManager : MonoBehaviour
         placed.transform.position = grid.GetNearestPointOnGrid(clickPoint);
     }
 
-    public bool checkIfPosEmpty(Vector3 targetPos)
+    public bool CheckIfPosEmpty(Vector3 targetPos, string tag)
     {
-        GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag("Ground");
+        GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag(tag);
         foreach(GameObject current in allMovableThings)
         {
             if(current.transform.position == targetPos)

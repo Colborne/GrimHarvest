@@ -7,9 +7,10 @@ public class ToolManager : MonoBehaviour
 {
     InputManager inputManager;
     FarmManager farmManager;
-    ShovelManager shovelManager;
+    HoeManager hoeManager;
     PickaxeManager pickaxeManager;
     WaterManager waterManager;
+    SickleManager sickleManager;
     AnimatorManager animatorManager;
     public int currentTool;
     public Image[] tools;
@@ -22,9 +23,10 @@ public class ToolManager : MonoBehaviour
         animatorManager = GetComponent<AnimatorManager>();
         inputManager = GetComponent<InputManager>();
         farmManager = GetComponent<FarmManager>();
-        shovelManager = GetComponent<ShovelManager>();
+        hoeManager = GetComponent<HoeManager>();
         waterManager = GetComponent<WaterManager>();
         pickaxeManager = GetComponent<PickaxeManager>();
+        sickleManager = GetComponent<SickleManager>();
     }
     void Update()
     {
@@ -33,8 +35,9 @@ public class ToolManager : MonoBehaviour
         else if(inputManager.toolbar3Input) currentTool = 2;
         else if(inputManager.toolbar4Input) currentTool = 3;
         else if(inputManager.toolbar5Input) currentTool = 4;
+        else if(inputManager.toolbar5Input) currentTool = 5;
 
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 6; i++)
         {
             if(i == currentTool)
                 tools[i].color = new Color32(255,255,255,255);
@@ -46,7 +49,7 @@ public class ToolManager : MonoBehaviour
 
         if(inputManager.isInteracting)
         {
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < 6; i++)
             {
                 if(i == currentTool)
                     toolModel[i].SetActive(true);
@@ -61,45 +64,61 @@ public class ToolManager : MonoBehaviour
         if(tool == 0) //Soil
         {
             farmManager.enabled = false;
-            shovelManager.enabled = true;
+            hoeManager.enabled = true;
             waterManager.enabled = false;
             pickaxeManager.enabled = false;
+            sickleManager.enabled = false;
 
-            shovelManager.placement.GetComponent<MeshFilter>().sharedMesh = Placement;
-            shovelManager.placement.GetComponent<MeshRenderer>().material = Select;
+            hoeManager.placement.GetComponent<MeshFilter>().sharedMesh = Placement;
+            hoeManager.placement.GetComponent<MeshRenderer>().material = Select;
         }
         else if(tool == 1) //Plant
         {
             farmManager.enabled = true;
-            shovelManager.enabled = false;
+            hoeManager.enabled = false;
             waterManager.enabled = false;
             pickaxeManager.enabled = false;
+            sickleManager.enabled = false;
 
             farmManager.placement.GetComponent<MeshRenderer>().material = farmManager.mat;
         }
         else if(tool == 2) //Water
         {
             farmManager.enabled = false;
-            shovelManager.enabled = false;
+            hoeManager.enabled = false;
             waterManager.enabled = true;
             pickaxeManager.enabled = false;
+            sickleManager.enabled = false;
 
             waterManager.placement.GetComponent<MeshFilter>().sharedMesh = Placement;
             waterManager.placement.GetComponent<MeshRenderer>().material = Select;
         }
-        else if(tool == 3)        
+        else if(tool == 3) //Sickle      
         {
             farmManager.enabled = false;
-            shovelManager.enabled = false;
+            hoeManager.enabled = false;
             waterManager.enabled = false;
             pickaxeManager.enabled = false;
+            sickleManager.enabled = true;
+
+            sickleManager.placement.GetComponent<MeshFilter>().sharedMesh = Placement;
+            sickleManager.placement.GetComponent<MeshRenderer>().material = Select;
         }
-        else if(tool == 4) //Pickaxe
+        else if(tool == 4) //Axe      
         {
             farmManager.enabled = false;
-            shovelManager.enabled = false;
+            hoeManager.enabled = false;
+            waterManager.enabled = false;
+            pickaxeManager.enabled = false;
+            sickleManager.enabled = false;
+        }
+        else if(tool == 5) //Pickaxe
+        {
+            farmManager.enabled = false;
+            hoeManager.enabled = false;
             waterManager.enabled = false;
             pickaxeManager.enabled = true;
+            sickleManager.enabled = false;
 
             pickaxeManager.placement.GetComponent<MeshFilter>().sharedMesh = Placement;
             pickaxeManager.placement.GetComponent<MeshRenderer>().material = Select;

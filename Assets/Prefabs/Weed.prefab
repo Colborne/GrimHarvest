@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 862725741120257736}
   m_Layer: 0
   m_Name: Weed
-  m_TagString: Grass
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

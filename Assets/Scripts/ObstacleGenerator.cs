@@ -12,8 +12,8 @@ public class ObstacleGenerator : MonoBehaviour
         {
             for(int j = 0; j < amounts[i]; j++)
             {
-                Vector3 spawnPos = new Vector3((int)Random.Range(-3,21), .5f, (int)Random.Range(-9,9));
-                if(CheckIfPosEmpty(spawnPos, "Stone") && CheckIfPosEmpty(spawnPos, "Grass"))
+                Vector3 spawnPos = new Vector3((int)Random.Range(-2,20), .5f, (int)Random.Range(-8,8));
+                if(CheckIfPosEmpty(spawnPos, "Stone") && CheckIfPosEmpty(spawnPos, "Plant"))
                 {
                     var obstacle = Instantiate(prefabs[i], spawnPos, Quaternion.identity);
                     obstacle.transform.Rotate(new Vector3(obstacle.transform.rotation.x, Random.Range(0f,360f), obstacle.transform.rotation.z));
