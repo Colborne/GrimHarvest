@@ -83,21 +83,7 @@ public class InputManager : MonoBehaviour
     {
         if(interactInput)
         {
-            if(toolManager.currentTool == 0)
-            {
-                animatorManager.animator.SetBool("isInteracting", true);
-                animatorManager.animator.CrossFade("Hoe", 0f);
-            }
-            else if(toolManager.currentTool == 1)
-            {
-                animatorManager.animator.SetBool("isInteracting", true);
-                animatorManager.animator.CrossFade("Plant", 0f);
-            }
-            else if(toolManager.currentTool == 2)
-            {
-                animatorManager.animator.SetBool("isInteracting", true);
-                animatorManager.animator.CrossFade("Axe", 0f);
-            }
+            toolManager.UseTool();
         }
     }
 }

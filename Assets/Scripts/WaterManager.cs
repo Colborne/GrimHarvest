@@ -28,7 +28,8 @@ public class WaterManager : MonoBehaviour
 
     private void Water(GameObject obj)
     {
-        if(obj != null){
+        if(obj != null)
+        {
             obj.GetComponent<MeshRenderer>().material = watered;
             obj.GetComponent<Soil>().watered = true;
             Instantiate(effect, player.transform.position + player.transform.forward + player.transform.up, player.transform.rotation);

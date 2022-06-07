@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-public class ShovelManager : MonoBehaviour
+public class PickaxeManager : MonoBehaviour
 {    
     private Grid grid;
     private InputManager inputManager;
     public Transform placement;
-    public GameObject soil;
     public GameObject player;
+    public Mesh Select;
 
     private void Awake()
     {
@@ -21,25 +21,25 @@ public class ShovelManager : MonoBehaviour
         if (inputManager.interactInput)
         {
             inputManager.interactInput = false;
-            if(checkIfPosEmpty(placement.position))
-                Dig(player.transform.position + player.transform.forward);
+            BreakStone(CheckIfStone(placement.position));
         }
     }
 
-    private void Dig(Vector3 clickPoint)
-    {
-        var placed = Instantiate(soil);
-        placed.transform.position = grid.GetNearestPointOnGrid(clickPoint);
+    private void BreakStone(GameObject stone)
+    {   
+        if(stone != null){
+            Destroy(stone);
+        }
     }
 
-    public bool checkIfPosEmpty(Vector3 targetPos)
+    public GameObject CheckIfStone(Vector3 targetPos)
     {
-        GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag("Ground");
+        GameObject[] allMovableThings = GameObject.FindGameObjectsWithTag("Stone");
         foreach(GameObject current in allMovableThings)
         {
             if(current.transform.position == targetPos)
-                return false;
+                return current;
         }
-        return true;
+        return null;
     }
 }

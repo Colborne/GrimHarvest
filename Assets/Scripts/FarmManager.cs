@@ -6,6 +6,7 @@ public class FarmManager : MonoBehaviour
     public GameObject[] plant;
     public GameObject player;
     public int currentPlant;
+    public Material mat;
 
     private void Awake()
     {
@@ -23,12 +24,11 @@ public class FarmManager : MonoBehaviour
         
         if((currentPlant < plant.Length - 1 && delta == 1) || (currentPlant > 0 && delta == -1))
             currentPlant += delta;
-        //RaycastHit hitInfo;
-        //Ray ray = Camera.main.ScreenPointToRay(inputManager.mouseInput);
-         
+
         placement.position = grid.GetNearestPointOnGrid(player.transform.position + player.transform.forward);
         placement.rotation = Quaternion.identity;
         placement.GetComponent<MeshFilter>().sharedMesh = plant[currentPlant].GetComponent<MeshFilter>().sharedMesh;
+
         if (inputManager.interactInput)
         {
             inputManager.interactInput = false;
