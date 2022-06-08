@@ -49,14 +49,14 @@ public class ToolManager : MonoBehaviour
 
         if(inputManager.isInteracting)
         {
-            for(int i = 0; i < 6; i++)
-            {
-                if(i == currentTool)
-                    toolModel[i].SetActive(true);
-                else
-                    toolModel[i].SetActive(false);
-            }
+            toolModel[currentTool].SetActive(true);
         }
+        else
+        {
+            for(int i = 0; i < 6; i++)
+                toolModel[i].SetActive(false);
+        }
+            
     }
 
     void SelectTool(int tool)
@@ -140,7 +140,7 @@ public class ToolManager : MonoBehaviour
         else if(currentTool == 2)
         {
             animatorManager.animator.SetBool("isInteracting", true);
-            animatorManager.animator.CrossFade("Axe", .2f);
+            animatorManager.animator.CrossFade("Hoe", .2f);
         }
         else if(currentTool == 3)
         {
@@ -155,7 +155,7 @@ public class ToolManager : MonoBehaviour
         else if(currentTool == 5)
         {
             animatorManager.animator.SetBool("isInteracting", true);
-            animatorManager.animator.CrossFade("Overhead", .2f);
+            animatorManager.animator.CrossFade("Hoe", .2f);
         }
     }
 }
