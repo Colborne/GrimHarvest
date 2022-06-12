@@ -14,8 +14,6 @@ public class Pickup : MonoBehaviour
 
     private void Awake() {
         inputManager = FindObjectOfType<InputManager>();
-        //ui = FindObjectOfType<InteractableUI>();
-        //_name = GetComponent<SaveableObject>().AssetPath.Split('/').Where(x => !string.IsNullOrWhiteSpace(x)).LastOrDefault();
         Invoke("ActivatePickup", 1f);
     }
 
@@ -23,5 +21,19 @@ public class Pickup : MonoBehaviour
     {
         if(!playerDropped)
             autoPickup = true;
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject == GameManager.Instance.PM.gameObject) 
+        {
+            if(inputManager.interactInput || autoPickup)
+            {   
+                inputManager.interactInput = false;
+                GameManager.Instance.PickUpItem(itemID, amount);
+                Destroy(gameObject);
+                return;
+            }
+        }
     }
 }

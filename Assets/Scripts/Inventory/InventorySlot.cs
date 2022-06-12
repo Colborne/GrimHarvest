@@ -60,36 +60,26 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                         OriginalSlot.currentItem.originalSlot = OriginalSlot.transform;
                     }
                 }
-                // Returning To Original Slot
-                else
+                // Slot != Full //
+                else if (!isFull)
                 {
-                    Debug.Log("Dropped Item: Returning to original slot");
+                    // Moving Into Weapon Slot
+                    
+                        if(OriginalSlot.GetComponentInChildren<InventoryItem>() == null)
+                        {
+                            // Emptying Original Slot
+                            OriginalSlot.isFull = false;
+                            OriginalSlot.currentItem = null;
+                        }
+
+                        // Filling This Slot
+                        isFull = true;
+                        currentItem = newItem;
+
+                        // Swapping Parents
+                        eventData.pointerDrag.transform.SetParent(gameObject.transform);
+                        currentItem.originalSlot = this.transform;
                 }
-            }
-            // Slot != Full //
-            else if (!isFull)
-            {
-                // Moving Into Weapon Slot
-                
-                    if(OriginalSlot.GetComponentInChildren<InventoryItem>() == null)
-                    {
-                        // Emptying Original Slot
-                        OriginalSlot.isFull = false;
-                        OriginalSlot.currentItem = null;
-                    }
-
-                    // Filling This Slot
-                    isFull = true;
-                    currentItem = newItem;
-
-                    // Swapping Parents
-                    eventData.pointerDrag.transform.SetParent(gameObject.transform);
-                    currentItem.originalSlot = this.transform;
-            }
-            // Returning to Original Slot
-            else
-            {
-                Debug.Log("Dropped Item: Returning to original slot");
             }
         }
     }

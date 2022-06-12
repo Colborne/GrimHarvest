@@ -30,7 +30,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void Update() 
     {
-        totalWeight = item.weight * currentAmount;
+        //totalWeight = item.weight * currentAmount;
         if(textAmount != null)
         {
             if(currentAmount > 1)
@@ -42,7 +42,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void WeightCalculation() 
     {
-        totalWeight = item.weight * currentAmount;
+        //totalWeight = item.weight * currentAmount;
     }
 
     public void OnDrag(PointerEventData eventData)

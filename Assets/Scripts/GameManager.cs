@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class ingameEquipment
 {
-    public string name = "Equipment";
+    public string name = "Items";
     public GameObject prefab;
     public GameObject inventoryItem;
     public GameObject worldItem;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public InventorySlot[] inventorySlots;
     public Canvas interfaceCanvas;
     public Transform draggables;
-
+    public PlayerManager PM;
     public ingameEquipment[] equipment;
 
     // Main //
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     {
         bool foundSlot = false;
 
-        for (int i = 10; i < inventorySlots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (!inventorySlots[i].isFull)
             {
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     public void PickUpItem(int itemID, int quantityIncrease)
     {
         // Searches for identical item ID in inventory //
-        for (int i = 10; i < inventorySlots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {    
             //Found a full slot and the id matches
             if (inventorySlots[i].isFull && inventorySlots[i].currentItem.itemID == itemID)
@@ -124,16 +124,16 @@ public class GameManager : MonoBehaviour
 
     public void DropItem(InventoryItem item)
     {
-        //var drop = Instantiate(equipment[item.itemID].worldItem, PM.transform.position + PM.transform.forward * 4 + PM.transform.up * 2, Quaternion.identity);
-        //drop.GetComponent<Pickup>().playerDropped = true;
+        var drop = Instantiate(equipment[item.itemID].worldItem, PM.transform.position + PM.transform.forward * 4 + PM.transform.up * 2, Quaternion.identity);
+        drop.GetComponent<Pickup>().playerDropped = true;
         Destroy(item.gameObject);
     }
 
     public void DropItem(InventoryItem item, int _amount)
     {
-        //var _newItem = Instantiate(equipment[item.itemID].worldItem, PM.transform.position + PM.transform.forward * 4 + PM.transform.up * 2, Quaternion.identity);
-        //_newItem.GetComponent<Pickup>().amount = _amount;
-        //_newItem.GetComponent<Pickup>().playerDropped = true;
+        var _newItem = Instantiate(equipment[item.itemID].worldItem, PM.transform.position + PM.transform.forward * 4 + PM.transform.up * 2, Quaternion.identity);
+        _newItem.GetComponent<Pickup>().amount = _amount;
+        _newItem.GetComponent<Pickup>().playerDropped = true;
         Destroy(item.gameObject);
     }
 
@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
     public void StackRounding(int itemID, int quantityIncrease, Transform originalSlot)
     {
         // Searches for identical item ID in inventory //
-        for (int i = 10; i < inventorySlots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {    
             if (!inventorySlots[i].isFull)
             { 
@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
         int amountFound = 0;
         List<int> foundSlots = new List<int>();
 
-        for (int i = 10; i < inventorySlots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (inventorySlots[i].isFull && inventorySlots[i].currentItem.itemID == item.itemID)
             {
@@ -203,7 +203,7 @@ public class GameManager : MonoBehaviour
 
     public int ReplaceStack(InventoryItem item)
     {
-        for (int i = 10; i < inventorySlots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (inventorySlots[i].isFull && inventorySlots[i].currentItem.itemID == item.itemID)
             {
@@ -237,7 +237,7 @@ public class GameManager : MonoBehaviour
 
     public int CheckAmount(InventoryItem item)
     {
-        for (int i = 10; i < inventorySlots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (inventorySlots[i].isFull && inventorySlots[i].currentItem.itemID == item.itemID)
             {
@@ -258,7 +258,7 @@ public class GameManager : MonoBehaviour
 
     public bool CheckIfEmpty()
     {
-        for (int i = 10; i < inventorySlots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (!inventorySlots[i].isFull)
             {
