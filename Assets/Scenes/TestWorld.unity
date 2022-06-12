@@ -1851,12 +1851,12 @@ PrefabInstance:
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
@@ -1871,12 +1871,12 @@ PrefabInstance:
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 115.11
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3001387942230458791, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 3001387942230458809, guid: 8262755d1ba4ac14694cb7b1108d48cc,
         type: 3}
@@ -4408,8 +4408,6 @@ MonoBehaviour:
   PM: {fileID: 1167879394}
   equipment:
   - name: Pumpkin
-    prefab: {fileID: 2620419215802427253, guid: 946ad940f86cbd647bab376b5c207a8f,
-      type: 3}
     inventoryItem: {fileID: 8600372842760629613, guid: 17c4084f5e5edf848a8d1b06dccb55b2,
       type: 3}
     worldItem: {fileID: 2620419215802427253, guid: 946ad940f86cbd647bab376b5c207a8f,
@@ -9649,12 +9647,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1788220769}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &907822588510284578 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2620419215802427253, guid: 946ad940f86cbd647bab376b5c207a8f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2937651738913131607}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2937651738913131607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9903,19 +9895,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d51e1d9114fff5c4697c7a2eed823391, type: 3}
---- !u!65 &8197278300491405241
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907822588510284578}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.157514, y: 0.16758999, z: 0.123673}
-  m_Center: {x: 0.017538, y: 0.081516, z: 0.0067345016}
 --- !u!1001 &8648643501624684432
 PrefabInstance:
   m_ObjectHideFlags: 0

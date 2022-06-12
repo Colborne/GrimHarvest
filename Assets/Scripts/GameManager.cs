@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public class ingameEquipment
 {
     public string name = "Items";
-    public GameObject prefab;
     public GameObject inventoryItem;
     public GameObject worldItem;
 }
@@ -37,8 +36,6 @@ public class GameManager : MonoBehaviour
 
     public void PickupItem(int itemID)
     {
-        bool foundSlot = false;
-
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (!inventorySlots[i].isFull)
@@ -46,7 +43,6 @@ public class GameManager : MonoBehaviour
                 GameObject GO = Instantiate(equipment[itemID].inventoryItem, inventorySlots[i].gameObject.transform);
                 inventorySlots[i].currentItem = GO.GetComponent<InventoryItem>();
                 inventorySlots[i].isFull = true;
-                foundSlot = true;
                 break;
             }
         }
@@ -137,7 +133,6 @@ public class GameManager : MonoBehaviour
         Destroy(item.gameObject);
     }
 
-    #region PickUp Stack
     public void StackRounding(int itemID, int quantityIncrease, Transform originalSlot)
     {
         // Searches for identical item ID in inventory //
@@ -154,7 +149,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    #endregion
 
     public bool CheckInventoryForItem(InventoryItem item, int amount, bool remove)
     {
