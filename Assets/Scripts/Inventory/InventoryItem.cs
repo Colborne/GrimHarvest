@@ -12,13 +12,16 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public CanvasGroup canvasGroup;
     public Transform originalSlot;
     InputManager inputManager;
+    
+    [Header("Item Information")]
+    public string itemName;
     public int itemID;
-    [Range(1,100)]
-    public int MaxAmount = 1;
+
+    [Multiline()] public string description;
+
+    [Range(1,100)] public int MaxAmount = 1;
     public int currentAmount = 1;
     public Text textAmount;
-    public Item item;
-    public float totalWeight = 0;
 
     void Awake()
     {
@@ -30,7 +33,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public void Update() 
     {
-        //totalWeight = item.weight * currentAmount;
         if(textAmount != null)
         {
             if(currentAmount > 1)
@@ -38,11 +40,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             else
                 textAmount.text = "";
         }
-    }
-
-    public void WeightCalculation() 
-    {
-        //totalWeight = item.weight * currentAmount;
     }
 
     public void OnDrag(PointerEventData eventData)

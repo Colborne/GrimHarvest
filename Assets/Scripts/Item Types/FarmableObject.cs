@@ -5,6 +5,8 @@ using UnityEngine;
 public class FarmableObject : MonoBehaviour
 {
     public float growthTime;
+    public GameObject drop;
+    public GameObject fx;
     void Start()
     {
         StartCoroutine(GrowthCycle(growthTime));
@@ -17,4 +19,11 @@ public class FarmableObject : MonoBehaviour
             StartCoroutine(GrowthCycle(growthTime));  
     }
 
+    public void OnDestroy() 
+    {
+        if(transform.localScale.x == 1){
+            Instantiate(drop, transform.position, Quaternion.identity);
+            Instantiate(fx, transform.position, Quaternion.identity);
+        }
+    }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class ingameEquipment
 {
+    public int ID;
     public string name = "Items";
     public GameObject inventoryItem;
     public GameObject worldItem;
