@@ -44,15 +44,21 @@ public class Movement : MonoBehaviour
         float speed = 0f;
 
         if(canRotate)
-            speed = movementSpeed;
-
-        if (inputManager.sprintInput)
         {
-            tempV += .01f;
-            speed = movementSpeed * Mathf.Min(tempV, 2f);
+            if(inputManager.animatorManager.animator.GetInteger("combo") > -1) 
+                speed = movementSpeed / (inputManager.animatorManager.animator.GetInteger("combo") + 1);
+            else
+                speed = movementSpeed;
+            if (inputManager.sprintInput)
+            {
+                tempV += .01f;
+                speed = movementSpeed * Mathf.Min(tempV, 2f);
+            }
+            else
+                tempV = 1f;
         }
         else
-            tempV = 1f;
+            speed = 0;
 
         Vector3 movementVelocity = Vector3.ProjectOnPlane(moveDirection * speed, normalVector);
         playerRigidbody.velocity = movementVelocity;
