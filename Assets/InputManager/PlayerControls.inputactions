@@ -107,6 +107,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Dodge",
+                    "type": "Button",
+                    "id": "29a1ca80-b8e9-47b5-b04a-ac41b8f87da9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "ed6cacf8-2dc6-423f-8124-caf861fd353b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "MouseWheel",
                     "type": "PassThrough",
                     "id": "9d978c81-ad3c-4ba7-97da-26e9df5b0272",
@@ -114,67 +132,13 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Toolbar1",
-                    "type": "Button",
-                    "id": "4d666802-bce6-4b40-85ee-13c0ab77df43",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Toolbar2",
-                    "type": "Button",
-                    "id": "fc77d080-cd75-4edc-9e1b-a5f8ff5bf587",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Toolbar3",
-                    "type": "Button",
-                    "id": "9be16b31-86e5-4d94-9700-561cc7bb1855",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Toolbar4",
-                    "type": "Button",
-                    "id": "299bcde9-5064-4cf5-8fde-21c5a8daad2c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Toolbar5",
-                    "type": "Button",
-                    "id": "a4040673-28b6-4384-9b13-2dedfc676937",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Toolbar6",
-                    "type": "Button",
-                    "id": "d3f0e0c0-5930-450d-be9e-db256fb906f0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "f8dae371-eceb-4ed5-8a2b-f935d0b562be",
-                    "path": "<Keyboard>/space",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -195,67 +159,23 @@
                 },
                 {
                     "name": "",
-                    "id": "949b73e1-bf23-4c5e-b414-be739bf6292c",
-                    "path": "<Keyboard>/1",
+                    "id": "d66e119b-5893-478a-91da-c4543f7832db",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Toolbar1",
+                    "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "4a1fe31e-5fdf-4c2b-932b-b5b1dd020292",
-                    "path": "<Keyboard>/2",
+                    "id": "81508368-08f0-4ab3-ac80-44aa63105b95",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Toolbar2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "480668d5-4a19-4078-a992-17403d6614b0",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Toolbar3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c5d2ae1c-857e-4adb-9320-a44958dddb84",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Toolbar4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a55cd356-5471-40b3-bd68-a440c98ab747",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Toolbar5",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "919b820d-ed3d-457b-a756-bc6c0486221f",
-                    "path": "<Keyboard>/6",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Toolbar6",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

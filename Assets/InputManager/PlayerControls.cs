@@ -129,6 +129,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Dodge"",
+                    ""type"": ""Button"",
+                    ""id"": ""29a1ca80-b8e9-47b5-b04a-ac41b8f87da9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed6cacf8-2dc6-423f-8124-caf861fd353b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""MouseWheel"",
                     ""type"": ""PassThrough"",
                     ""id"": ""9d978c81-ad3c-4ba7-97da-26e9df5b0272"",
@@ -136,67 +154,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Toolbar1"",
-                    ""type"": ""Button"",
-                    ""id"": ""4d666802-bce6-4b40-85ee-13c0ab77df43"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Toolbar2"",
-                    ""type"": ""Button"",
-                    ""id"": ""fc77d080-cd75-4edc-9e1b-a5f8ff5bf587"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Toolbar3"",
-                    ""type"": ""Button"",
-                    ""id"": ""9be16b31-86e5-4d94-9700-561cc7bb1855"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Toolbar4"",
-                    ""type"": ""Button"",
-                    ""id"": ""299bcde9-5064-4cf5-8fde-21c5a8daad2c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Toolbar5"",
-                    ""type"": ""Button"",
-                    ""id"": ""a4040673-28b6-4384-9b13-2dedfc676937"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Toolbar6"",
-                    ""type"": ""Button"",
-                    ""id"": ""d3f0e0c0-5930-450d-be9e-db256fb906f0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""f8dae371-eceb-4ed5-8a2b-f935d0b562be"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -217,67 +181,23 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""949b73e1-bf23-4c5e-b414-be739bf6292c"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""id"": ""d66e119b-5893-478a-91da-c4543f7832db"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Toolbar1"",
+                    ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4a1fe31e-5fdf-4c2b-932b-b5b1dd020292"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""id"": ""81508368-08f0-4ab3-ac80-44aa63105b95"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Toolbar2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""480668d5-4a19-4078-a992-17403d6614b0"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Toolbar3"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c5d2ae1c-857e-4adb-9320-a44958dddb84"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Toolbar4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a55cd356-5471-40b3-bd68-a440c98ab747"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Toolbar5"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""919b820d-ed3d-457b-a756-bc6c0486221f"",
-                    ""path"": ""<Keyboard>/6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Toolbar6"",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -293,13 +213,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // PlayerActions
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerActions_Dodge = m_PlayerActions.FindAction("Dodge", throwIfNotFound: true);
+        m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerActions_MouseWheel = m_PlayerActions.FindAction("MouseWheel", throwIfNotFound: true);
-        m_PlayerActions_Toolbar1 = m_PlayerActions.FindAction("Toolbar1", throwIfNotFound: true);
-        m_PlayerActions_Toolbar2 = m_PlayerActions.FindAction("Toolbar2", throwIfNotFound: true);
-        m_PlayerActions_Toolbar3 = m_PlayerActions.FindAction("Toolbar3", throwIfNotFound: true);
-        m_PlayerActions_Toolbar4 = m_PlayerActions.FindAction("Toolbar4", throwIfNotFound: true);
-        m_PlayerActions_Toolbar5 = m_PlayerActions.FindAction("Toolbar5", throwIfNotFound: true);
-        m_PlayerActions_Toolbar6 = m_PlayerActions.FindAction("Toolbar6", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -401,25 +317,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerActions;
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Interact;
+    private readonly InputAction m_PlayerActions_Dodge;
+    private readonly InputAction m_PlayerActions_Sprint;
     private readonly InputAction m_PlayerActions_MouseWheel;
-    private readonly InputAction m_PlayerActions_Toolbar1;
-    private readonly InputAction m_PlayerActions_Toolbar2;
-    private readonly InputAction m_PlayerActions_Toolbar3;
-    private readonly InputAction m_PlayerActions_Toolbar4;
-    private readonly InputAction m_PlayerActions_Toolbar5;
-    private readonly InputAction m_PlayerActions_Toolbar6;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
+        public InputAction @Dodge => m_Wrapper.m_PlayerActions_Dodge;
+        public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
         public InputAction @MouseWheel => m_Wrapper.m_PlayerActions_MouseWheel;
-        public InputAction @Toolbar1 => m_Wrapper.m_PlayerActions_Toolbar1;
-        public InputAction @Toolbar2 => m_Wrapper.m_PlayerActions_Toolbar2;
-        public InputAction @Toolbar3 => m_Wrapper.m_PlayerActions_Toolbar3;
-        public InputAction @Toolbar4 => m_Wrapper.m_PlayerActions_Toolbar4;
-        public InputAction @Toolbar5 => m_Wrapper.m_PlayerActions_Toolbar5;
-        public InputAction @Toolbar6 => m_Wrapper.m_PlayerActions_Toolbar6;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -432,27 +340,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+                @Dodge.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDodge;
+                @Dodge.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDodge;
+                @Dodge.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDodge;
+                @Sprint.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSprint;
                 @MouseWheel.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
                 @MouseWheel.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
                 @MouseWheel.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
-                @Toolbar1.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar1;
-                @Toolbar1.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar1;
-                @Toolbar1.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar1;
-                @Toolbar2.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar2;
-                @Toolbar2.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar2;
-                @Toolbar2.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar2;
-                @Toolbar3.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar3;
-                @Toolbar3.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar3;
-                @Toolbar3.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar3;
-                @Toolbar4.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar4;
-                @Toolbar4.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar4;
-                @Toolbar4.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar4;
-                @Toolbar5.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar5;
-                @Toolbar5.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar5;
-                @Toolbar5.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar5;
-                @Toolbar6.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar6;
-                @Toolbar6.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar6;
-                @Toolbar6.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar6;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -460,27 +356,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Dodge.started += instance.OnDodge;
+                @Dodge.performed += instance.OnDodge;
+                @Dodge.canceled += instance.OnDodge;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
                 @MouseWheel.started += instance.OnMouseWheel;
                 @MouseWheel.performed += instance.OnMouseWheel;
                 @MouseWheel.canceled += instance.OnMouseWheel;
-                @Toolbar1.started += instance.OnToolbar1;
-                @Toolbar1.performed += instance.OnToolbar1;
-                @Toolbar1.canceled += instance.OnToolbar1;
-                @Toolbar2.started += instance.OnToolbar2;
-                @Toolbar2.performed += instance.OnToolbar2;
-                @Toolbar2.canceled += instance.OnToolbar2;
-                @Toolbar3.started += instance.OnToolbar3;
-                @Toolbar3.performed += instance.OnToolbar3;
-                @Toolbar3.canceled += instance.OnToolbar3;
-                @Toolbar4.started += instance.OnToolbar4;
-                @Toolbar4.performed += instance.OnToolbar4;
-                @Toolbar4.canceled += instance.OnToolbar4;
-                @Toolbar5.started += instance.OnToolbar5;
-                @Toolbar5.performed += instance.OnToolbar5;
-                @Toolbar5.canceled += instance.OnToolbar5;
-                @Toolbar6.started += instance.OnToolbar6;
-                @Toolbar6.performed += instance.OnToolbar6;
-                @Toolbar6.canceled += instance.OnToolbar6;
             }
         }
     }
@@ -493,12 +377,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IPlayerActionsActions
     {
         void OnInteract(InputAction.CallbackContext context);
+        void OnDodge(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
         void OnMouseWheel(InputAction.CallbackContext context);
-        void OnToolbar1(InputAction.CallbackContext context);
-        void OnToolbar2(InputAction.CallbackContext context);
-        void OnToolbar3(InputAction.CallbackContext context);
-        void OnToolbar4(InputAction.CallbackContext context);
-        void OnToolbar5(InputAction.CallbackContext context);
-        void OnToolbar6(InputAction.CallbackContext context);
     }
 }

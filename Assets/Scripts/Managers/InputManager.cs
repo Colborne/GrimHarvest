@@ -6,7 +6,7 @@ using System.IO;
 public class InputManager : MonoBehaviour
 {    
     PlayerControls playerControls;
-    AnimatorManager animatorManager;
+    public AnimatorManager animatorManager;
     ToolManager toolManager;
     public Vector2 movementInput;
     public Vector2 mouseInput;
@@ -15,13 +15,12 @@ public class InputManager : MonoBehaviour
     public float verticalInput;
     public float horizontalInput;
     public bool interactInput;
-    public bool toolbar1Input;
-    public bool toolbar2Input;
-    public bool toolbar3Input;
-    public bool toolbar4Input;
-    public bool toolbar5Input;
-    public bool toolbar6Input;
+    public bool dodgeInput;
+    public bool sprintInput;
     public bool isInteracting = false;
+    public bool rolling;
+    public float _x = 0f;
+    public float _y = 0f;
     private void Awake() 
     {
         //player = GetComponent<Player>();
@@ -40,18 +39,10 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.MouseWheel.performed += i => scrollInput = i.ReadValue<float>();
             playerControls.PlayerActions.Interact.performed += i => interactInput = true;
             playerControls.PlayerActions.Interact.canceled += i => interactInput = false;
-            playerControls.PlayerActions.Toolbar1.performed += i => toolbar1Input = true;
-            playerControls.PlayerActions.Toolbar1.canceled += i => toolbar1Input = false;
-            playerControls.PlayerActions.Toolbar2.performed += i => toolbar2Input = true;
-            playerControls.PlayerActions.Toolbar2.canceled += i => toolbar2Input = false;
-            playerControls.PlayerActions.Toolbar3.performed += i => toolbar3Input = true;
-            playerControls.PlayerActions.Toolbar3.canceled += i => toolbar3Input = false;
-            playerControls.PlayerActions.Toolbar4.performed += i => toolbar4Input = true;
-            playerControls.PlayerActions.Toolbar4.canceled += i => toolbar4Input = false;
-            playerControls.PlayerActions.Toolbar5.performed += i => toolbar5Input = true;
-            playerControls.PlayerActions.Toolbar5.canceled += i => toolbar5Input = false;
-            playerControls.PlayerActions.Toolbar6.performed += i => toolbar6Input = true;
-            playerControls.PlayerActions.Toolbar6.canceled += i => toolbar6Input = false;
+            playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
+            playerControls.PlayerActions.Dodge.canceled += i => dodgeInput = false;
+            playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
+            playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
         }
         playerControls.Enable();
     }
@@ -63,20 +54,39 @@ public class InputManager : MonoBehaviour
     private void Update() 
     {
         HandleAllInputs();
+        if(isInteracting)
+            AttackAlgorithm();
+        else
+        {
+            _x = 1f * horizontalInput;
+            _y = 1f * verticalInput;
+        }
     }
 
     public void HandleAllInputs()
     {
         isInteracting = animatorManager.animator.GetBool("isInteracting");
+        rolling = animatorManager.animator.GetBool("isRolling");
 
         HandleMovementInput();
         HandlePlanting();
+        HandleRoll();
+    }
+
+    private void HandleRoll()
+    {
+        if(dodgeInput && !isInteracting && !rolling)
+        {
+            dodgeInput = false;
+            animatorManager.animator.CrossFade("Roll", .2f);
+            animatorManager.animator.SetInteger("combo", 0);
+        }
     }
 
     private void HandleMovementInput()
     {
-        verticalInput = isInteracting ? 0 : movementInput.y;
-        horizontalInput = isInteracting ? 0 : movementInput.x;
+        horizontalInput = isInteracting ? movementInput.x : movementInput.x;
+        verticalInput = isInteracting ? movementInput.y: movementInput.y;
 
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
         animatorManager.UpdateAnimatorValues(horizontalInput, moveAmount);
@@ -86,7 +96,13 @@ public class InputManager : MonoBehaviour
     {
         if(interactInput)
         {
+            interactInput = false;
             toolManager.UseTool();
         }
+    }
+    private void AttackAlgorithm()
+    {
+        _x = Mathf.Lerp(_x, 0f, 2f * Time.deltaTime);
+        _y = Mathf.Lerp(_y, 0f, 2f * Time.deltaTime);
     }
 }

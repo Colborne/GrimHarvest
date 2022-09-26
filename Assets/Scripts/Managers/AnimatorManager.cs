@@ -6,12 +6,15 @@ public class AnimatorManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public Animator animator;
+    InputManager inputManager;
     int horizontal;
     int vertical;
+    float tempV = 1f;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+        inputManager = GetComponent<InputManager>();
         horizontal = Animator.StringToHash("H");
         vertical = Animator.StringToHash("V");
     }
@@ -36,13 +39,20 @@ public class AnimatorManager : MonoBehaviour
         }
         else if(verticalMovement < -0.55f)
         {
-            snappedVertical = -1;
-            
+            snappedVertical = -1;   
         }
         else
         {
             snappedVertical = 0;
         }
+
+        if(inputManager.sprintInput)
+        {
+            tempV += .01f;
+            snappedVertical = Mathf.Min(tempV, 2f);
+        }
+        else
+            tempV = 1f;
 
         animator.SetFloat(horizontal, snappedHorizontal);//, 0.1f, Time.deltaTime);
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);

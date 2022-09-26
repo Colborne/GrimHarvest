@@ -12,6 +12,10 @@ public class Movement : MonoBehaviour
     Vector3 moveDirection;
     public float movementSpeed;
     public float rotationSpeed;
+    public float rollSpeed;
+    public bool canRotate = true;
+    public bool canRoll = false;
+    public float tempV = 1f;
 
     void Start()
     {
@@ -22,18 +26,37 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if(inputManager.animatorManager.animator.GetInteger("combo") == -1) 
+            canRotate = true;
+
         HandleMovement();
+        if(canRotate)
+            HandleRotation();
+        HandleRoll();
     }
 
     private void HandleMovement()
     {
         moveDirection = cameraObject.forward * inputManager.verticalInput;
         moveDirection += cameraObject.right * inputManager.horizontalInput;
-        moveDirection.Normalize();
+       // moveDirection.Normalize();
+        
+        float speed = 0f;
 
-        Vector3 movementVelocity = Vector3.ProjectOnPlane(moveDirection * movementSpeed, normalVector);
+        if(canRotate)
+            speed = movementSpeed;
+
+        if (inputManager.sprintInput)
+        {
+            tempV += .01f;
+            speed = movementSpeed * Mathf.Min(tempV, 2f);
+        }
+        else
+            tempV = 1f;
+
+        Vector3 movementVelocity = Vector3.ProjectOnPlane(moveDirection * speed, normalVector);
         playerRigidbody.velocity = movementVelocity;
-        HandleRotation();
+        
     }
 
     private void HandleRotation()
@@ -51,5 +74,21 @@ public class Movement : MonoBehaviour
         Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         transform.rotation = playerRotation;
+    }
+
+    public void HandleRoll()
+    {        
+        canRoll = inputManager.rolling;
+        if(canRoll)
+            playerRigidbody.velocity = transform.forward * rollSpeed;
+    }
+
+    public void CanRotate()
+    {
+        canRotate = true;
+    }
+    public void CannotRotate()
+    {
+        canRotate = false;
     }
 }
