@@ -16,16 +16,14 @@ public class ToolManager : MonoBehaviour
     }
     public void UseTool()
     {
-        if(animatorManager.animator.GetBool("isInteracting") == true)
+        animatorManager.animator.SetInteger("random", Random.Range(0,2));
+        if(animatorManager.animator.GetInteger("combo") == -1)
         {
-            animatorManager.animator.SetInteger("combo", animatorManager.animator.GetInteger("combo") + 1);
+                animatorManager.animator.SetInteger("combo", 0);
+                animatorManager.animator.SetBool("isInteracting", true);
+                animatorManager.animator.CrossFade("Hit1", .2f);
         }
         else
-        {
-            animatorManager.animator.SetInteger("combo", 0);
-            animatorManager.animator.SetBool("isInteracting", true);
-            animatorManager.animator.CrossFade("Hit1", .2f);
-            animatorManager.animator.SetInteger("random", Random.Range(0,2));
-        }
+            animatorManager.animator.SetInteger("combo", animatorManager.animator.GetInteger("combo") + 1);
     }
 }
