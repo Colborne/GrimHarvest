@@ -12,11 +12,13 @@ public class ToolManager : MonoBehaviour
     {
         animatorManager = GetComponent<AnimatorManager>();
         inputManager = GetComponent<InputManager>();
-
     }
     public void UseTool()
     {
-        animatorManager.animator.SetInteger("random", Random.Range(0,2));
+        //if(animatorManager.animator.GetFloat("V") > 1.25f)
+            //animatorManager.animator.CrossFade("Jump smash", .2f);
+
+        animatorManager.animator.SetInteger("random", Random.Range(0,3));
         if(animatorManager.animator.GetInteger("combo") == -1)
         {
                 animatorManager.animator.SetInteger("combo", 0);

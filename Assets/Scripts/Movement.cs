@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class Movement : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Movement : MonoBehaviour
     public bool canRotate = true;
     public bool canRoll = false;
     public float tempV = 1f;
+    public float anim = 1.45f;
 
     void Start()
     {
@@ -39,7 +41,7 @@ public class Movement : MonoBehaviour
     {
         moveDirection = cameraObject.forward * inputManager.verticalInput;
         moveDirection += cameraObject.right * inputManager.horizontalInput;
-       // moveDirection.Normalize();
+        moveDirection.Normalize();
         
         float speed = 0f;
 
@@ -95,9 +97,11 @@ public class Movement : MonoBehaviour
     public void CanRotate()
     {
         canRotate = true;
+        inputManager.animatorManager.animator.SetFloat("animSpeed", 1f);
     }
     public void CannotRotate()
     {
         canRotate = false;
+        inputManager.animatorManager.animator.SetFloat("animSpeed",anim);
     }
 }
