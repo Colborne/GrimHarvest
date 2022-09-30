@@ -2757,7 +2757,7 @@ MonoBehaviour:
   canRotate: 1
   canRoll: 0
   tempV: 1
-  anim: 2
+  anim: 1.8
 --- !u!114 &732956915
 MonoBehaviour:
   m_ObjectHideFlags: 0
