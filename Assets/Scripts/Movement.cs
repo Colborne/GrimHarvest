@@ -41,7 +41,7 @@ public class Movement : MonoBehaviour
     {
         moveDirection = cameraObject.forward * inputManager.verticalInput;
         moveDirection += cameraObject.right * inputManager.horizontalInput;
-        moveDirection.Normalize();
+        //moveDirection.Normalize();
         
         float speed = 0f;
 
