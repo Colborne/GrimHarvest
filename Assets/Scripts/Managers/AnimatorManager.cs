@@ -46,7 +46,7 @@ public class AnimatorManager : MonoBehaviour
             snappedVertical = 0;
         }
 
-        if(inputManager.sprintInput && inputManager.animatorManager.animator.GetInteger("combo") == -1 && snappedVertical != 0)
+        if(inputManager.sprintInput && inputManager.animatorManager.animator.GetInteger("combo") == -1 && snappedVertical > .99f)
         {
             tempV += .01f;
             snappedVertical = Mathf.Min(tempV, 2f);
