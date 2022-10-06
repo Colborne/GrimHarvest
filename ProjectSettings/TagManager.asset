@@ -10,6 +10,7 @@ TagManager:
   - Soil
   - Ground
   - Stone
+  - Enemy
   layers:
   - Default
   - TransparentFX
