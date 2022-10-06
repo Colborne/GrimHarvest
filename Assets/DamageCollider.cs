@@ -30,13 +30,10 @@ public class DamageCollider : MonoBehaviour
             Rigidbody[] bodies = collision.GetComponentsInChildren<Rigidbody>();
             foreach (Rigidbody _rb in bodies)
             {
-                //_rb.AddExplosionForce(15, transform.position, 25f, 0f, ForceMode.Impulse);
                 _rb.AddForce(transform.forward * force);
             }
-            RagdollController rdc = collision.GetComponent<RagdollController>();
-            Rigidbody rb = collision.GetComponent<Rigidbody>();
-            //rb.AddForce(transform.forward * force);
-            rdc.EnableRagdoll();
+            if(collision.GetComponent<RagdollController>())
+                collision.GetComponent<RagdollController>().EnableRagdoll();
         }
     }
 }
