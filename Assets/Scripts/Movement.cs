@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     CharacterController characterController;
     AnimatorManager animatorManager;
     InputManager inputManager;
+    StatsManager statsManager;
     public Transform cameraObject;
     Rigidbody playerRigidbody;
     Vector3 normalVector;
@@ -24,6 +25,7 @@ public class Movement : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         characterController = GetComponent<CharacterController>();
         playerRigidbody = GetComponent<Rigidbody>();
+        statsManager = GetComponent<StatsManager>();
     }
 
     void Update()
@@ -52,11 +54,18 @@ public class Movement : MonoBehaviour
             else
             {
                 speed = movementSpeed;
-                if (inputManager.sprintInput)
+                if (inputManager.sprintInput && statsManager.currentStamina > 0)
                 {
+                    inputManager.animatorManager.animator.SetBool("isSprinting", true);
+                    statsManager.UseStamina(.25f);
                     tempV += .01f;
                     speed = movementSpeed * Mathf.Min(tempV, 2f);
                 }
+                else
+                {
+                    inputManager.animatorManager.animator.SetBool("isSprinting", false);
+                    inputManager.sprintInput = false;
+                } 
             }
         }
         else
@@ -90,8 +99,9 @@ public class Movement : MonoBehaviour
     public void HandleRoll()
     {        
         canRoll = inputManager.rolling;
-        if(canRoll)
+        if(canRoll){
             playerRigidbody.velocity = transform.forward * rollSpeed;
+        }
     }
 
     public void CanRotate()

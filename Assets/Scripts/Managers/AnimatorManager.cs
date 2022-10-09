@@ -18,6 +18,12 @@ public class AnimatorManager : MonoBehaviour
         horizontal = Animator.StringToHash("H");
         vertical = Animator.StringToHash("V");
     }
+
+    public void PlayTargetAnimation(string targetAnimation, bool isInteracting)
+    {
+        animator.SetBool("isInteracting", isInteracting);
+        animator.CrossFade(targetAnimation, 0.2f);
+    }
     public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement)
     {
         float snappedHorizontal;
@@ -46,7 +52,7 @@ public class AnimatorManager : MonoBehaviour
             snappedVertical = 0;
         }
 
-        if(inputManager.sprintInput && inputManager.animatorManager.animator.GetInteger("combo") == -1 && snappedVertical > .99f)
+        if(inputManager.sprintInput && inputManager.animatorManager.animator.GetInteger("combo") == -1 && snappedVertical > .99f && inputManager.statsManager.currentStamina > 0f)
         {
             tempV += .01f;
             snappedVertical = Mathf.Min(tempV, 2f);

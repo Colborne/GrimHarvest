@@ -7,7 +7,8 @@ public class InputManager : MonoBehaviour
 {    
     PlayerControls playerControls;
     public AnimatorManager animatorManager;
-    ToolManager toolManager;
+    ActionManager actionManager;
+    public StatsManager statsManager;
     public Vector2 movementInput;
     public Vector2 mouseInput;
     public float scrollInput;
@@ -18,6 +19,7 @@ public class InputManager : MonoBehaviour
     public bool dodgeInput;
     public bool sprintInput;
     public bool isInteracting = false;
+    public bool isSprinting = false;
     public bool rolling;
     public float _x = 0f;
     public float _y = 0f;
@@ -25,7 +27,8 @@ public class InputManager : MonoBehaviour
     {
         //player = GetComponent<Player>();
         animatorManager = GetComponent<AnimatorManager>();
-        toolManager = GetComponent<ToolManager>();
+        actionManager = GetComponent<ActionManager>();
+        statsManager = GetComponent<StatsManager>();
     }
 
     private void OnEnable() 
@@ -67,16 +70,18 @@ public class InputManager : MonoBehaviour
     {
         isInteracting = animatorManager.animator.GetBool("isInteracting");
         rolling = animatorManager.animator.GetBool("isRolling");
+        isSprinting = animatorManager.animator.GetBool("isSprinting");
 
         HandleMovementInput();
-        HandlePlanting();
+        HandleAction();
         HandleRoll();
     }
 
     private void HandleRoll()
     {
-        if(dodgeInput && !isInteracting && !rolling)
+        if(dodgeInput && !isInteracting && !rolling && statsManager.currentStamina > 25f)
         {
+            statsManager.UseStamina(25f);
             dodgeInput = false;
             animatorManager.animator.CrossFade("Roll", .2f);
             animatorManager.animator.SetInteger("combo", 0);
@@ -92,12 +97,12 @@ public class InputManager : MonoBehaviour
         animatorManager.UpdateAnimatorValues(horizontalInput, moveAmount);
     } 
 
-    private void HandlePlanting()
+    private void HandleAction()
     {
-        if(interactInput)
+        if(interactInput && statsManager.currentStamina > 15f)
         {
             interactInput = false;
-            toolManager.UseTool();
+            actionManager.Use();
         }
     }
     private void AttackAlgorithm()

@@ -114,7 +114,7 @@ public class InterfaceManager : MonoBehaviour
     public void ResetState()
     {
         currentVillager.Reset();
-        FindObjectOfType<MovementInput>().active = true;
+        //FindObjectOfType<Movement>().active = true;
         inDialogue = false;
         canExit = false;
     }
