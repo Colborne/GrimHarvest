@@ -18,6 +18,8 @@ public class StatsManager : MonoBehaviour
     public float currentStamina;
     public float staminaRegenAmount = 30f;
     private float staminaRegenTimer = 0f;
+    public float rollCost = 15f;
+    public float actionCost = 7f;
 
     [Header("Stats")]
 
@@ -39,6 +41,7 @@ public class StatsManager : MonoBehaviour
 
     private void Update() 
     { 
+        RegenerateStamina();
         UpdateStats();
     }
 

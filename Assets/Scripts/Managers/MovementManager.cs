@@ -1,8 +1,6 @@
 using UnityEngine;
-using System.Collections;
-using TMPro;
 
-public class Movement : MonoBehaviour
+public class MovementManager : MonoBehaviour
 {
     CharacterController characterController;
     AnimatorManager animatorManager;
@@ -98,10 +96,10 @@ public class Movement : MonoBehaviour
 
     public void HandleRoll()
     {        
-        canRoll = inputManager.rolling;
-        if(canRoll){
+        canRoll = inputManager.isRolling;
+        if(canRoll)
             playerRigidbody.velocity = transform.forward * rollSpeed;
-        }
+        
     }
 
     public void CanRotate()

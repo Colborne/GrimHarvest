@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public int hp = 3;
     public EnemyAnimatorManager eam;
     private Vector3 previousPosition;
     public float curSpeed;

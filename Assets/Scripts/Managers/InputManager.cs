@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     PlayerControls playerControls;
     public AnimatorManager animatorManager;
     ActionManager actionManager;
-    public StatsManager statsManager;
+    StatsManager statsManager;
     public Vector2 movementInput;
     public Vector2 mouseInput;
     public float scrollInput;
@@ -20,12 +20,10 @@ public class InputManager : MonoBehaviour
     public bool sprintInput;
     public bool isInteracting = false;
     public bool isSprinting = false;
-    public bool rolling;
-    public float _x = 0f;
-    public float _y = 0f;
+    public bool isRolling = false;
+    public bool isComboing = false;
     private void Awake() 
     {
-        //player = GetComponent<Player>();
         animatorManager = GetComponent<AnimatorManager>();
         actionManager = GetComponent<ActionManager>();
         statsManager = GetComponent<StatsManager>();
@@ -56,22 +54,16 @@ public class InputManager : MonoBehaviour
     }
     private void Update() 
     {
+        isInteracting = animatorManager.animator.GetBool("isInteracting");
+        isRolling = animatorManager.animator.GetBool("isRolling");
+        isSprinting = animatorManager.animator.GetBool("isSprinting");
+        isComboing = animatorManager.animator.GetBool("isCombo");
+
         HandleAllInputs();
-        if(isInteracting)
-            AttackAlgorithm();
-        else
-        {
-            _x = 1f * horizontalInput;
-            _y = 1f * verticalInput;
-        }
     }
 
     public void HandleAllInputs()
     {
-        isInteracting = animatorManager.animator.GetBool("isInteracting");
-        rolling = animatorManager.animator.GetBool("isRolling");
-        isSprinting = animatorManager.animator.GetBool("isSprinting");
-
         HandleMovementInput();
         HandleAction();
         HandleRoll();
@@ -79,12 +71,10 @@ public class InputManager : MonoBehaviour
 
     private void HandleRoll()
     {
-        if(dodgeInput && !isInteracting && !rolling && statsManager.currentStamina > 25f)
+        if(dodgeInput && !isInteracting && !isRolling)
         {
-            statsManager.UseStamina(25f);
+            actionManager.Roll();
             dodgeInput = false;
-            animatorManager.animator.CrossFade("Roll", .2f);
-            animatorManager.animator.SetInteger("combo", 0);
         }
     }
 
@@ -99,15 +89,10 @@ public class InputManager : MonoBehaviour
 
     private void HandleAction()
     {
-        if(interactInput && statsManager.currentStamina > 15f)
+        if(interactInput && !isComboing)
         {
             interactInput = false;
             actionManager.Use();
         }
-    }
-    private void AttackAlgorithm()
-    {
-        _x = Mathf.Lerp(_x, 0f, 2f * Time.deltaTime);
-        _y = Mathf.Lerp(_y, 0f, 2f * Time.deltaTime);
     }
 }

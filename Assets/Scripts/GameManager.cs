@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public InventorySlot[] inventorySlots;
     public Canvas interfaceCanvas;
     public Transform draggables;
-    public PlayerManager PM;
+    public StatsManager PM;
     public ingameEquipment[] equipment;
 
     // Main //

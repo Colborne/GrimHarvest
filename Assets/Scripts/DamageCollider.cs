@@ -6,6 +6,7 @@ public class DamageCollider : MonoBehaviour
 {
     public Collider damageCollider;
     public float force;
+    public int damage;
     private void Awake() 
     {
         damageCollider.gameObject.SetActive(true);
@@ -37,24 +38,9 @@ public class DamageCollider : MonoBehaviour
             foreach (Rigidbody _rb in bodies)
                 _rb.AddForce(transform.forward * force);
 
-            if(collision.GetComponent<EnemyStats>())
-            {
-                
-                collision.GetComponent<EnemyStats>().hp--;
-                if(collision.GetComponent<EnemyStats>().hp <= 0)
-                {
-                    if(collision.GetComponent<RagdollController>())
-                        collision.GetComponent<RagdollController>().EnableRagdoll();
-
-                    if(collision.GetComponent<NavMeshAgent>())
-                    {
-                        Destroy(collision.GetComponent<NavMeshAgent>());
-                        Destroy(collision.GetComponent<EnemyAiTutorial>());
-                    }
-                    if(collision.GetComponent<EnemyDamageCollider>())
-                        collision.GetComponent<EnemyDamageCollider>().DisableDamageCollider();
-                }
-            }
+            EnemyAiManager ai = collision.GetComponent<EnemyAiManager>();
+            
+            if(ai) ai.TakeDamage(damage);  
         }
     }
 }

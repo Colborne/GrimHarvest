@@ -2,14 +2,18 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAiTutorial : MonoBehaviour
+public enum WeaponType
+{
+    Spear,
+    Sword
+}
+
+
+public class EnemyAiManager : MonoBehaviour
 {
     public NavMeshAgent agent;
-
     public Transform player;
-
     public LayerMask whatIsGround, whatIsPlayer;
-
     public float health;
 
     //Patroling
@@ -20,7 +24,6 @@ public class EnemyAiTutorial : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
 
     //States
     public float sightRange, attackRange;
@@ -28,6 +31,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public Animator animator;
     public float speed = 4f;
+    public WeaponType weaponType;
+    public GameObject weapon;
 
     private void Awake()
     {
@@ -50,8 +55,6 @@ public class EnemyAiTutorial : MonoBehaviour
         }
         else
             agent.speed = 0f;
-
-        
     }
 
     private void Patroling()
@@ -93,12 +96,10 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            animator.CrossFade("Attack", .2f);
-            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code
+            if(weaponType == WeaponType.Spear)
+                animator.CrossFade("Thrust", .2f);
+            else if(weaponType == WeaponType.Sword)
+                animator.CrossFade("Slash", .2f);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -113,7 +114,15 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+        if (health <= 0) Dead();
+    }
+
+    private void Dead()
+    {
+        GetComponent<RagdollController>().EnableRagdoll();
+        Destroy(GetComponent<NavMeshAgent>());
+        weapon.AddComponent<Rigidbody>().mass = 0.01f;
+        Destroy(this);
     }
     private void DestroyEnemy()
     {

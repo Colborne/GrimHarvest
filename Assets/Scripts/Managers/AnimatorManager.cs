@@ -7,6 +7,7 @@ public class AnimatorManager : MonoBehaviour
     // Start is called before the first frame update
     public Animator animator;
     InputManager inputManager;
+    StatsManager statsManager;
     int horizontal;
     int vertical;
     float tempV = 1f;
@@ -15,6 +16,7 @@ public class AnimatorManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         inputManager = GetComponent<InputManager>();
+        statsManager = GetComponent<StatsManager>();
         horizontal = Animator.StringToHash("H");
         vertical = Animator.StringToHash("V");
     }
@@ -24,6 +26,7 @@ public class AnimatorManager : MonoBehaviour
         animator.SetBool("isInteracting", isInteracting);
         animator.CrossFade(targetAnimation, 0.2f);
     }
+
     public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement)
     {
         float snappedHorizontal;
@@ -52,7 +55,7 @@ public class AnimatorManager : MonoBehaviour
             snappedVertical = 0;
         }
 
-        if(inputManager.sprintInput && inputManager.animatorManager.animator.GetInteger("combo") == -1 && snappedVertical > .99f && inputManager.statsManager.currentStamina > 0f)
+        if(inputManager.sprintInput && inputManager.animatorManager.animator.GetInteger("combo") == -1 && snappedVertical > .99f && statsManager.currentStamina > 0f)
         {
             tempV += .01f;
             snappedVertical = Mathf.Min(tempV, 2f);
