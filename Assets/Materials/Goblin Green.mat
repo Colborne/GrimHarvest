@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 1
+  m_Name: Goblin Green
   m_Shader: {fileID: -6465566751694194690, guid: 19e9a5256c6bb6f46ae261bbd1d93f34,
     type: 3}
   m_ValidKeywords: []
@@ -87,10 +87,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Brightness_Rim: 1.61
-    - Rim_Power: 1.88
-    - Toon_Ramp_Offset: 0.539
-    - Toon_Ramp_Smoothness: 0.039
+    - Brightness_Rim: 0.14
+    - Rim_Power: 0
+    - Toon_Ramp_Offset: 0.378
+    - Toon_Ramp_Smoothness: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BlendOp: 0
@@ -121,10 +121,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Toon_Ramp_Tint: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
+    - Toon_Ramp_Tint: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.25947848, g: 0.46226418, b: 0.31934857, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.38959596, g: 0.8018868, b: 0.510858, a: 1}
+    - _EmissionColor: {r: 109.27063, g: 43.479416, b: 0, a: 4.5589023}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8852235203359489629

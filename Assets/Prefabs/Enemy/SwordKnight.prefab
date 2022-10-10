@@ -1547,7 +1547,8 @@ MonoBehaviour:
   animator: {fileID: 6489515062136643187}
   speed: 4
   weaponType: 1
-  weapon: {fileID: 5555718393919081038}
+  weapon:
+  - {fileID: 5555718393919081038}
 --- !u!114 &6489515062136643146
 MonoBehaviour:
   m_ObjectHideFlags: 0

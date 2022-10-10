@@ -5,7 +5,8 @@ using UnityEngine.AI;
 public enum WeaponType
 {
     Spear,
-    Sword
+    Sword,
+    Shield
 }
 
 
@@ -32,7 +33,7 @@ public class EnemyAiManager : MonoBehaviour
     public Animator animator;
     public float speed = 4f;
     public WeaponType weaponType;
-    public GameObject weapon;
+    public GameObject[] weapon;
 
     private void Awake()
     {
@@ -91,7 +92,6 @@ public class EnemyAiManager : MonoBehaviour
     {
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
-
         transform.LookAt(player);
 
         if (!alreadyAttacked)
@@ -99,6 +99,8 @@ public class EnemyAiManager : MonoBehaviour
             if(weaponType == WeaponType.Spear)
                 animator.CrossFade("Thrust", .2f);
             else if(weaponType == WeaponType.Sword)
+                animator.CrossFade("Slash", .2f);
+            else if(weaponType == WeaponType.Shield)
                 animator.CrossFade("Slash", .2f);
 
             alreadyAttacked = true;
@@ -121,7 +123,10 @@ public class EnemyAiManager : MonoBehaviour
     {
         GetComponent<RagdollController>().EnableRagdoll();
         Destroy(GetComponent<NavMeshAgent>());
-        weapon.AddComponent<Rigidbody>().mass = 0.01f;
+        foreach(GameObject w in weapon){
+            w.AddComponent<Rigidbody>();
+            w.GetComponent<Rigidbody>().AddExplosionForce(5, w.transform.position, 5f, 7f, ForceMode.Impulse);
+        }
         Destroy(this);
     }
     private void DestroyEnemy()
