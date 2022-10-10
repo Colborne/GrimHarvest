@@ -38,7 +38,7 @@ public class DamageCollider : MonoBehaviour
             foreach (Rigidbody _rb in bodies)
                 _rb.AddForce(transform.forward * force);
 
-            EnemyAiManager ai = collision.GetComponent<EnemyAiManager>();
+            EnemyManager ai = collision.GetComponent<EnemyManager>();
             
             if(ai) ai.TakeDamage(damage);  
         }

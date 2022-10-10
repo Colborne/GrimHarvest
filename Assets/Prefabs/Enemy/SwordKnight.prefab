@@ -1538,14 +1538,14 @@ MonoBehaviour:
     m_Bits: 8
   health: 30
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  timeBetweenAttacks: 1.5
-  sightRange: 10
-  attackRange: 1.5
+  walkPointRange: 20
+  timeBetweenAttacks: 1.25
+  sightRange: 12
+  attackRange: 1.25
   playerInSightRange: 0
   playerInAttackRange: 0
   animator: {fileID: 6489515062136643187}
-  speed: 4
+  speed: 5.5
   weaponType: 1
   weapon:
   - {fileID: 5555718393919081038}

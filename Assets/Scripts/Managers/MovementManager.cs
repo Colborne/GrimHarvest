@@ -54,14 +54,11 @@ public class MovementManager : MonoBehaviour
                 speed = movementSpeed;
                 if (inputManager.sprintInput && statsManager.currentStamina > 0)
                 {
-                    inputManager.animatorManager.animator.SetBool("isSprinting", true);
-                    statsManager.UseStamina(.25f);
                     tempV += .01f;
                     speed = movementSpeed * Mathf.Min(tempV, 2f);
                 }
                 else
-                {
-                    inputManager.animatorManager.animator.SetBool("isSprinting", false);
+                {   
                     inputManager.sprintInput = false;
                 } 
             }

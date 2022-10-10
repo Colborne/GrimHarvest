@@ -55,13 +55,18 @@ public class AnimatorManager : MonoBehaviour
             snappedVertical = 0;
         }
 
-        if(inputManager.sprintInput && inputManager.animatorManager.animator.GetInteger("combo") == -1 && snappedVertical > .99f && statsManager.currentStamina > 0f)
+        if(inputManager.sprintInput && animator.GetInteger("combo") == -1 && snappedVertical > .99f && statsManager.currentStamina > 0f)
         {
+            animator.SetBool("isSprinting", true);
+            statsManager.UseStamina(.25f);
             tempV += .01f;
             snappedVertical = Mathf.Min(tempV, 2f);
         }
         else
+        {
             tempV = 1f;
+            animator.SetBool("isSprinting", false);
+        }
 
         animator.SetFloat(horizontal, snappedHorizontal);//, 0.1f, Time.deltaTime);
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);

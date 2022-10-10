@@ -10,7 +10,7 @@ public enum WeaponType
 }
 
 
-public class EnemyAiManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
@@ -28,17 +28,29 @@ public class EnemyAiManager : MonoBehaviour
 
     //States
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    float actionRange;
+    public bool playerInSightRange, playerInAttackRange, playerInActionRange;
+
+    public float minimumDetectionAngle = -50;
+    public float maximumDetectionAngle = 50;
+    public float speed = 4f;
+    int strafe = 0;
 
     public Animator animator;
-    public float speed = 4f;
     public WeaponType weaponType;
     public GameObject[] weapon;
-
+    EnemyAnimatorManager eam;
+    private Vector3 previousPosition;
+    public float curSpeed;
+    public bool readyToAttack = false;
+    public int randDir = 1;
+    bool resetRandom = true;
     private void Awake()
     {
         player = GameObject.Find("gob").transform;
         agent = GetComponent<NavMeshAgent>();
+        eam = GetComponent<EnemyAnimatorManager>();
+        actionRange = attackRange * 3;
     }
 
     private void Update()
@@ -46,20 +58,36 @@ public class EnemyAiManager : MonoBehaviour
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInActionRange = Physics.CheckSphere(transform.position, actionRange, whatIsPlayer);
 
         if(!animator.GetBool("isInteracting"))
         {
-            if (!playerInSightRange && !playerInAttackRange) Patroling();
-            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-            if (playerInAttackRange && playerInSightRange) AttackPlayer();
-            agent.speed = 4f;
+            if (!playerInSightRange && !playerInActionRange && !playerInAttackRange) Patroling();
+            if (playerInSightRange && !playerInActionRange && !playerInAttackRange) ChasePlayer();
+            if (playerInSightRange && playerInActionRange && !playerInAttackRange) OrbitPlayer();
+            if (playerInSightRange && playerInActionRange && playerInAttackRange) AttackPlayer();
         }
         else
             agent.speed = 0f;
+
+        if(resetRandom)
+        {
+            resetRandom = false;
+            Invoke(nameof(RandomizeDirection), Random.Range(1f,12f));
+        }
+
+        Vector3 curMove = transform.position - previousPosition;
+        curSpeed = curMove.magnitude / Time.deltaTime;
+        previousPosition = transform.position;
+
+        if (strafe != 0) curSpeed = 0;
+        if(!eam.animator.GetBool("isInteracting"))
+            eam.UpdateAnimatorValues(strafe, curSpeed);
     }
 
     private void Patroling()
     {
+        agent.speed = speed / 4f;
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -85,7 +113,19 @@ public class EnemyAiManager : MonoBehaviour
 
     private void ChasePlayer()
     {
+        agent.speed = speed;
+        strafe = 0;
         agent.SetDestination(player.position);
+    }
+
+    void OrbitPlayer() 
+    {
+        agent.speed = 2.5f;
+        strafe = 1 * randDir;
+        transform.LookAt(player);
+        var offsetPlayer = player.position - transform.position;
+        var dir = Vector3.Cross(offsetPlayer, Vector3.up);
+        agent.SetDestination(transform.position - (dir * randDir));
     }
 
     private void AttackPlayer()
@@ -107,6 +147,21 @@ public class EnemyAiManager : MonoBehaviour
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
+    private void RandomizeDirection()
+    {
+        resetRandom = true;
+        int rand = Random.Range(0,2);
+        Debug.Log(gameObject.name + "/" +rand);
+        if(rand == 0)
+            randDir = -1;
+        else
+            randDir = 1;
+    }
+    private void ReadyAttack()
+    {
+        readyToAttack = true;
+    }   
     private void ResetAttack()
     {
         alreadyAttacked = false;
@@ -140,5 +195,7 @@ public class EnemyAiManager : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, actionRange);
     }
 }
