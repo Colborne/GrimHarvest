@@ -21,12 +21,13 @@ public class EnemyManager : MonoBehaviour
     public StatsManager currentTarget;
     public float health;
     public bool isPerformingAction;
-    public float rotationSpeed = 15;
+    public float rotationSpeed = 360;
 
     public float currentRecoveryTime = 0;
 
     public float detectionRadius;
-    public float maximumAttackRange = 40f;
+    public float maximumAttackRange = 2.5f;
+    public float speed = 4f;
 
     public float minimumDetectionAngle = -50;
     public float maximumDetectionAngle = 50;

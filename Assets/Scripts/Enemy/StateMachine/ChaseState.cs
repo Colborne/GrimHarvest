@@ -5,26 +5,32 @@ using UnityEngine;
 public class ChaseState : State
 {
     public CombatStanceState combatStanceState;
+    public RotateTowardsState rotateTowardsState;
     Vector3 normalVector;
     public override State Tick(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
+
+        Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
+        float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+        float viewableAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.forward, Vector3.up);
+
+        HandleRotateTowardsTarget(enemyManager);
+        
+        enemyManager.agent.transform.localPosition = Vector3.zero;
+        enemyManager.agent.transform.localRotation = Quaternion.identity;
+
+        if(viewableAngle > 65 || viewableAngle < -65)
+            return rotateTowardsState;
+
         if(enemyManager.isPerformingAction)
         {
             enemyAnimatorManager.animator.SetFloat("V", 0, .1f, Time.deltaTime);
             return this;
         }
         
-        Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
-        float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
-        float viewableAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
-
         if(distanceFromTarget > enemyManager.maximumAttackRange){
             enemyAnimatorManager.animator.SetFloat("V", 1, 0.1f, Time.deltaTime);
         }
-
-        HandleRotateTowardsTarget(enemyManager);
-        enemyManager.agent.transform.localPosition = Vector3.zero;
-        enemyManager.agent.transform.localRotation = Quaternion.identity;
 
         if(distanceFromTarget <= enemyManager.maximumAttackRange)
             return combatStanceState;
@@ -37,6 +43,7 @@ public class ChaseState : State
         Vector3 direction = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         direction.y = 0;
         direction.Normalize();
+
         if(enemyManager.isPerformingAction)
         {
             if(direction == Vector3.zero)

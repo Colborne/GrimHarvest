@@ -5,19 +5,17 @@ using UnityEngine;
 public class EnemyAnimatorManager : MonoBehaviour
 {
     public Animator animator;
-    public EnemyManager enemyManager;
     int horizontal;
     int vertical;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
-        enemyManager = GetComponentInParent<EnemyManager>();
         horizontal = Animator.StringToHash("H");
         vertical = Animator.StringToHash("V");
     }
 
-        public void PlayTargetAnimation(string targetAnimation, bool isInteracting)
+    public void PlayTargetAnimation(string targetAnimation, bool isInteracting)
     {
         animator.SetBool("isInteracting", isInteracting);
         animator.CrossFade(targetAnimation, 0.2f);
