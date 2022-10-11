@@ -1508,8 +1508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf35822962c2f645b557939019cc824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eam: {fileID: 6775513008648355805}
-  curSpeed: 0
 --- !u!195 &6775513008648355811
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1541,30 +1539,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 5964486638627330856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3e7b38d852cd104abe0f36b0e2906c3, type: 3}
+  m_Script: {fileID: 11500000, guid: c08a699002e50e640940c16b7a21b614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 6775513008648355811}
+  currentState: {fileID: 0}
+  agent: {fileID: 0}
   player: {fileID: 0}
-  whatIsGround:
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 64
-  whatIsPlayer:
+    m_Bits: 0
+  detectionLayer:
     serializedVersion: 2
-    m_Bits: 8
-  health: 30
+    m_Bits: 0
+  currentTarget: {fileID: 0}
+  health: 0
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
-  timeBetweenAttacks: 1.5
-  sightRange: 10
-  attackRange: 2
+  walkPointRange: 0
+  timeBetweenAttacks: 0
+  detectionRadius: 0
+  attackRange: 0
   playerInSightRange: 0
   playerInAttackRange: 0
-  animator: {fileID: 6775513008648355812}
-  speed: 4.5
+  playerInActionRange: 0
+  minimumDetectionAngle: -50
+  maximumDetectionAngle: 50
+  speed: 4
+  animator: {fileID: 0}
   weaponType: 0
-  weapon:
-  - {fileID: 3075969998074366913}
+  weapon: []
 --- !u!114 &6775513008648355805
 MonoBehaviour:
   m_ObjectHideFlags: 0

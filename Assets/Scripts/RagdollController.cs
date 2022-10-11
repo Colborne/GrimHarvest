@@ -12,7 +12,7 @@ public class RagdollController : MonoBehaviour
 
     public void EnableRagdoll()
     {
-        GetComponent<Animator>().enabled = false;
+        GetComponentInChildren<Animator>().enabled = false;
         SetRigidBodyState(false);
         SetColliderState(true);
     }

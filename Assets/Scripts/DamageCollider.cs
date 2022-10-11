@@ -31,8 +31,8 @@ public class DamageCollider : MonoBehaviour
             if(collision.GetComponent<EnemyDamageCollider>())
                 collision.GetComponent<EnemyDamageCollider>().DisableDamageCollider();
 
-            if(collision.GetComponent<Animator>())
-                collision.GetComponent<Animator>().CrossFade("Damage", .2f);
+            if(collision.GetComponentInChildren<Animator>())
+                collision.GetComponentInChildren<Animator>().CrossFade("Damage", .2f);
 
             Rigidbody[] bodies = collision.GetComponentsInChildren<Rigidbody>();
             foreach (Rigidbody _rb in bodies)

@@ -5,12 +5,14 @@ using UnityEngine;
 public class EnemyAnimatorManager : MonoBehaviour
 {
     public Animator animator;
+    public EnemyManager enemyManager;
     int horizontal;
     int vertical;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+        enemyManager = GetComponentInParent<EnemyManager>();
         horizontal = Animator.StringToHash("H");
         vertical = Animator.StringToHash("V");
     }
@@ -75,4 +77,5 @@ public class EnemyAnimatorManager : MonoBehaviour
         animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
+
 }
