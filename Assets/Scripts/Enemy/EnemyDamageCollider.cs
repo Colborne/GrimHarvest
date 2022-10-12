@@ -5,7 +5,6 @@ using UnityEngine.AI;
 public class EnemyDamageCollider : MonoBehaviour
 {
     public Collider damageCollider;
-    public float force;
     private void Awake() 
     {
         damageCollider.gameObject.SetActive(true);

@@ -2,45 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : State
+public class PatrolState : State
 {
-    
-    public EnemyAttackAction currentAttack;
-
     public CombatStanceState combatStanceState;
     public RotateTowardsState rotateTowardsState;
-    public ChaseState chaseState;
-
+    Vector3 normalVector;
     public override State Tick(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
+
+        Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+        float viewableAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.forward, Vector3.up);
+
         HandleRotateTowardsTarget(enemyManager);
         
-        if(distanceFromTarget > enemyManager.maximumAttackRange)
-            return chaseState;
+        enemyManager.agent.transform.localPosition = Vector3.zero;
+        enemyManager.agent.transform.localRotation = Quaternion.identity;
 
-        //if can combo
-        if(!enemyManager.isPerformingAction)
+        if(viewableAngle > 65 || viewableAngle < -65)
+            return rotateTowardsState;
+
+        if(enemyManager.isPerformingAction)
         {
-            AttackTarget(enemyManager, enemyAnimatorManager);
-            //roll for combo
+            enemyAnimatorManager.animator.SetFloat("V", 0, .1f, Time.deltaTime);
+            return this;
+        }
+        
+        if(distanceFromTarget > enemyManager.maximumAttackRange){
+            enemyAnimatorManager.animator.SetFloat("V", 1, 0.1f, Time.deltaTime);
         }
 
-        return combatStanceState;
+        if(distanceFromTarget <= enemyManager.maximumAttackRange)
+            return combatStanceState;
+        else
+            return this;
     }
 
-    public void AttackTarget(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
-    {
-        enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
-        enemyManager.isPerformingAction = true;
-        enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
-    }
     public void HandleRotateTowardsTarget(EnemyManager enemyManager)
     {
         Vector3 direction = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         direction.y = 0;
         direction.Normalize();
-        
+
         if(enemyManager.isPerformingAction)
         {
             if(direction == Vector3.zero)
@@ -51,6 +54,9 @@ public class AttackState : State
         }
         else
         {
+            Vector3 projectedVelocity = Vector3.ProjectOnPlane(direction * 4, normalVector);
+            enemyManager.rigidbody.velocity = projectedVelocity;
+
             enemyManager.agent.enabled = true;
             enemyManager.agent.SetDestination(enemyManager.currentTarget.transform.position);
             enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.agent.transform.rotation, enemyManager.rotationSpeed * Time.deltaTime);

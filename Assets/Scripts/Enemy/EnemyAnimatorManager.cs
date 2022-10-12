@@ -14,7 +14,7 @@ public class EnemyAnimatorManager : MonoBehaviour
         horizontal = Animator.StringToHash("H");
         vertical = Animator.StringToHash("V");
     }
-
+    
     public void PlayTargetAnimation(string targetAnimation, bool isInteracting)
     {
         animator.SetBool("isInteracting", isInteracting);

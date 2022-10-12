@@ -24,10 +24,11 @@ public class EnemyManager : MonoBehaviour
     public float rotationSpeed = 360;
 
     public float currentRecoveryTime = 0;
+    public float combatTimer = 0;
 
     public float detectionRadius;
     public float maximumAttackRange = 2.5f;
-    public float speed = 4f;
+    public float maximumAggroRange = 5f;
 
     public float minimumDetectionAngle = -50;
     public float maximumDetectionAngle = 50;
@@ -37,7 +38,7 @@ public class EnemyManager : MonoBehaviour
    
     private void Awake()
     {
-        agent = GetComponentInChildren<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         rigidbody = GetComponent<Rigidbody>();
         agent.enabled = false;
@@ -88,12 +89,12 @@ public class EnemyManager : MonoBehaviour
             }
         }
     }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
-
 
     private void Dead()
     {

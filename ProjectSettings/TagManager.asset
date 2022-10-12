@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - Stone
   - Enemy
+  - player
   layers:
   - Default
   - TransparentFX
