@@ -29,10 +29,11 @@ public class RagdollController : MonoBehaviour
 
     public void SetColliderState(bool state)
     {
-        Collider[] bodies = GetComponentsInChildren<Collider>();
-        foreach (Collider rb in bodies)
+        Collider[] cols = GetComponentsInChildren<Collider>();
+        foreach (Collider col in cols)
         {
-            rb.enabled = state;
+            if(col.gameObject.layer != LayerMask.NameToLayer("CollisionBlocker"))
+                col.enabled = state;
         }
         GetComponent<Collider>().enabled = !state;
     }

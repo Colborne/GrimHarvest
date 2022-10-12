@@ -15,7 +15,6 @@ public class EnemyManager : MonoBehaviour
     
     public NavMeshAgent agent;
     public EnemyAnimatorManager enemyAnimatorManager;
-    public LayerMask groundLayer, detectionLayer;
     public Rigidbody rigidbody;
     public State currentState;
     public StatsManager currentTarget;
@@ -109,7 +108,6 @@ public class EnemyManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-
         if (health <= 0) Dead();
     }
 }

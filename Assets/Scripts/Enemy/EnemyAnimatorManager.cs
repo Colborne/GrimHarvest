@@ -19,8 +19,7 @@ public class EnemyAnimatorManager : MonoBehaviour
     {
         animator.SetBool("isInteracting", isInteracting);
         animator.CrossFade(targetAnimation, 0.2f);
-    }
-    
+    } 
     public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement)
     {
         float snappedHorizontal;
@@ -75,5 +74,4 @@ public class EnemyAnimatorManager : MonoBehaviour
         animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
-
 }
