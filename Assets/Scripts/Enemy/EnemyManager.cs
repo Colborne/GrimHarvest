@@ -18,6 +18,7 @@ public class EnemyManager : MonoBehaviour
     public Rigidbody rigidbody;
     public State currentState;
     public StatsManager currentTarget;
+    public EnemyCombatManager combatManager;
     public float health;
     public bool isPerformingAction;
     public float rotationSpeed = 360;
@@ -34,11 +35,21 @@ public class EnemyManager : MonoBehaviour
     
     public WeaponType weaponType;
     public GameObject[] weapon;
+
+    public bool isBlocking;
+    public bool allowBlock;
+    public bool allowDodge;
+    public bool allowParry;
+
+    public int blockPercent = 50;
+    public int dodgePercent = 50;
+    public int parryPercent = 50;
    
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+        combatManager = GetComponent<EnemyCombatManager>();
         rigidbody = GetComponent<Rigidbody>();
         agent.enabled = false;
     }
@@ -51,6 +62,7 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         HandleRecoveryTimer();
+        isPerformingAction = enemyAnimatorManager.animator.GetBool("isInteracting");
     }
 
     void FixedUpdate()
@@ -110,4 +122,7 @@ public class EnemyManager : MonoBehaviour
         health -= damage;
         if (health <= 0) Dead();
     }
+
+    public void SetDamageAbsorption()
+    {}
 }

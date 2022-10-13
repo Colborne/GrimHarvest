@@ -5,15 +5,12 @@ using UnityEngine;
 public class ChaseState : State
 {
     public CombatStanceState combatStanceState;
-    public RotateTowardsState rotateTowardsState;
     Vector3 normalVector;
     public override State Tick(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         float viewableAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.forward, Vector3.up);
-
-        HandleRotateTowardsTarget(enemyManager);
         
         if(enemyManager.isPerformingAction)
         {
@@ -21,11 +18,15 @@ public class ChaseState : State
             enemyAnimatorManager.animator.SetFloat("H", 0);
             return this;
         }
+
+        HandleRotateTowardsTarget(enemyManager);
         
-        if(distanceFromTarget > enemyManager.maximumAttackRange){
+        if(distanceFromTarget > enemyManager.maximumAttackRange)
+        {
             enemyAnimatorManager.animator.SetFloat("V", 1, 0.1f, Time.deltaTime);
             enemyAnimatorManager.animator.SetFloat("H", 0);
             enemyAnimatorManager.animator.SetBool("isInteracting", false);
+
         }
 
         if(distanceFromTarget <= enemyManager.maximumAttackRange)
@@ -39,6 +40,8 @@ public class ChaseState : State
         Vector3 direction = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         direction.y = 0;
         direction.Normalize();
+        Vector3 projectedVelocity = Vector3.ProjectOnPlane(direction * 4, normalVector);
+        enemyManager.rigidbody.velocity = projectedVelocity;
 
         if(enemyManager.isPerformingAction)
         {
@@ -50,9 +53,6 @@ public class ChaseState : State
         }
         else
         {
-            Vector3 projectedVelocity = Vector3.ProjectOnPlane(direction * 4, normalVector);
-            enemyManager.rigidbody.velocity = projectedVelocity;
-
             enemyManager.agent.enabled = true;
             enemyManager.agent.SetDestination(enemyManager.currentTarget.transform.position);
             enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.agent.transform.rotation, enemyManager.rotationSpeed * Time.deltaTime);

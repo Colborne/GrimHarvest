@@ -8,7 +8,6 @@ public class AttackState : State
     public EnemyAttackAction currentAttack;
 
     public CombatStanceState combatStanceState;
-    public RotateTowardsState rotateTowardsState;
     public ChaseState chaseState;
 
     public override State Tick(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
@@ -32,7 +31,6 @@ public class AttackState : State
     public void AttackTarget(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
         enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
-        enemyManager.isPerformingAction = true;
         enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
     }
     public void HandleRotateTowardsTarget(EnemyManager enemyManager)

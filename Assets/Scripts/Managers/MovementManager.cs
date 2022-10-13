@@ -71,7 +71,6 @@ public class MovementManager : MonoBehaviour
 
         Vector3 movementVelocity = Vector3.ProjectOnPlane(moveDirection * speed, normalVector);
         playerRigidbody.velocity = movementVelocity;
-        
     }
 
     private void HandleRotation()
@@ -96,7 +95,6 @@ public class MovementManager : MonoBehaviour
         canRoll = inputManager.isRolling;
         if(canRoll)
             playerRigidbody.velocity = transform.forward * rollSpeed;
-        
     }
 
     public void CanRotate()

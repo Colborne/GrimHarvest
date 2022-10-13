@@ -8,6 +8,7 @@ public class StatsManager : MonoBehaviour
 {
     public bool isTakingDamage = false;
     public bool isInvincible = false;
+    public bool isAttacking = false;
 
     [Header("Health")]
     public int maxHealth;
@@ -102,5 +103,6 @@ public class StatsManager : MonoBehaviour
 
         isTakingDamage = animatorManager.animator.GetBool("isTakingDamage");
         isInvincible = animatorManager.animator.GetBool("isInvincible");
+        isAttacking = animatorManager.animator.GetBool("isAttacking");
     }
 }

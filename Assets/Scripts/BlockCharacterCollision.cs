@@ -10,6 +10,4 @@ public class BlockCharacterCollision : MonoBehaviour
     {
         Physics.IgnoreCollision(characterCollider, blockerCollider, true);
     }
-
-
 }

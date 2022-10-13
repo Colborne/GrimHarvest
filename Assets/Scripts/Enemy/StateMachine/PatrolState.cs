@@ -5,7 +5,6 @@ using UnityEngine;
 public class PatrolState : State
 {
     public CombatStanceState combatStanceState;
-    public RotateTowardsState rotateTowardsState;
     Vector3 normalVector;
     public override State Tick(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
@@ -20,7 +19,7 @@ public class PatrolState : State
         enemyManager.agent.transform.localRotation = Quaternion.identity;
 
         if(viewableAngle > 65 || viewableAngle < -65)
-            return rotateTowardsState;
+            return this;
 
         if(enemyManager.isPerformingAction)
         {
