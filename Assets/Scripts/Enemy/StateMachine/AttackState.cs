@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    
-    public EnemyAttackAction currentAttack;
 
+    public EnemyAttackAction currentAttack;
     public CombatStanceState combatStanceState;
     public ChaseState chaseState;
 
     public override State Tick(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+        Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
+        float viewableAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.forward, Vector3.up);
         HandleRotateTowardsTarget(enemyManager);
         
         if(distanceFromTarget > enemyManager.maximumAttackRange)
@@ -21,8 +22,10 @@ public class AttackState : State
         //if can combo
         if(!enemyManager.isPerformingAction)
         {
-            AttackTarget(enemyManager, enemyAnimatorManager);
-            //roll for combo
+            if(viewableAngle <= currentAttack.maximumAttackAngle && viewableAngle >= currentAttack.minimumAttackAngle)
+                AttackTarget(enemyManager, enemyAnimatorManager);
+            else
+                return this;
         }
 
         return combatStanceState;
@@ -51,7 +54,8 @@ public class AttackState : State
         {
             enemyManager.agent.enabled = true;
             enemyManager.agent.SetDestination(enemyManager.currentTarget.transform.position);
-            enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.agent.transform.rotation, enemyManager.rotationSpeed * Time.deltaTime);
+            Quaternion targetRotation = Quaternion.LookRotation(enemyManager.currentTarget.transform.position - enemyManager.transform.position);
+            enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, targetRotation, .051f);
         }
     }
 }

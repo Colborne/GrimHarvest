@@ -63,6 +63,7 @@ public class EnemyManager : MonoBehaviour
     {
         HandleRecoveryTimer();
         isPerformingAction = enemyAnimatorManager.animator.GetBool("isInteracting");
+        agent.speed = enemyAnimatorManager.animator.GetInteger("agentSpeed");
     }
 
     void FixedUpdate()

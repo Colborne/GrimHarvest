@@ -55,7 +55,8 @@ public class ChaseState : State
         {
             enemyManager.agent.enabled = true;
             enemyManager.agent.SetDestination(enemyManager.currentTarget.transform.position);
-            enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.agent.transform.rotation, enemyManager.rotationSpeed * Time.deltaTime);
+            Quaternion targetRotation = Quaternion.LookRotation(enemyManager.currentTarget.transform.position - enemyManager.transform.position);
+            enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, targetRotation, .051f);
         }
     }
 }

@@ -6,7 +6,8 @@ public class BlockCharacterCollision : MonoBehaviour
 {
     public CapsuleCollider characterCollider;
     public CapsuleCollider blockerCollider;
-    void Start()
+    
+    void Awake()
     {
         Physics.IgnoreCollision(characterCollider, blockerCollider, true);
     }
