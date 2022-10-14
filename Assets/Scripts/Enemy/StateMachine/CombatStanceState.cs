@@ -6,6 +6,7 @@ public class CombatStanceState : State
 {
     public AttackState attackState;
     public ChaseState chaseState;
+    public DodgeState dodgeState;
     public EnemyAttackAction[] enemyAttacks;
     bool randomDestinationSet = false;
     bool directionSet = false;
@@ -13,16 +14,10 @@ public class CombatStanceState : State
     float horizontalMovement = 0;
     int randomDirection;
     public int randomAction;
-
     bool willPerformBlock = false;
     bool willPerformDodge = false;
     bool willPerformParry = false;
-
-    bool isDodging = false;
-    bool hasPerfomedDodge;
-    bool hasRandomDodgeDirection;
-    Quaternion targetDodgeDirection;
-    
+    bool hasRolled = false;
     public override State Tick(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
@@ -41,22 +36,21 @@ public class CombatStanceState : State
         if(enemyManager.allowBlock)
             RollForBlockChance(enemyManager);
 
-        if(enemyManager.allowDodge)
-            RollForDodgeChance(enemyManager);
-        
         //if(enemyManager.allowParry)
         //    RollForParryChance(enemyManager);
 
         if(willPerformBlock)
             Block(enemyManager, enemyAnimatorManager);
         
-        if(willPerformDodge && enemyManager.currentTarget.isAttacking)
-            Dodge(enemyManager, enemyAnimatorManager);
+        if(enemyManager.currentTarget.isAttacking && enemyManager.allowDodge && !hasRolled)
+            RollForDodgeChance(enemyManager);
+
+        if(willPerformDodge)
+        {
+            ResetStateFlags();
+            return dodgeState;
+        }
         
-        if(hasPerfomedDodge)
-            isDodging = enemyAnimatorManager.animator.GetBool("isDodging");
-
-
         //if(willPerformParry){}
         
         if(!directionSet)
@@ -76,22 +70,20 @@ public class CombatStanceState : State
 
         if(enemyManager.currentRecoveryTime <= 0 && distanceFromTarget <= enemyManager.maximumAttackRange)
         {
+            GetNewAttack(enemyManager); 
             if(attackState.currentAttack != null)
             {
                 ResetStateFlags();
-                return attackState;
-            }
-            else
-                GetNewAttack(enemyManager);    
+                return attackState;   
+            }      
         }
         else
         {
-            if(!enemyManager.isPerformingAction && !isDodging)
+            if(!enemyManager.isPerformingAction)
                 ChooseCombatAction(enemyManager, enemyAnimatorManager);
             else
                 Approach(enemyManager,enemyAnimatorManager);
         }
-
         return this;
     }
 
@@ -106,11 +98,13 @@ public class CombatStanceState : State
 
     private void RollForDodgeChance(EnemyManager enemy)
     {
+        hasRolled = true;
         int dodgeChance = Random.Range(0,100);
         if(dodgeChance <= enemy.dodgePercent)
             willPerformDodge = true;
         else
             willPerformDodge = false;
+        Debug.Log("Dodge Chance" + dodgeChance + " vs Percent" + enemy.dodgePercent);
     }
 
     private void RollForParryChance(EnemyManager enemy)
@@ -125,11 +119,9 @@ public class CombatStanceState : State
 
     private void ResetStateFlags()
     {
-        hasRandomDodgeDirection = false;
+        hasRolled = false;
         randomDestinationSet = false;
-        hasPerfomedDodge = false;
         directionSet = false;
-        isDodging = false;
         willPerformBlock = false;
         willPerformDodge = false;
         willPerformParry = false;
@@ -157,59 +149,20 @@ public class CombatStanceState : State
         }
     }
 
-    public void Dodge(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
-    {
-        if(!hasPerfomedDodge)
-        {
-            isDodging = true;
-            if(!hasRandomDodgeDirection)
-            {
-                float randomDodgeDirection;
-
-                hasRandomDodgeDirection = true;
-                randomDodgeDirection = Random.Range(0,360);
-                targetDodgeDirection = Quaternion.Euler(enemyManager.transform.eulerAngles.x, randomDodgeDirection, enemyManager.transform.eulerAngles.z);
-            }
-
-            if(enemyManager.transform.rotation != targetDodgeDirection)
-            {
-                Quaternion targetRotation = Quaternion.Slerp(enemyManager.transform.rotation, targetDodgeDirection, 1f);
-                enemyManager.transform.rotation = targetRotation;
-
-                float targetYDirection = targetDodgeDirection.eulerAngles.y;
-                float currentYRotation = enemyManager.transform.eulerAngles.y;
-                float rotationDifference = Mathf.Abs(targetYDirection - currentYRotation);
-
-                if(rotationDifference <= 5)
-                {
-                    hasPerfomedDodge = true;
-                    enemyManager.transform.rotation = targetDodgeDirection;
-                    enemyAnimatorManager.PlayTargetAnimation("Roll", true);
-                    enemyManager.agent.SetDestination(enemyManager.transform.position + enemyManager.transform.forward * 8f);
-                }
-            }
-        }
-    }
     private void Rush(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
-        if(!enemyManager.isPerformingAction)
-        {
-            enemyAnimatorManager.animator.SetFloat("V", 1f, .2f, Time.deltaTime);
-            Quaternion targetRotation = Quaternion.LookRotation(enemyManager.currentTarget.transform.position - enemyManager.transform.position);
-            enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, targetRotation, .051f);
-            enemyManager.agent.SetDestination(enemyManager.currentTarget.transform.position); 
-        }
+        enemyAnimatorManager.animator.SetFloat("V", 1f, .2f, Time.deltaTime);
+        Quaternion targetRotation = Quaternion.LookRotation(enemyManager.currentTarget.transform.position - enemyManager.transform.position);
+        enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, targetRotation, .051f);
+        enemyManager.agent.SetDestination(enemyManager.currentTarget.transform.position); 
     }
 
     private void Approach(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {       
-        if(!isDodging && hasPerfomedDodge)
-        {
-            enemyAnimatorManager.animator.SetFloat("V", .5f, .2f, Time.deltaTime);
-            Quaternion targetRotation = Quaternion.LookRotation(enemyManager.currentTarget.transform.position - enemyManager.transform.position);
-            enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, targetRotation, .051f);
-            enemyManager.agent.SetDestination(enemyManager.currentTarget.transform.position); 
-        }
+        enemyAnimatorManager.animator.SetFloat("V", .5f, .2f, Time.deltaTime);
+        Quaternion targetRotation = Quaternion.LookRotation(enemyManager.currentTarget.transform.position - enemyManager.transform.position);
+        enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, targetRotation, .051f);
+        enemyManager.agent.SetDestination(enemyManager.currentTarget.transform.position);     
     }
     
     private void Backstep(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
@@ -228,7 +181,7 @@ public class CombatStanceState : State
         enemyAnimatorManager.animator.SetFloat("H", randomDirection, .2f, Time.deltaTime);
         Vector3 targetsDistance = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         var dir = Vector3.Cross(targetsDistance, Vector3.up);
-        enemyManager.agent.SetDestination(enemyManager.transform.position + (dir * 10f * randomDirection)); 
+        enemyManager.agent.SetDestination(enemyManager.transform.position + (dir * 9f * randomDirection)); 
     }
 
     private void GetNewAttack(EnemyManager enemyManager)
@@ -237,6 +190,7 @@ public class CombatStanceState : State
         float viewableAngle = Vector3.Angle(targetsDistance, enemyManager.transform.forward);
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
 
+        List<EnemyAttackAction> possible = new List<EnemyAttackAction>();
         int maxScore = 0;
 
         for( int i = 0; i < enemyAttacks.Length; i++)
@@ -250,32 +204,17 @@ public class CombatStanceState : State
                 && viewableAngle >= enemyAttackAction.minimumAttackAngle)
                 {
                     maxScore += enemyAttackAction.attackScore;
+                    possible.Add(enemyAttackAction);
                 }
             }
         }
 
-        int randomValue = Random.Range(0, maxScore);
-        int tempScore = 0;
+        int randomValue = Random.Range(0, possible.Count);
 
-        for(int i = 0; i < enemyAttacks.Length;i++)
+        foreach(EnemyAttackAction action in possible)
         {
-            EnemyAttackAction enemyAttackAction = enemyAttacks[i];
-
-            if(distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack
-            && distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
-            {
-                if(viewableAngle <= enemyAttackAction.maximumAttackAngle
-                && viewableAngle >= enemyAttackAction.minimumAttackAngle)
-                {
-                    if(attackState.currentAttack != null)
-                        return;
-
-                    tempScore += enemyAttackAction.attackScore;
-                }
-
-                if(tempScore > randomValue)
-                    attackState.currentAttack = enemyAttackAction;
-            }
+            if(randomValue == possible.IndexOf(action))
+                attackState.currentAttack = action;
         }
     }
     public void HandleRotateTowardsTarget(EnemyManager enemyManager)
