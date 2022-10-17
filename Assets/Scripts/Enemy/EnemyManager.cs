@@ -12,7 +12,6 @@ public enum WeaponType
 
 public class EnemyManager : MonoBehaviour
 {
-    
     public NavMeshAgent agent;
     public EnemyAnimatorManager enemyAnimatorManager;
     public Rigidbody rigidbody;
@@ -20,9 +19,9 @@ public class EnemyManager : MonoBehaviour
     public StatsManager currentTarget;
     public EnemyCombatManager combatManager;
     public float health;
+    public float damageReduction = 0f;
     public bool isPerformingAction;
     public float rotationSpeed = 360;
-
     public float currentRecoveryTime = 0;
     public float combatTimer = 0;
 
@@ -39,11 +38,9 @@ public class EnemyManager : MonoBehaviour
     public bool isBlocking;
     public bool allowBlock;
     public bool allowDodge;
-    public bool allowParry;
 
     public int blockPercent = 50;
     public int dodgePercent = 50;
-    public int parryPercent = 50;
    
     private void Awake()
     {
@@ -64,6 +61,9 @@ public class EnemyManager : MonoBehaviour
         HandleRecoveryTimer();
         isPerformingAction = enemyAnimatorManager.animator.GetBool("isInteracting");
         agent.speed = enemyAnimatorManager.animator.GetInteger("agentSpeed");
+
+        if(!enemyAnimatorManager.animator.GetBool("isBlocking"))
+            damageReduction = 0f;
     }
 
     void FixedUpdate()
@@ -114,16 +114,38 @@ public class EnemyManager : MonoBehaviour
         Destroy(agent);
         foreach(GameObject w in weapon){
             w.AddComponent<Rigidbody>();
-            w.GetComponent<Rigidbody>().AddExplosionForce(5, w.transform.position, 5f, 7f, ForceMode.Impulse);
+            w.GetComponent<Rigidbody>().AddExplosionForce(7.5f, w.transform.position, 5f, 7f, ForceMode.Impulse);
         }
         Destroy(this);
     }
-    public void TakeDamage(int damage)
+
+    public void TakeHit(float damage)
     {
+        if(damageReduction == 1)
+            enemyAnimatorManager.animator.CrossFade("ShieldBash", .2f);
+        else
+        {
+            if(!isBlocking){
+                TakeDamage(damage);
+                enemyAnimatorManager.animator.CrossFade("Damage", .2f);
+            }
+            else
+                TakeDamage(damage * damageReduction);
+        }
+    }
+
+
+    public void TakeDamage(float damage)
+    {
+        if(GetComponent<EnemyDamageCollider>())
+            GetComponent<EnemyDamageCollider>().DisableDamageCollider();
+            
         health -= damage;
         if (health <= 0) Dead();
     }
 
-    public void SetDamageAbsorption()
-    {}
+    public void SetDamageAbsorption(float percent)
+    {
+        damageReduction = percent / 100f;
+    }
 }

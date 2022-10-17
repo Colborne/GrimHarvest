@@ -28,19 +28,21 @@ public class DamageCollider : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
-            if(collision.GetComponent<EnemyDamageCollider>())
-                collision.GetComponent<EnemyDamageCollider>().DisableDamageCollider();
-
-            if(collision.GetComponentInChildren<Animator>())
-                collision.GetComponentInChildren<Animator>().CrossFade("Damage", .2f);
-
             Rigidbody[] bodies = collision.GetComponentsInChildren<Rigidbody>();
             foreach (Rigidbody _rb in bodies)
                 _rb.AddForce(transform.forward * force);
 
             EnemyManager ai = collision.GetComponent<EnemyManager>();
             
-            if(ai) ai.TakeDamage(damage);  
+            if(ai)
+            {
+                ai.TakeHit(damage);
+                if(ai.isBlocking) 
+                {
+                    GetComponent<AnimatorManager>().PlayTargetAnimation("Impact", true);
+                    GetComponent<Rigidbody>().AddForce(-transform.forward * force);
+                }
+            }
         }
     }
 }

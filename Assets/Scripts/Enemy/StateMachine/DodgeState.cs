@@ -23,6 +23,7 @@ public class DodgeState : State
         if(hasPerfomedDodge && !enemyAnimatorManager.animator.GetBool("isDodging"))
         {
             ResetStateFlags();
+            enemyManager.SetDamageAbsorption(0);
             return combatStanceState;
         }
         
@@ -40,6 +41,7 @@ public class DodgeState : State
     }    
     public void Dodge(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
+        enemyManager.SetDamageAbsorption(100);
         if(!hasRandomDodgeDirection)
         {
             float randomDodgeDirection;

@@ -7,6 +7,7 @@ public class CombatStanceState : State
     public AttackState attackState;
     public ChaseState chaseState;
     public DodgeState dodgeState;
+    public BlockState blockState;
     public EnemyAttackAction[] enemyAttacks;
     bool randomDestinationSet = false;
     bool directionSet = false;
@@ -16,31 +17,32 @@ public class CombatStanceState : State
     public int randomAction;
     bool willPerformBlock = false;
     bool willPerformDodge = false;
-    bool willPerformParry = false;
     bool hasRolled = false;
+    bool hasBlocked = false;
+    
     public override State Tick(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
-        
         if(enemyManager.isPerformingAction)
         {
             enemyAnimatorManager.animator.SetFloat("V", 0);
             enemyAnimatorManager.animator.SetFloat("H", 0);
             return this;
         }
+
         HandleRotateTowardsTarget(enemyManager);
 
         if(distanceFromTarget > enemyManager.maximumAggroRange)
             return chaseState;
 
-        if(enemyManager.allowBlock)
+        if(enemyManager.currentTarget.isAttacking && enemyManager.allowBlock && !hasBlocked)
             RollForBlockChance(enemyManager);
 
-        //if(enemyManager.allowParry)
-        //    RollForParryChance(enemyManager);
-
         if(willPerformBlock)
-            Block(enemyManager, enemyAnimatorManager);
+        {
+            ResetStateFlags();
+            return blockState;
+        }
         
         if(enemyManager.currentTarget.isAttacking && enemyManager.allowDodge && !hasRolled)
             RollForDodgeChance(enemyManager);
@@ -50,9 +52,7 @@ public class CombatStanceState : State
             ResetStateFlags();
             return dodgeState;
         }
-        
-        //if(willPerformParry){}
-        
+
         if(!directionSet)
         {
             directionSet = true;
@@ -89,6 +89,7 @@ public class CombatStanceState : State
 
     private void RollForBlockChance(EnemyManager enemy)
     {
+        hasBlocked = true;
         int blockChance = Random.Range(0,100);
         if(blockChance <= enemy.blockPercent)
             willPerformBlock = true;
@@ -104,27 +105,16 @@ public class CombatStanceState : State
             willPerformDodge = true;
         else
             willPerformDodge = false;
-        Debug.Log("Dodge Chance" + dodgeChance + " vs Percent" + enemy.dodgePercent);
-    }
-
-    private void RollForParryChance(EnemyManager enemy)
-    {
-        int parryChance = Random.Range(0,100);
-
-        if(parryChance <= enemy.parryPercent)
-            willPerformParry = true;
-        else
-            willPerformParry = false;
     }
 
     private void ResetStateFlags()
     {
         hasRolled = false;
+        hasBlocked = false; 
         randomDestinationSet = false;
         directionSet = false;
         willPerformBlock = false;
         willPerformDodge = false;
-        willPerformParry = false;
     }
 
     private void ChooseCombatAction(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
@@ -134,19 +124,6 @@ public class CombatStanceState : State
         else if(randomAction == 1)
             Backstep(enemyManager, enemyAnimatorManager);
         
-    }
-
-    private void Block(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
-    {
-        if(enemyManager.isBlocking == false)
-        {
-            if(enemyManager.allowBlock)
-            {
-                enemyManager.isBlocking = true;
-                enemyManager.enemyAnimatorManager.PlayTargetAnimation("Block", true);
-                enemyManager.SetDamageAbsorption();
-            }
-        }
     }
 
     private void Rush(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
