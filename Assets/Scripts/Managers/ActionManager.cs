@@ -20,6 +20,7 @@ public class ActionManager : MonoBehaviour
     {
         if(statsManager.currentStamina > statsManager.actionCost)
         {
+            statsManager.heavyModifier = 1;
             animatorManager.animator.SetInteger("random", Random.Range(0,3));
             
             if(animatorManager.animator.GetInteger("combo") == -1)
@@ -37,11 +38,12 @@ public class ActionManager : MonoBehaviour
     {
         if(statsManager.currentStamina > statsManager.actionCost)
         {
+            statsManager.heavyModifier = 2;
             if(animatorManager.animator.GetInteger("combo") == -1)
             {
                 animatorManager.animator.SetInteger("combo", 0);
                 animatorManager.animator.SetBool("isInteracting", true);
-                animatorManager.animator.CrossFade("Jump Slash", .2f);
+                animatorManager.animator.CrossFade("Heavy Attack", .2f);
             }
         }
     }

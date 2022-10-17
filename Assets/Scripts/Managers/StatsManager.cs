@@ -21,6 +21,7 @@ public class StatsManager : MonoBehaviour
     private float staminaRegenTimer = 0f;
     public float rollCost = 15f;
     public float actionCost = 7f;
+    public int heavyModifier = 1;
 
     [Header("Stats")]
 

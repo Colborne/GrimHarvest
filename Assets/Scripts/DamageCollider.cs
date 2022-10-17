@@ -36,11 +36,14 @@ public class DamageCollider : MonoBehaviour
             
             if(ai)
             {
-                ai.TakeHit(damage);
-                if(ai.isBlocking) 
+                if(!ai.isTakingDamage)
                 {
-                    GetComponent<AnimatorManager>().PlayTargetAnimation("Impact", true);
-                    GetComponent<Rigidbody>().AddForce(-transform.forward * force);
+                    ai.TakeHit(damage * GetComponent<StatsManager>().heavyModifier);
+                    if(ai.isBlocking) 
+                    {
+                        GetComponent<AnimatorManager>().PlayTargetAnimation("Impact", true);
+                        GetComponent<Rigidbody>().AddForce(-transform.forward * force);
+                    }
                 }
             }
         }

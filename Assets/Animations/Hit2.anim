@@ -21522,15 +21522,36 @@ AnimationClip:
     floatParameter: 7.2
     intParameter: 0
     messageOptions: 0
-  - time: 0.2
+  - time: 0.16666667
     functionName: CannotRotate
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.2
+  - time: 0.23333333
+    functionName: AnimSpeedIncrease
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.26666668
     functionName: EnableDamageCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.46666667
+    functionName: DisableDamageCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: AnimSpeedReset
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -21538,13 +21559,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.56666666
     functionName: CanRotate
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.56666666
-    functionName: DisableDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

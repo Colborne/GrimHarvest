@@ -38,6 +38,7 @@ public class EnemyManager : MonoBehaviour
     
     [Header("Checks")]
     public bool isPerformingAction;
+    public bool isTakingDamage;
     public bool isBlocking;
     public bool allowBlock;
     public bool allowDodge;
@@ -61,6 +62,8 @@ public class EnemyManager : MonoBehaviour
     {
         HandleRecoveryTimer();
         isPerformingAction = enemyAnimatorManager.animator.GetBool("isInteracting");
+        isTakingDamage = enemyAnimatorManager.animator.GetBool("isTakingDamage");
+        
         agent.speed = enemyAnimatorManager.animator.GetInteger("agentSpeed");
 
         if(!enemyAnimatorManager.animator.GetBool("isBlocking"))
@@ -140,10 +143,8 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-
     public void TakeDamage(float damage)
     {
-        
         if(GetComponent<EnemyDamageCollider>())
             GetComponent<EnemyDamageCollider>().DisableDamageCollider();
             

@@ -687,16 +687,16 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isInteracting
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: agentSpeed
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 2
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isInteracting
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: isDodging
@@ -706,6 +706,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: isBlocking
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isTakingDamage
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -772,6 +778,7 @@ AnimatorState:
   - {fileID: 3822143392433082276}
   m_StateMachineBehaviours:
   - {fileID: -2660319613164735150}
+  - {fileID: 3857401426622704258}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -882,10 +889,10 @@ AnimatorStateMachine:
     m_Position: {x: 380.20618, y: 317.58398, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8603365716925896175}
-    m_Position: {x: 427.4756, y: 412.12286, z: 0}
+    m_Position: {x: 380, y: 370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7943901541319530085}
-    m_Position: {x: 390, y: 510, z: 0}
+    m_Position: {x: 380, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1532390168081451778}
     m_Position: {x: 210, y: 170, z: 0}
@@ -1073,6 +1080,7 @@ AnimatorState:
   - {fileID: 7707481141892821332}
   - {fileID: -7892548342723512932}
   - {fileID: -6029896688047643175}
+  - {fileID: 6090090468446578137}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1187,6 +1195,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &3857401426622704258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccf02600f6fcd54797f6b52d3e11235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetBool: isTakingDamage
+  status: 1
 --- !u!1107 &3882717787192126025
 AnimatorStateMachine:
   serializedVersion: 6
@@ -1342,6 +1364,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &6090090468446578137
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccf02600f6fcd54797f6b52d3e11235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetBool: isTakingDamage
+  status: 0
 --- !u!1102 &6521187450211653337
 AnimatorState:
   serializedVersion: 6
