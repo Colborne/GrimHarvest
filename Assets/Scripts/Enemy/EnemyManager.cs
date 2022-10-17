@@ -12,33 +12,35 @@ public enum WeaponType
 
 public class EnemyManager : MonoBehaviour
 {
+    [Header("Components")]
     public NavMeshAgent agent;
     public EnemyAnimatorManager enemyAnimatorManager;
     public Rigidbody rigidbody;
     public State currentState;
     public StatsManager currentTarget;
-    public EnemyCombatManager combatManager;
+    public WeaponType weaponType;
+    public GameObject[] weapon;
+    public GameObject DamageEffect;
+    public GameObject BlockEffect;
+
+    [Header("Stats")]
     public float health;
     public float damageReduction = 0f;
-    public bool isPerformingAction;
     public float rotationSpeed = 360;
     public float currentRecoveryTime = 0;
-    public float combatTimer = 0;
 
+    [Header("Detection")]
     public float detectionRadius;
     public float maximumAttackRange = 2.5f;
     public float maximumAggroRange = 5f;
-
     public float minimumDetectionAngle = -50;
     public float maximumDetectionAngle = 50;
     
-    public WeaponType weaponType;
-    public GameObject[] weapon;
-
+    [Header("Checks")]
+    public bool isPerformingAction;
     public bool isBlocking;
     public bool allowBlock;
     public bool allowDodge;
-
     public int blockPercent = 50;
     public int dodgePercent = 50;
    
@@ -46,7 +48,6 @@ public class EnemyManager : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
-        combatManager = GetComponent<EnemyCombatManager>();
         rigidbody = GetComponent<Rigidbody>();
         agent.enabled = false;
     }
@@ -125,18 +126,24 @@ public class EnemyManager : MonoBehaviour
             enemyAnimatorManager.animator.CrossFade("ShieldBash", .2f);
         else
         {
-            if(!isBlocking){
+            if(!isBlocking)
+            {
                 TakeDamage(damage);
+                Instantiate(DamageEffect, transform.position+ new Vector3(0,1.5f,0), Quaternion.identity);
                 enemyAnimatorManager.animator.CrossFade("Damage", .2f);
             }
             else
+            {
+                Instantiate(BlockEffect, transform.position + new Vector3(0,1.5f,0), Quaternion.identity);
                 TakeDamage(damage * damageReduction);
+            }
         }
     }
 
 
     public void TakeDamage(float damage)
     {
+        
         if(GetComponent<EnemyDamageCollider>())
             GetComponent<EnemyDamageCollider>().DisableDamageCollider();
             

@@ -33,6 +33,19 @@ public class ActionManager : MonoBehaviour
         }
     }
 
+    public void UseHeavy()
+    {
+        if(statsManager.currentStamina > statsManager.actionCost)
+        {
+            if(animatorManager.animator.GetInteger("combo") == -1)
+            {
+                animatorManager.animator.SetInteger("combo", 0);
+                animatorManager.animator.SetBool("isInteracting", true);
+                animatorManager.animator.CrossFade("Jump Slash", .2f);
+            }
+        }
+    }
+
     public void Roll()
     {
         if(statsManager.currentStamina >= statsManager.rollCost)

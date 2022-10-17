@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     public float verticalInput;
     public float horizontalInput;
     public bool interactInput;
+    public bool heavyInput;
     public bool dodgeInput;
     public bool sprintInput;
     public bool isInteracting = false;
@@ -40,6 +41,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.MouseWheel.performed += i => scrollInput = i.ReadValue<float>();
             playerControls.PlayerActions.Interact.performed += i => interactInput = true;
             playerControls.PlayerActions.Interact.canceled += i => interactInput = false;
+            playerControls.PlayerActions.Heavy.performed += i => heavyInput = true;
+            playerControls.PlayerActions.Heavy.canceled += i => heavyInput = false;
             playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
             playerControls.PlayerActions.Dodge.canceled += i => dodgeInput = false;
             playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
@@ -93,6 +96,11 @@ public class InputManager : MonoBehaviour
         {
             interactInput = false;
             actionManager.Use();
+        }
+        if(heavyInput && !isComboing)
+        {
+            heavyInput = false;
+            actionManager.UseHeavy();
         }
     }
 }

@@ -58,7 +58,7 @@ public class AnimatorManager : MonoBehaviour
         if(inputManager.sprintInput && animator.GetInteger("combo") == -1 && snappedVertical > .99f && statsManager.currentStamina > 0f)
         {
             animator.SetBool("isSprinting", true);
-            statsManager.UseStamina(.25f);
+            statsManager.UseStamina(.075f);
             tempV += .01f;
             snappedVertical = Mathf.Min(tempV, 2f);
         }

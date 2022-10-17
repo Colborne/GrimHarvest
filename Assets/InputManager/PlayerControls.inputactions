@@ -162,6 +162,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Heavy",
+                    "type": "Button",
+                    "id": "7a741cc1-c323-41c4-81a5-b0238b78ab47",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Dodge",
                     "type": "Button",
                     "id": "29a1ca80-b8e9-47b5-b04a-ac41b8f87da9",
@@ -204,7 +213,7 @@
                 {
                     "name": "",
                     "id": "a8b13f71-bffa-4c80-9b64-098919fdc9c3",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<XInputController>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -264,6 +273,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "221c3ed4-0457-4704-bc1c-e2555b0de042",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heavy",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "984de608-d853-4353-ad55-9366a4daa700",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heavy",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
