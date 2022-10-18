@@ -49,7 +49,6 @@ public class StatsManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        GetComponent<DamageCollider>().DisableDamageCollider();
         currentHealth = currentHealth - damage;
         healthBar.SetCurrentHealth(currentHealth);
 
@@ -105,5 +104,8 @@ public class StatsManager : MonoBehaviour
         isTakingDamage = animatorManager.animator.GetBool("isTakingDamage");
         isInvincible = animatorManager.animator.GetBool("isInvincible");
         isAttacking = animatorManager.animator.GetBool("isAttacking");
+
+        if(isTakingDamage)
+            GetComponent<DamageCollider>().DisableDamageCollider();
     }
 }

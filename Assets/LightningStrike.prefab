@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2428278833525842859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2428278833525842860}
+  - component: {fileID: 2428278833525842861}
+  - component: {fileID: 2120869550}
+  m_Layer: 0
+  m_Name: LightningStrike
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2428278833525842860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428278833525842859}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -84.8945, y: 0.5, z: -90.08361}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2405594879914316489}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2428278833525842861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428278833525842859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938cbc4d5b7f9f044b232f33233fe616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 3
+  triggerAliveTimer: 1
+  explosion: {fileID: 1742013225946848, guid: b3d8264aa7d2d824a8a503e45291ddf4, type: 3}
+  damageCollider: {fileID: 6660858984880619959}
+  damage: 25
+--- !u!54 &2120869550
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428278833525842859}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!1001 &2428278833981045951
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2428278833525842860}
+    m_Modifications:
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530417116208104952, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539900509187443529, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_Name
+      value: Lightning Alert
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062057529295338760, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062057529295338760, guid: 818b5871758027442aea849b176a145f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 818b5871758027442aea849b176a145f, type: 3}
+--- !u!4 &2405594879914316489 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 58715534249733750, guid: 818b5871758027442aea849b176a145f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2428278833981045951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &6660858984880619959 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 9062057529295338760, guid: 818b5871758027442aea849b176a145f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2428278833981045951}
+  m_PrefabAsset: {fileID: 0}
