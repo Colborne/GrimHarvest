@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class StatsManager : MonoBehaviour
 {
@@ -36,8 +37,8 @@ public class StatsManager : MonoBehaviour
     private void Awake() 
     {
         animatorManager = GetComponentInChildren<AnimatorManager>();
-        healthBar = FindObjectOfType<HealthBar>();
-        staminaBar = FindObjectOfType<StaminaBar>();
+        healthBar = GetComponent<HealthBar>();
+        staminaBar = GetComponent<StaminaBar>();
         inputManager = GetComponent<InputManager>();
     }
 
@@ -107,5 +108,8 @@ public class StatsManager : MonoBehaviour
 
         if(isTakingDamage)
             GetComponent<DamageCollider>().DisableDamageCollider();
+
+        if(currentHealth <= 0)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

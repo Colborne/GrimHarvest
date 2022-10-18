@@ -22,6 +22,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject[] weapon;
     public GameObject DamageEffect;
     public GameObject BlockEffect;
+    public GameObject healthbar;
 
     [Header("Stats")]
     public float health;
@@ -51,6 +52,10 @@ public class EnemyManager : MonoBehaviour
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         rigidbody = GetComponent<Rigidbody>();
         agent.enabled = false;
+        if(healthbar != null){
+            GetComponent<HealthBar>().SetMaxHealth((int)health);
+            healthbar.SetActive(false);
+        }
     }
 
     void Start()
@@ -63,11 +68,17 @@ public class EnemyManager : MonoBehaviour
         HandleRecoveryTimer();
         isPerformingAction = enemyAnimatorManager.animator.GetBool("isInteracting");
         isTakingDamage = enemyAnimatorManager.animator.GetBool("isTakingDamage");
-        
+
         agent.speed = enemyAnimatorManager.animator.GetInteger("agentSpeed");
 
         if(!enemyAnimatorManager.animator.GetBool("isBlocking"))
             damageReduction = 0f;
+
+        if(currentTarget != null && healthbar != null)
+        { 
+            healthbar.SetActive(true);
+            GetComponent<HealthBar>().SetCurrentHealth((int)health);
+        }
     }
 
     void FixedUpdate()
