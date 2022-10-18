@@ -45,6 +45,8 @@ public class ActionManager : MonoBehaviour
                 animatorManager.animator.SetBool("isInteracting", true);
                 animatorManager.animator.CrossFade("Heavy Attack", .2f);
             }
+            else
+                animatorManager.animator.SetInteger("combo", animatorManager.animator.GetInteger("combo") + 1);
         }
     }
 

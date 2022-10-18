@@ -75,7 +75,6 @@ GameObject:
   - component: {fileID: 4551546343044017287}
   - component: {fileID: 1787542029372037197}
   - component: {fileID: 443791600783852172}
-  - component: {fileID: 2260981324914337464}
   m_Layer: 0
   m_Name: Mace
   m_TagString: Untagged
@@ -91,13 +90,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274258269720197528}
   m_LocalRotation: {x: -0, y: 2.842171e-14, z: 1.19245984e-14, w: 1}
-  m_LocalPosition: {x: 0, y: 0.00000059604645, z: 0.00000047683716}
-  m_LocalScale: {x: 49.999996, y: 49.999992, z: 49.999996}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2326893992279417874}
-  m_Father: {fileID: 8884249072774251465}
-  m_RootOrder: 1
+  m_Father: {fileID: 1865617878099519143}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4551546343044017287
 MeshFilter:
@@ -165,20 +164,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.018020067, y: 0.033397693, z: 0.018020077}
   m_Center: {x: 4.7200773e-16, y: 0.016698848, z: -0.0000000013969857}
---- !u!114 &2260981324914337464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274258269720197528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4296b57879b4149a691a9fcdb667a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bone: {fileID: 2913734823742167739}
-  enemyManager: {fileID: 6489515062136643147}
 --- !u!1 &284649241082879723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,6 +1446,53 @@ Transform:
   m_Father: {fileID: 2913734823742167739}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5601265421784071159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1865617878099519143}
+  - component: {fileID: 6991370576870548241}
+  m_Layer: 0
+  m_Name: Mace Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1865617878099519143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5601265421784071159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 614051809011622690}
+  m_Father: {fileID: 8884249072774251465}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6991370576870548241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5601265421784071159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4296b57879b4149a691a9fcdb667a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bone: {fileID: 2913734823742167739}
+  enemyManager: {fileID: 6489515062136643147}
 --- !u!1 &5648469640077305655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,7 +1700,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2392836091211149467}
-  - {fileID: 614051809011622690}
+  - {fileID: 1865617878099519143}
   m_Father: {fileID: 6739033131840708613}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -82.09872, y: 66.91566, z: 163.22751}
@@ -2011,7 +2043,6 @@ MonoBehaviour:
   rigidbody: {fileID: 6489515062136643185}
   currentState: {fileID: 4293994017122277168}
   currentTarget: {fileID: 0}
-  combatManager: {fileID: 0}
   weaponType: 2
   weapon:
   - {fileID: 274258269720197528}
@@ -2030,6 +2061,7 @@ MonoBehaviour:
   minimumDetectionAngle: -50
   maximumDetectionAngle: 50
   isPerformingAction: 0
+  isTakingDamage: 0
   isBlocking: 0
   allowBlock: 1
   allowDodge: 1
