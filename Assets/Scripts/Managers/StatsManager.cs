@@ -89,7 +89,7 @@ public class StatsManager : MonoBehaviour
         else
         {
             staminaRegenTimer += Time.deltaTime;
-            if(currentStamina < maxStamina && staminaRegenTimer > 1f)
+            if(currentStamina < maxStamina && staminaRegenTimer > .25f)
             {
                 currentStamina += staminaRegenAmount * Time.deltaTime;
                 staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
