@@ -127,7 +127,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Dead()
     {
-        healthbar.SetActive(false);
+        if(healthbar != null){healthbar.SetActive(false);}
         GetComponent<RagdollController>().EnableRagdoll();
         Destroy(agent);
         foreach(GameObject w in weapon){
