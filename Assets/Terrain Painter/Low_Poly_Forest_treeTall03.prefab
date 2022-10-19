@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 447299655234806131}
   - component: {fileID: 1840007792586382116}
   - component: {fileID: 8885030649386146562}
+  - component: {fileID: 1390107714853204884}
   m_Layer: 0
   m_Name: leaf_5
   m_TagString: Untagged
@@ -166,6 +167,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1390107714853204884
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772000210040928486}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1394441220501792107, guid: 5a8a1fc3fe7aabe4cae14063399c8eff, type: 3}
 --- !u!1 &5509425538228001811
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,8 +190,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5133745111330178729}
-  - component: {fileID: 96132911026686798}
-  - component: {fileID: 4435365257990032085}
   m_Layer: 0
   m_Name: Low_Poly_Forest_treeTall03
   m_TagString: Untagged
@@ -205,32 +218,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &96132911026686798
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5509425538228001811}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!65 &4435365257990032085
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5509425538228001811}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 4, z: 4}
-  m_Center: {x: 0, y: 3.53, z: 0}
 --- !u!1 &6302463701884488272
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +395,7 @@ GameObject:
   - component: {fileID: 47205938914210684}
   - component: {fileID: 2219764805847649567}
   - component: {fileID: 703509932682204854}
+  - component: {fileID: 1075223780378388175}
   m_Layer: 0
   m_Name: bark
   m_TagString: Untagged
@@ -480,6 +468,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1075223780378388175
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772294223382913505}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 441347033342715675, guid: 5a8a1fc3fe7aabe4cae14063399c8eff, type: 3}
 --- !u!1 &9033926742352967707
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ TagManager:
   - Stone
   - Enemy
   - player
+  - FxTemporaire
+  - PlayerEyes
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - UI
   - Ground
   - CollisionBlocker
-  - 
-  - 
+  - Detail
+  - Doodad
   - 
   - 
   - 

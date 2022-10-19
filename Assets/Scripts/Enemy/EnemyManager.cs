@@ -121,10 +121,13 @@ public class EnemyManager : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.color = Color.cyan;
+        if(agent != null) Gizmos.DrawWireSphere(agent.destination, .5f);
     }
 
     private void Dead()
     {
+        healthbar.SetActive(false);
         GetComponent<RagdollController>().EnableRagdoll();
         Destroy(agent);
         foreach(GameObject w in weapon){

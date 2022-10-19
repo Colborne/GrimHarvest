@@ -158,7 +158,7 @@ public class CombatStanceState : State
         enemyAnimatorManager.animator.SetFloat("H", randomDirection, .2f, Time.deltaTime);
         Vector3 targetsDistance = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         var dir = Vector3.Cross(targetsDistance, Vector3.up);
-        enemyManager.agent.SetDestination(enemyManager.transform.position + (dir * 9f * randomDirection)); 
+        enemyManager.agent.SetDestination(enemyManager.transform.position + (dir * randomDirection)); 
     }
 
     private void GetNewAttack(EnemyManager enemyManager)
