@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class MountController : MonoBehaviour
 {
-    EnemyManager enemy;
+    public Animator animator;
+    RagdollController ragdollController;
+
     void Awake()
     {
-        enemy = GetComponentInParent<EnemyManager>();
+        animator = GetComponent<Animator>();
+        ragdollController = GetComponent<RagdollController>();
     }
-    void Update()
+    public void Dead()
     {
-        GetComponent<Animator>().SetFloat("V", enemy.enemyAnimatorManager.animator.GetFloat("V"));
+        ragdollController.EnableRagdoll();
     }
 }

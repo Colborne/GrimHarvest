@@ -20,6 +20,7 @@ public class EnemyManager : MonoBehaviour
     public StatsManager currentTarget;
     public WeaponType weaponType;
     public GameObject[] weapon;
+    public MountController mount;
     public GameObject DamageEffect;
     public GameObject BlockEffect;
     public GameObject healthbar;
@@ -68,8 +69,8 @@ public class EnemyManager : MonoBehaviour
         HandleRecoveryTimer();
         isPerformingAction = enemyAnimatorManager.animator.GetBool("isInteracting");
         isTakingDamage = enemyAnimatorManager.animator.GetBool("isTakingDamage");
-
         agent.speed = enemyAnimatorManager.animator.GetInteger("agentSpeed");
+        if(mount != null) mount.animator.SetFloat("V", enemyAnimatorManager.animator.GetFloat("V"));
 
         if(!enemyAnimatorManager.animator.GetBool("isBlocking"))
             damageReduction = 0f;
@@ -127,7 +128,8 @@ public class EnemyManager : MonoBehaviour
 
     private void Dead()
     {
-        if(healthbar != null){healthbar.SetActive(false);}
+        if(healthbar != null) healthbar.SetActive(false);
+        if(mount != null) mount.Dead();
         GetComponent<RagdollController>().EnableRagdoll();
         Destroy(agent);
         foreach(GameObject w in weapon){
