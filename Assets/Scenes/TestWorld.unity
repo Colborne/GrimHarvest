@@ -16780,6 +16780,12 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3416957641385562275, guid: 4b36d2e1769c552458646729f9387d8f,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2185210024652205897, guid: 62129fd1c7b02234ba7a6b73f1613ac6,
+        type: 3}
     - target: {fileID: 5964486638627330856, guid: 4b36d2e1769c552458646729f9387d8f,
         type: 3}
       propertyPath: m_Name
