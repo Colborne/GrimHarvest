@@ -6,6 +6,7 @@ public class MovementManager : MonoBehaviour
     AnimatorManager animatorManager;
     InputManager inputManager;
     StatsManager statsManager;
+    CameraManager camera;
     public Transform cameraObject;
     Rigidbody playerRigidbody;
     Vector3 normalVector;
@@ -18,12 +19,13 @@ public class MovementManager : MonoBehaviour
     public float tempV = 1f;
     public float anim = 1.45f;
 
-    void Start()
+    void Awake()
     {
         inputManager = GetComponent<InputManager>();
         characterController = GetComponent<CharacterController>();
         playerRigidbody = GetComponent<Rigidbody>();
         statsManager = GetComponent<StatsManager>();
+        camera = FindObjectOfType<CameraManager>();
     }
 
     void Update()
@@ -35,6 +37,7 @@ public class MovementManager : MonoBehaviour
         if(canRotate)
             HandleRotation();
         HandleRoll();
+        camera.HandleAllCameraMovement();
     }
 
     private void HandleMovement()

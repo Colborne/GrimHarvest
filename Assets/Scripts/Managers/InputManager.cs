@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {    
@@ -15,14 +17,19 @@ public class InputManager : MonoBehaviour
     public float moveAmount;
     public float verticalInput;
     public float horizontalInput;
+    public float cameraInputX;
+    public float cameraInputY;
     public bool interactInput;
     public bool heavyInput;
     public bool dodgeInput;
     public bool sprintInput;
+    public bool changeSchemeInput;
     public bool isInteracting = false;
     public bool isSprinting = false;
     public bool isRolling = false;
     public bool isComboing = false;
+    public bool isController = true;
+
     private void Awake() 
     {
         animatorManager = GetComponent<AnimatorManager>();
@@ -47,6 +54,9 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.Dodge.canceled += i => dodgeInput = false;
             playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
             playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
+            playerControls.GameCommands.ChangeScheme.performed += i => changeSchemeInput = true;
+            playerControls.GameCommands.ChangeScheme.canceled += i => changeSchemeInput = false;
+            playerControls.bindingMask = InputBinding.MaskByGroup(playerControls.controlSchemes.First(x => x.name == "Controller").bindingGroup);
         }
         playerControls.Enable();
     }
@@ -70,19 +80,27 @@ public class InputManager : MonoBehaviour
         HandleMovementInput();
         HandleAction();
         HandleRoll();
+        HandleMouse();
+        HandleControlScheme();
     }
 
     private void HandleRoll()
     {
-        if(dodgeInput && !isInteracting && !isRolling)
+        
+        if(dodgeInput )
         {
-            actionManager.Roll();
             dodgeInput = false;
+            animatorManager.animator.SetBool("rollInput", true);
+            if(!isInteracting && !isRolling)
+                actionManager.Roll();
         }
     }
 
     private void HandleMovementInput()
     {
+        cameraInputX = mouseInput.x;
+        cameraInputY = mouseInput.y;
+
         horizontalInput = isInteracting ? movementInput.x : movementInput.x;
         verticalInput = isInteracting ? movementInput.y: movementInput.y;
 
@@ -90,17 +108,41 @@ public class InputManager : MonoBehaviour
         animatorManager.UpdateAnimatorValues(horizontalInput, moveAmount);
     } 
 
+    void HandleMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void HandleAction()
     {
         if(interactInput && !isComboing)
         {
+            animatorManager.animator.SetBool("heavyInput", false);
             interactInput = false;
             actionManager.Use();
         }
         if(heavyInput && !isComboing)
         {
+            animatorManager.animator.SetBool("heavyInput", true);
             heavyInput = false;
             actionManager.UseHeavy();
+        }
+    }
+
+    public void HandleControlScheme()
+    {
+        if(changeSchemeInput)
+        {
+            if(isController)
+            {
+                isController = false;
+                playerControls.bindingMask = InputBinding.MaskByGroup(playerControls.controlSchemes.First(x => x.name == "Keys").bindingGroup);
+            }
+            else
+            {
+                isController = true;
+                playerControls.bindingMask = InputBinding.MaskByGroup(playerControls.controlSchemes.First(x => x.name == "Controller").bindingGroup);
+            }
         }
     }
 }
