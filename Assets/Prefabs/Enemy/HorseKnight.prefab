@@ -3029,7 +3029,7 @@ MonoBehaviour:
   BlockEffect: {fileID: 1599718021928974, guid: 21461e6c060baf044ac3e717ed4170cb,
     type: 3}
   healthbar: {fileID: 0}
-  damageCollider: {fileID: 0}
+  damageCollider: {fileID: 4018798702306414635}
   health: 30
   damageReduction: 0
   rotationSpeed: 150
@@ -3941,7 +3941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageCollider:
-  - {fileID: 0}
+  - {fileID: 6514618465607018913}
   damage: 10
 --- !u!1 &7285616398927272487
 GameObject:
