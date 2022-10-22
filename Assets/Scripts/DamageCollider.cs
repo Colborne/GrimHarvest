@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class DamageCollider : MonoBehaviour
 {
     public Collider damageCollider;
+    public StatsManager statsManager;
     public float force;
     public int damage;
     private void Awake() 
@@ -12,6 +13,7 @@ public class DamageCollider : MonoBehaviour
         damageCollider.gameObject.SetActive(true);
         damageCollider.isTrigger = true;
         damageCollider.enabled = false;
+        statsManager = GetComponentInParent<StatsManager>();
     }
 
     public void EnableDamageCollider()
@@ -38,7 +40,7 @@ public class DamageCollider : MonoBehaviour
             {
                 if(!ai.isTakingDamage)
                 {
-                    ai.TakeHit(damage * GetComponent<StatsManager>().heavyModifier);
+                    ai.TakeHit(damage * statsManager.heavyModifier);
                     if(ai.isBlocking) 
                     {
                         GetComponent<AnimatorManager>().PlayTargetAnimation("Impact", true);

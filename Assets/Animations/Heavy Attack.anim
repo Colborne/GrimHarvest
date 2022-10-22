@@ -27331,7 +27331,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.33333334
-    functionName: UseStamina
+    functionName: UseHeavyStamina
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 12
@@ -27345,14 +27345,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.7
-    functionName: EnableDamageCollider
+    functionName: OpenRightDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.93333334
-    functionName: DisableDamageCollider
+    functionName: CloseRightDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

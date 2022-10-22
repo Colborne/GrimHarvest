@@ -25944,7 +25944,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.33333334
-    functionName: UseStamina
+    functionName: UseLightStamina
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 7.2
@@ -25965,14 +25965,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.56666666
-    functionName: EnableDamageCollider
+    functionName: OpenRightDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.8333333
-    functionName: DisableDamageCollider
+    functionName: CloseRightDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
