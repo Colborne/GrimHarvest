@@ -20,7 +20,7 @@ public class EquipmentManager : MonoBehaviour
 
     void Start()
     {
-        gameManager.LoadItem(0, "Weapon");
+        gameManager.LoadItem(1, "Weapon");
     }
 
     public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)

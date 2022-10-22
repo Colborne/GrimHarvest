@@ -6394,6 +6394,13 @@ MonoBehaviour:
     inventoryItem: {fileID: 0}
     worldItem: {fileID: 9045744891344878160, guid: f4f651b25854ae84cafd5e78ce9450b9,
       type: 3}
+  - ID: 1
+    name: Warhammer
+    prefab: {fileID: 9045744891344878160, guid: f2f6f38708c979f45ae3190315bc7363,
+      type: 3}
+    inventoryItem: {fileID: 0}
+    worldItem: {fileID: 9045744891344878160, guid: f2f6f38708c979f45ae3190315bc7363,
+      type: 3}
   weaponID: -1
   shieldID: -1
   helmetID: -1
