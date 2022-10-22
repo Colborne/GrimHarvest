@@ -4,21 +4,25 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyDamageCollider : MonoBehaviour
 {
-    public Collider damageCollider;
+    public Collider[] damageCollider;
     public int damage;
     private void Awake() 
     {
-        damageCollider.gameObject.SetActive(true);
-        damageCollider.isTrigger = true;
-        damageCollider.enabled = false;
+        for(int i = 0; i < damageCollider.Length; i++)
+        {
+            damageCollider[i].gameObject.SetActive(true);
+            damageCollider[i].isTrigger = true;
+            damageCollider[i].enabled = false;
+        }
     }
-    public void EnableDamageCollider()
+    public void EnableDamageCollider(int index)
     {
-        damageCollider.enabled = true;
+        damageCollider[index].enabled = true;
     }
     public void DisableDamageCollider()
     {
-        damageCollider.enabled = false;
+        for(int i = 0; i < damageCollider.Length; i++)
+            damageCollider[i].enabled = false;
     }
 
     public void ResetRecoveryTime()

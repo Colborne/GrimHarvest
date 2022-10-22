@@ -24,6 +24,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject DamageEffect;
     public GameObject BlockEffect;
     public GameObject healthbar;
+    public EnemyDamageCollider damageCollider;
 
     [Header("Stats")]
     public float health;

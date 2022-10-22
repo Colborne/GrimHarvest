@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kick
   m_EditorClassIdentifier: 
   actionAnimation: Knight_Kick
-  attackScore: 40
+  damage: 10
   recoveryTime: 1.5
   maximumAttackAngle: 25
   minimumAttackAngle: -25

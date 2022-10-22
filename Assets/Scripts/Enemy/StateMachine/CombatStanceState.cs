@@ -168,7 +168,6 @@ public class CombatStanceState : State
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
 
         List<EnemyAttackAction> possible = new List<EnemyAttackAction>();
-        int maxScore = 0;
 
         for( int i = 0; i < enemyAttacks.Length; i++)
         {
@@ -180,7 +179,6 @@ public class CombatStanceState : State
                 if(viewableAngle <= enemyAttackAction.maximumAttackAngle
                 && viewableAngle >= enemyAttackAction.minimumAttackAngle)
                 {
-                    maxScore += enemyAttackAction.attackScore;
                     possible.Add(enemyAttackAction);
                 }
             }

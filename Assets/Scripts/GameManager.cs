@@ -8,6 +8,7 @@ public class ingameEquipment
 {
     public int ID;
     public string name = "Items";
+    public GameObject prefab;
     public GameObject inventoryItem;
     public GameObject worldItem;
 }
@@ -18,20 +19,62 @@ public class GameManager : MonoBehaviour
     public InventorySlot[] inventorySlots;
     public Canvas interfaceCanvas;
     public Transform draggables;
-    public StatsManager PM;
+    public PlayerModelManager PM;
     public ingameEquipment[] equipment;
+    public int weaponID = -1;
+    public int shieldID = -1;
+    public int helmetID = -1;
+    public int chestID = -1;
+    public GameObject spawnedWeapon;
+    public GameObject spawnedShield;
+    public GameObject spawnedHelmet;
+    public GameObject spawnedChest;
+    public EquipmentManager equipmentManager;
+    StatsManager statsManager;
 
     // Main //
     void Awake()
     {
         GameManager.Instance = this;
+        equipmentManager = FindObjectOfType<EquipmentManager>();
+        statsManager = FindObjectOfType<StatsManager>();
     }
+
 
     public void DestroyItem(GameObject item)
     {
         if (item != null)
         {
             Destroy(item);
+        }
+    }
+
+    public void SpawnItem(string type, GameObject item)
+    {
+        DestroyItem(item);
+
+        if(type == "Weapon" && weaponID != -1)
+        {
+            spawnedWeapon = Instantiate(equipment[weaponID].prefab, PM.rightHand);
+            //equipmentManager.rightWeapon = spawnedWeapon.GetComponent<weaponItemLoader>().item;
+            equipmentManager.LoadWeaponOnSlot(equipmentManager.rightWeapon, false);
+        }
+
+        if(type == "Shield" && shieldID != -1)
+        {
+            spawnedShield = Instantiate(equipment[shieldID].prefab, PM.leftHand);
+            //equipmentManager.leftWeapon = spawnedShield.GetComponent<weaponItemLoader>().item;
+            equipmentManager.LoadWeaponOnSlot(equipmentManager.leftWeapon, true);
+        }
+
+        if(type == "Helmet" && helmetID != -1)
+        {
+            spawnedHelmet = Instantiate(equipment[helmetID].prefab, PM.helmet);
+        }
+         
+        if(type == "Chest" && chestID != -1)
+        {
+            spawnedChest = Instantiate(equipment[chestID].prefab, PM.chest);
         }
     }
 
@@ -261,5 +304,35 @@ public class GameManager : MonoBehaviour
             }
         }
         return false;
+    }
+    public void LoadItem(int itemID, string type)
+    {
+        if(type == "Weapon")
+        {
+            weaponID = itemID;
+            spawnedWeapon = Instantiate(equipment[weaponID].prefab, PM.rightHand);
+            //equipmentManager.rightWeapon = spawnedWeapon.GetComponent<weaponItemLoader>().item;
+            equipmentManager.LoadWeaponOnSlot(equipmentManager.rightWeapon, false);
+        }
+
+        if(type == "Shield" )
+        {
+            shieldID = itemID;
+            spawnedShield = Instantiate(equipment[shieldID].prefab, PM.leftHand);
+            //equipmentManager.leftWeapon = spawnedShield.GetComponent<weaponItemLoader>().item;
+            equipmentManager.LoadWeaponOnSlot(equipmentManager.leftWeapon, true);
+        }
+
+        if(type == "Helmet")
+        {
+            helmetID = itemID;
+            spawnedHelmet = Instantiate(equipment[helmetID].prefab, PM.helmet);
+        }
+         
+        if(type == "Chest")
+        {
+            chestID = itemID;
+            spawnedChest = Instantiate(equipment[chestID].prefab, PM.chest);
+        }
     }
 }

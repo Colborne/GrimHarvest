@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightningStrike
   m_EditorClassIdentifier: 
   actionAnimation: Cast
-  attackScore: 100
+  damage: 25
   recoveryTime: 3
   maximumAttackAngle: 180
   minimumAttackAngle: -180

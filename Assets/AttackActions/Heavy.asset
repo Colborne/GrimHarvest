@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0800b1cc5feb24b47a8303e82528abdc, type: 3}
-  m_Name: Slash
+  m_Name: Heavy
   m_EditorClassIdentifier: 
-  actionAnimation: Slash
-  attackScore: 1
-  recoveryTime: 1.3
-  maximumAttackAngle: 55
-  minimumAttackAngle: -55
+  actionAnimation: Heavy Attack
+  damage: 15
+  recoveryTime: 1.75
+  maximumAttackAngle: 30
+  minimumAttackAngle: -30
   minimumDistanceNeededToAttack: 0
   maximumDistanceNeededToAttack: 5

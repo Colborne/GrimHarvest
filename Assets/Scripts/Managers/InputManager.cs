@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour
     public bool dodgeInput;
     public bool sprintInput;
     public bool changeSchemeInput;
+    public bool changeStatsInput;
     public bool isInteracting = false;
     public bool isSprinting = false;
     public bool isRolling = false;
@@ -35,6 +36,7 @@ public class InputManager : MonoBehaviour
         animatorManager = GetComponent<AnimatorManager>();
         actionManager = GetComponent<ActionManager>();
         statsManager = GetComponent<StatsManager>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OnEnable() 
@@ -56,6 +58,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
             playerControls.GameCommands.ChangeScheme.performed += i => changeSchemeInput = true;
             playerControls.GameCommands.ChangeScheme.canceled += i => changeSchemeInput = false;
+            playerControls.GameCommands.ChangeStats.performed += i => changeStatsInput = true;
+            playerControls.GameCommands.ChangeStats.canceled += i => changeStatsInput = false;
             playerControls.bindingMask = InputBinding.MaskByGroup(playerControls.controlSchemes.First(x => x.name == "Controller").bindingGroup);
         }
         playerControls.Enable();
@@ -110,7 +114,13 @@ public class InputManager : MonoBehaviour
 
     void HandleMouse()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        if(changeStatsInput){
+            changeStatsInput = false;
+            if(Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     private void HandleAction()

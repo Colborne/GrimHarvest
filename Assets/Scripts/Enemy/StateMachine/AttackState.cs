@@ -34,6 +34,7 @@ public class AttackState : State
     public void AttackTarget(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
         enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+        enemyManager.damageCollider.damage = currentAttack.damage;
         enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
     }
     public void HandleRotateTowardsTarget(EnemyManager enemyManager)

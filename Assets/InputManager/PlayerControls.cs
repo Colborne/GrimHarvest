@@ -389,6 +389,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeStats"",
+                    ""type"": ""Button"",
+                    ""id"": ""d663b97d-8e7b-45c5-8a97-2a39bccde141"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -400,6 +409,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeScheme"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e6ad2bf-e419-4a76-b3c1-bc8a6321c8d1"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeStats"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -445,6 +465,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // GameCommands
         m_GameCommands = asset.FindActionMap("GameCommands", throwIfNotFound: true);
         m_GameCommands_ChangeScheme = m_GameCommands.FindAction("ChangeScheme", throwIfNotFound: true);
+        m_GameCommands_ChangeStats = m_GameCommands.FindAction("ChangeStats", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -611,11 +632,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_GameCommands;
     private IGameCommandsActions m_GameCommandsActionsCallbackInterface;
     private readonly InputAction m_GameCommands_ChangeScheme;
+    private readonly InputAction m_GameCommands_ChangeStats;
     public struct GameCommandsActions
     {
         private @PlayerControls m_Wrapper;
         public GameCommandsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @ChangeScheme => m_Wrapper.m_GameCommands_ChangeScheme;
+        public InputAction @ChangeStats => m_Wrapper.m_GameCommands_ChangeStats;
         public InputActionMap Get() { return m_Wrapper.m_GameCommands; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -628,6 +651,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ChangeScheme.started -= m_Wrapper.m_GameCommandsActionsCallbackInterface.OnChangeScheme;
                 @ChangeScheme.performed -= m_Wrapper.m_GameCommandsActionsCallbackInterface.OnChangeScheme;
                 @ChangeScheme.canceled -= m_Wrapper.m_GameCommandsActionsCallbackInterface.OnChangeScheme;
+                @ChangeStats.started -= m_Wrapper.m_GameCommandsActionsCallbackInterface.OnChangeStats;
+                @ChangeStats.performed -= m_Wrapper.m_GameCommandsActionsCallbackInterface.OnChangeStats;
+                @ChangeStats.canceled -= m_Wrapper.m_GameCommandsActionsCallbackInterface.OnChangeStats;
             }
             m_Wrapper.m_GameCommandsActionsCallbackInterface = instance;
             if (instance != null)
@@ -635,6 +661,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ChangeScheme.started += instance.OnChangeScheme;
                 @ChangeScheme.performed += instance.OnChangeScheme;
                 @ChangeScheme.canceled += instance.OnChangeScheme;
+                @ChangeStats.started += instance.OnChangeStats;
+                @ChangeStats.performed += instance.OnChangeStats;
+                @ChangeStats.canceled += instance.OnChangeStats;
             }
         }
     }
@@ -673,5 +702,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IGameCommandsActions
     {
         void OnChangeScheme(InputAction.CallbackContext context);
+        void OnChangeStats(InputAction.CallbackContext context);
     }
 }
