@@ -15,6 +15,14 @@ public class ingameEquipment
 
 public class GameManager : MonoBehaviour
 {
+    public enum ItemType
+    {
+        MainHand,
+        OffHand,
+        Helmet,
+        Chest
+    }
+
     public static GameManager Instance;
     public InventorySlot[] inventorySlots;
     public Canvas interfaceCanvas;
@@ -56,14 +64,14 @@ public class GameManager : MonoBehaviour
         if(type == "Weapon" && weaponID != -1)
         {
             spawnedWeapon = Instantiate(equipment[weaponID].prefab, PM.rightHand);
-            //equipmentManager.rightWeapon = spawnedWeapon.GetComponent<weaponItemLoader>().item;
+            equipmentManager.rightWeapon = spawnedWeapon.GetComponent<WeaponItemLoader>().item;
             equipmentManager.LoadWeaponOnSlot(equipmentManager.rightWeapon, false);
         }
 
         if(type == "Shield" && shieldID != -1)
         {
             spawnedShield = Instantiate(equipment[shieldID].prefab, PM.leftHand);
-            //equipmentManager.leftWeapon = spawnedShield.GetComponent<weaponItemLoader>().item;
+            equipmentManager.leftWeapon = spawnedShield.GetComponent<WeaponItemLoader>().item;
             equipmentManager.LoadWeaponOnSlot(equipmentManager.leftWeapon, true);
         }
 
@@ -91,8 +99,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    #region PickUp Stack
     public void PickUpItem(int itemID, int quantityIncrease)
     {
         // Searches for identical item ID in inventory //
@@ -155,20 +161,16 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    #endregion
-
     public void ClearItem(InventoryItem item)
     {
         Destroy(item.gameObject);
     }
-
     public void DropItem(InventoryItem item)
     {
         var drop = Instantiate(equipment[item.itemID].worldItem, PM.transform.position + PM.transform.forward * 4 + PM.transform.up * 2, Quaternion.identity);
         drop.GetComponent<Pickup>().playerDropped = true;
         Destroy(item.gameObject);
     }
-
     public void DropItem(InventoryItem item, int _amount)
     {
         var _newItem = Instantiate(equipment[item.itemID].worldItem, PM.transform.position + PM.transform.forward * 4 + PM.transform.up * 2, Quaternion.identity);
@@ -176,7 +178,6 @@ public class GameManager : MonoBehaviour
         _newItem.GetComponent<Pickup>().playerDropped = true;
         Destroy(item.gameObject);
     }
-
     public void StackRounding(int itemID, int quantityIncrease, Transform originalSlot)
     {
         // Searches for identical item ID in inventory //
@@ -193,7 +194,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
     public bool CheckInventoryForItem(InventoryItem item, int amount, bool remove)
     {
         int amountFound = 0;
@@ -238,7 +238,6 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
-
     public int ReplaceStack(InventoryItem item)
     {
         for (int i = 0; i < inventorySlots.Length; i++)
@@ -254,7 +253,6 @@ public class GameManager : MonoBehaviour
         }
         return 0;
     }
-
     public bool CraftingCheck(InventoryItem[] items, int[] amounts) 
     {
         //Checks Entire Inventory For Possible Craftable Items
@@ -272,7 +270,6 @@ public class GameManager : MonoBehaviour
         }
         return true;
     }
-
     public int CheckAmount(InventoryItem item)
     {
         for (int i = 0; i < inventorySlots.Length; i++)
@@ -284,7 +281,6 @@ public class GameManager : MonoBehaviour
         }
         return 0;
     }
-
     public void Craft(InventoryItem[] items, int[] amounts) 
     {
         //Checks Entire Inventory For Possible Craftable Items
@@ -293,7 +289,6 @@ public class GameManager : MonoBehaviour
             CheckInventoryForItem(items[x], amounts[x], true);
         }
     }
-
     public bool CheckIfEmpty()
     {
         for (int i = 0; i < inventorySlots.Length; i++)
@@ -311,7 +306,7 @@ public class GameManager : MonoBehaviour
         {
             weaponID = itemID;
             spawnedWeapon = Instantiate(equipment[weaponID].prefab, PM.rightHand);
-            //equipmentManager.rightWeapon = spawnedWeapon.GetComponent<weaponItemLoader>().item;
+            equipmentManager.rightWeapon = spawnedWeapon.GetComponent<WeaponItemLoader>().item;
             equipmentManager.LoadWeaponOnSlot(equipmentManager.rightWeapon, false);
         }
 
@@ -319,7 +314,7 @@ public class GameManager : MonoBehaviour
         {
             shieldID = itemID;
             spawnedShield = Instantiate(equipment[shieldID].prefab, PM.leftHand);
-            //equipmentManager.leftWeapon = spawnedShield.GetComponent<weaponItemLoader>().item;
+            equipmentManager.leftWeapon = spawnedShield.GetComponent<WeaponItemLoader>().item;
             equipmentManager.LoadWeaponOnSlot(equipmentManager.leftWeapon, true);
         }
 

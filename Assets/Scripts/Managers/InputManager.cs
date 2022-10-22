@@ -8,9 +8,9 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {    
     PlayerControls playerControls;
-    public AnimatorManager animatorManager;
     ActionManager actionManager;
     StatsManager statsManager;
+    public AnimatorManager animatorManager;
     public Vector2 movementInput;
     public Vector2 mouseInput;
     public float scrollInput;

@@ -7,52 +7,48 @@ public class EquipmentManager : MonoBehaviour
     GameManager gameManager;
     public WeaponItem rightWeapon;
     public WeaponItem leftWeapon;
-    public DamageCollider leftHandDamageCollider;
     public DamageCollider rightHandDamageCollider;
-
+    public DamageCollider leftHandDamageCollider;
     StatsManager stats;
     AnimatorManager animatorManager;
-
-    public bool isTwoHanded = false;
-    public float animSpeedControl = 1f;
     private void Awake() 
     {
         animatorManager = GetComponent<AnimatorManager>();
         gameManager = FindObjectOfType<GameManager>();
         stats = GetComponentInParent<StatsManager>();
+        
+    }
+
+    void Start()
+    {
+        gameManager.LoadItem(0, "Weapon");
     }
 
     public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
     {
         if(weaponItem.isTwoHanded)
-        {        
-            animSpeedControl = weaponItem.attackSpeed;
-            animatorManager.animator.SetFloat("animSpeed", animSpeedControl); 
+        {
             LoadRightWeaponDamageCollider();
-            animatorManager.animator.SetBool("isTwoHanded", true);
+            //animatorManager.animator.SetBool("isTwoHanded", true);
         }
         else
         {
-            animatorManager.animator.SetBool("isTwoHanded", false);
+            //animatorManager.animator.SetBool("isTwoHanded", false);
             if(isLeft)
                 LoadLeftWeaponDamageCollider();
             else
-            {
-                LoadRightWeaponDamageCollider();
-                animSpeedControl = weaponItem.attackSpeed;
-                animatorManager.animator.SetFloat("animSpeed", animSpeedControl); 
-            }
+                LoadRightWeaponDamageCollider();      
         }
     }
     #region Damage Colliders
     public void LoadLeftWeaponDamageCollider()
     {
-        leftHandDamageCollider = gameManager.spawnedShield.GetComponentInChildren<DamageCollider>();   
+        leftHandDamageCollider = gameManager.spawnedShield.GetComponent<DamageCollider>();   
     }
 
     public void LoadRightWeaponDamageCollider()
     {
-        rightHandDamageCollider = gameManager.spawnedWeapon.GetComponentInChildren<DamageCollider>();
+        rightHandDamageCollider = gameManager.spawnedWeapon.GetComponent<DamageCollider>();
     }
 
     public void OpenLeftDamageCollider()
@@ -72,14 +68,4 @@ public class EquipmentManager : MonoBehaviour
         rightHandDamageCollider.DisableDamageCollider();
     }
     #endregion
-
-    public void DrainStaminaHeavy()
-    {
-        float multiplier = rightWeapon.heavyAttackMultiplier;
-        stats.UseStamina(Mathf.RoundToInt(rightWeapon.baseStamina * multiplier));
-    }
-    public void DrainStaminaLight()
-    {
-        stats.UseStamina(Mathf.RoundToInt(rightWeapon.baseStamina));
-    }
 }

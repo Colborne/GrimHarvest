@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class StatsManager : MonoBehaviour
 {
+    [Header("State Bools")]
     public bool isTakingDamage = false;
     public bool isInvincible = false;
     public bool isAttacking = false;
@@ -19,20 +20,21 @@ public class StatsManager : MonoBehaviour
     public float maxStamina;
     public float currentStamina;
     public float staminaRegenAmount = 30f;
-    private float staminaRegenTimer = 0f;
     public float rollCost = 15f;
     public float actionCost = 7f;
-    public int heavyModifier = 1;
+    float staminaRegenTimer = 0f;
 
     [Header("Stats")]
 
-    [Header("Attack Bonuses")]
+    [Header("Attack Bonuses")] 
+    public int heavyModifier = 1;
 
     [Header("Components")]
     public HealthBar healthBar;
     public StaminaBar staminaBar;
     AnimatorManager animatorManager;
     InputManager inputManager;
+    EquipmentManager equipmentManager;
 
     private void Awake() 
     {
@@ -40,6 +42,7 @@ public class StatsManager : MonoBehaviour
         healthBar = GetComponent<HealthBar>();
         staminaBar = GetComponent<StaminaBar>();
         inputManager = GetComponent<InputManager>();
+        equipmentManager = GetComponent<EquipmentManager>();
     }
 
     private void Update() 
@@ -77,6 +80,17 @@ public class StatsManager : MonoBehaviour
     public void UseStamina(float cost)
     {
         currentStamina = currentStamina - cost;
+        staminaBar.SetCurrentStamina(currentStamina);
+    }
+
+    public void UseLightStamina()
+    {
+        currentStamina = currentStamina - equipmentManager.rightWeapon.lightCost;
+        staminaBar.SetCurrentStamina(currentStamina);
+    }
+    public void UseHeavyStamina()
+    {
+        currentStamina = currentStamina - equipmentManager.rightWeapon.heavyCost;
         staminaBar.SetCurrentStamina(currentStamina);
     }
 

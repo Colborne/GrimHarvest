@@ -8,12 +8,13 @@ public class ActionManager : MonoBehaviour
     InputManager inputManager;
     AnimatorManager animatorManager;
     StatsManager statsManager;
-
+    EquipmentManager equipmentManager;
     void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
         inputManager = GetComponent<InputManager>();
         statsManager = GetComponent<StatsManager>();
+        equipmentManager = GetComponent<EquipmentManager>();
     }
 
     public void Use()
@@ -27,7 +28,7 @@ public class ActionManager : MonoBehaviour
             {
                     animatorManager.animator.SetInteger("combo", 0);
                     animatorManager.animator.SetBool("isInteracting", true);
-                    animatorManager.animator.CrossFade("Hit1", .2f);
+                    animatorManager.animator.CrossFade(equipmentManager.rightWeapon.Light_Attack, .2f);
             }
             else
                 animatorManager.animator.SetInteger("combo", animatorManager.animator.GetInteger("combo") + 1);
@@ -43,7 +44,7 @@ public class ActionManager : MonoBehaviour
             {
                 animatorManager.animator.SetInteger("combo", 0);
                 animatorManager.animator.SetBool("isInteracting", true);
-                animatorManager.animator.CrossFade("Heavy Attack", .2f);
+                animatorManager.animator.CrossFade(equipmentManager.rightWeapon.Heavy_Attack, .2f);
             }
             else
                 animatorManager.animator.SetInteger("combo", animatorManager.animator.GetInteger("combo") + 1);

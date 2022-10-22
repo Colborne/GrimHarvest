@@ -35,25 +35,15 @@ public class AnimatorManager : MonoBehaviour
         snappedHorizontal = horizontalMovement;
 
         if(verticalMovement > 0 && verticalMovement < 0.55f)
-        {
-            snappedVertical = 0.5f;
-        }
+            snappedVertical = 0.5f;  
         else if(verticalMovement > 0.55f)
-        {
             snappedVertical = 1;
-        }
         else if(verticalMovement < 0 && verticalMovement > -.55f)
-        {
             snappedVertical = -0.5f;
-        }
         else if(verticalMovement < -0.55f)
-        {
             snappedVertical = -1;   
-        }
         else
-        {
             snappedVertical = 0;
-        }
 
         if(inputManager.sprintInput && animator.GetInteger("combo") == -1 && snappedVertical > .99f && statsManager.currentStamina > 0f)
         {

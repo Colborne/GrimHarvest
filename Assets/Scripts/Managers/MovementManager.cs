@@ -3,21 +3,20 @@ using UnityEngine;
 public class MovementManager : MonoBehaviour
 {
     CharacterController characterController;
-    AnimatorManager animatorManager;
     InputManager inputManager;
     StatsManager statsManager;
     CameraManager camera;
-    public Transform cameraObject;
     Rigidbody playerRigidbody;
     Vector3 normalVector;
     Vector3 moveDirection;
+    public Transform cameraObject;
     public float movementSpeed;
     public float rotationSpeed;
     public float rollSpeed;
-    public bool canRotate = true;
-    public bool canRoll = false;
-    public float tempV = 1f;
     public float anim = 1.45f;
+    float tempV = 1f;
+    [HideInInspector] public bool canRotate = true;
+    [HideInInspector]public bool canRoll = false;
 
     void Awake()
     {
