@@ -120,8 +120,10 @@ public class StatsManager : MonoBehaviour
         isInvincible = animatorManager.animator.GetBool("isInvincible");
         isAttacking = animatorManager.animator.GetBool("isAttacking");
 
-        if(isTakingDamage)
-            GetComponent<DamageCollider>().DisableDamageCollider();
+        if(isTakingDamage){
+            equipmentManager.CloseRightDamageCollider();
+            equipmentManager.CloseLeftDamageCollider();
+        }
 
         if(currentHealth <= 0)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

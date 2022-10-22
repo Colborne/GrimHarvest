@@ -34,7 +34,7 @@ ModelImporter:
       name: Pupils
     second: {fileID: 2100000, guid: 3bd97f169c4ac9346b8a2775b78e3c49, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

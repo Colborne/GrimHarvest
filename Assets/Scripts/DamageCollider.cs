@@ -43,8 +43,8 @@ public class DamageCollider : MonoBehaviour
                     ai.TakeHit(damage * statsManager.heavyModifier);
                     if(ai.isBlocking) 
                     {
-                        GetComponent<AnimatorManager>().PlayTargetAnimation("Impact", true);
-                        GetComponent<Rigidbody>().AddForce(-transform.forward * force);
+                        GetComponentInParent<AnimatorManager>().PlayTargetAnimation("Impact", true);
+                        GetComponentInParent<Rigidbody>().AddForce(-transform.forward * force);
                     }
                 }
             }

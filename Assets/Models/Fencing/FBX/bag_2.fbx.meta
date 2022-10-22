@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 1bc43e5c56dbf26429087b83ad110d2f
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 21300
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -10,7 +10,7 @@ ModelImporter:
       name: lambert37.032
     second: {fileID: 2100000, guid: a5899537dc9ec0e47b91c0bc189f790b, type: 2}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 1
     materialSearch: 2
     materialLocation: 1
@@ -104,6 +104,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

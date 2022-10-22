@@ -16,7 +16,6 @@ public class EquipmentManager : MonoBehaviour
         animatorManager = GetComponent<AnimatorManager>();
         gameManager = FindObjectOfType<GameManager>();
         stats = GetComponentInParent<StatsManager>();
-        
     }
 
     void Start()
@@ -53,19 +52,19 @@ public class EquipmentManager : MonoBehaviour
 
     public void OpenLeftDamageCollider()
     {  
-        leftHandDamageCollider.EnableDamageCollider();
+        if(leftHandDamageCollider != null) leftHandDamageCollider.EnableDamageCollider();
     }
     public void OpenRightDamageCollider()
     {  
-        rightHandDamageCollider.EnableDamageCollider();
+        if(rightHandDamageCollider != null) rightHandDamageCollider.EnableDamageCollider();
     }
     public void CloseLeftDamageCollider()
     {  
-        leftHandDamageCollider.DisableDamageCollider();
+        if(leftHandDamageCollider != null) leftHandDamageCollider.DisableDamageCollider();
     }
     public void CloseRightDamageCollider()
     {  
-        rightHandDamageCollider.DisableDamageCollider();
+        if(rightHandDamageCollider != null) rightHandDamageCollider.DisableDamageCollider();
     }
     #endregion
 }
