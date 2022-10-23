@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1486468315191333063}
   - component: {fileID: 8542484223000526806}
   m_Layer: 0
-  m_Name: Warhammer
+  m_Name: Maul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,14 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9045744891344878160}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.002, z: -0.025}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: -0.0025, y: 0, z: 0.025}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
 --- !u!33 &4714418014380175183
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9045744891344878160}
-  m_Mesh: {fileID: 2534964839176971238, guid: ab1724e48a75887449588707375d84fa, type: 3}
+  m_Mesh: {fileID: -8670216701396003157, guid: a3bc3fa5921a0f846b21f0af9de024aa, type: 3}
 --- !u!23 &7388170020695956357
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64,8 +64,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 27708181c4a003249ac6d340d3a8c5d0, type: 2}
   - {fileID: 2100000, guid: 1433252c3fa174341a3d2f9ebf9254c4, type: 2}
+  - {fileID: 2100000, guid: 27708181c4a003249ac6d340d3a8c5d0, type: 2}
+  - {fileID: 2100000, guid: 3bd97f169c4ac9346b8a2775b78e3c49, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a468911fef732284faab33a51ffaca46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: b09dfd68ca8610f4ba530176ad166308, type: 2}
+  item: {fileID: 11400000, guid: dc0dba2376db62b4e90fd2f7d4cdfdda, type: 2}
 --- !u!114 &1486468315191333063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +116,7 @@ MonoBehaviour:
   damageCollider: {fileID: 8542484223000526806}
   statsManager: {fileID: 0}
   force: 500
-  damage: 15
+  damage: 100
 --- !u!65 &8542484223000526806
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127,5 +128,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.025, y: 0.025, z: 0.075}
-  m_Center: {x: 0, y: 0.01, z: 0.025}
+  m_Size: {x: 0.025, y: 0.075, z: 0.02}
+  m_Center: {x: 0, y: 0.03, z: 0}

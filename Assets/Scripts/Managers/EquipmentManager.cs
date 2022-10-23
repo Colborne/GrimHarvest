@@ -20,7 +20,7 @@ public class EquipmentManager : MonoBehaviour
 
     void Start()
     {
-        gameManager.LoadItem(1, "Weapon");
+        gameManager.LoadItem(2, "Weapon");
     }
 
     public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
@@ -48,6 +48,7 @@ public class EquipmentManager : MonoBehaviour
     public void LoadRightWeaponDamageCollider()
     {
         rightHandDamageCollider = gameManager.spawnedWeapon.GetComponent<DamageCollider>();
+        rightHandDamageCollider.damage = (int)rightWeapon.damage;
     }
 
     public void OpenLeftDamageCollider()

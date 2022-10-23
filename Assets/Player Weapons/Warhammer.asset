@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 
   isTwoHanded: 0
   Light_Attack: Chop1
-  Heavy_Attack: HeavyChop
+  Heavy_Attack: HeavyAttack
   lightCost: 7
   heavyCost: 12
-  damage: 0
+  damage: 20
