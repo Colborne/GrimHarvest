@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff5807e0ccb6fe54d88d05982790b3c2, type: 3}
-  m_Name: Maul
+  m_Name: Hammer
   m_EditorClassIdentifier: 
-  itemName: Maul
+  itemName: Hammer
   description: 
   isTwoHanded: 1
-  Light_Attack: Chop1
-  Heavy_Attack: Slam
+  Light_Attack: Slam
+  Heavy_Attack: Pumpel
   lightCost: 10
   heavyCost: 40
   damage: 100

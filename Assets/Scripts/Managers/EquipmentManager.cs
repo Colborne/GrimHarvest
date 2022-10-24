@@ -11,6 +11,7 @@ public class EquipmentManager : MonoBehaviour
     public DamageCollider leftHandDamageCollider;
     StatsManager stats;
     AnimatorManager animatorManager;
+    public int weaponToLoad;
     private void Awake() 
     {
         animatorManager = GetComponent<AnimatorManager>();
@@ -20,7 +21,7 @@ public class EquipmentManager : MonoBehaviour
 
     void Start()
     {
-        gameManager.LoadItem(2, "Weapon");
+        gameManager.LoadItem(weaponToLoad, "Weapon");
     }
 
     public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
