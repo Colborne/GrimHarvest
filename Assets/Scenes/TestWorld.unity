@@ -17424,7 +17424,7 @@ MonoBehaviour:
   leftWeapon: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
-  weaponToLoad: 2
+  weaponToLoad: 3
 --- !u!4 &1003292164376470011
 Transform:
   m_ObjectHideFlags: 0
