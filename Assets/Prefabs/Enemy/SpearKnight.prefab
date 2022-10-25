@@ -1399,7 +1399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15109e3b67565d74e912b613452feb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageCollider: {fileID: 2677363771722616115}
+  damageCollider:
+  - {fileID: 1800189289}
   damage: 10
 --- !u!1 &4585459728206715718
 GameObject:
@@ -1829,10 +1830,13 @@ MonoBehaviour:
   weaponType: 0
   weapon:
   - {fileID: 3075969998074366913}
+  mount: {fileID: 0}
   DamageEffect: {fileID: 1968586304485042, guid: a239170733fa49c4a9d1406bce09e2cd,
     type: 3}
   BlockEffect: {fileID: 1599718021928974, guid: 21461e6c060baf044ac3e717ed4170cb,
     type: 3}
+  healthbar: {fileID: 0}
+  damageCollider: {fileID: 7903033231851268084}
   health: 30
   damageReduction: 0
   rotationSpeed: 150
@@ -1843,6 +1847,7 @@ MonoBehaviour:
   minimumDetectionAngle: -50
   maximumDetectionAngle: 50
   isPerformingAction: 0
+  isTakingDamage: 0
   isBlocking: 0
   allowBlock: 0
   allowDodge: 1

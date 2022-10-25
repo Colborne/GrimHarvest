@@ -668,7 +668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15109e3b67565d74e912b613452feb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageCollider: {fileID: 3677742764188983006}
+  damageCollider:
+  - {fileID: 3677742764188983006}
   damage: 10
 --- !u!1 &2999345115390026850
 GameObject:
@@ -1970,10 +1971,13 @@ MonoBehaviour:
   weaponType: 1
   weapon:
   - {fileID: 5555718393919081038}
+  mount: {fileID: 0}
   DamageEffect: {fileID: 1968586304485042, guid: a239170733fa49c4a9d1406bce09e2cd,
     type: 3}
   BlockEffect: {fileID: 1599718021928974, guid: 21461e6c060baf044ac3e717ed4170cb,
     type: 3}
+  healthbar: {fileID: 0}
+  damageCollider: {fileID: 8148273300438115189}
   health: 45
   damageReduction: 0
   rotationSpeed: 150
@@ -1989,7 +1993,7 @@ MonoBehaviour:
   allowBlock: 0
   allowDodge: 1
   blockPercent: 0
-  dodgePercent: 40
+  dodgePercent: 100
 --- !u!195 &6489515062136643188
 NavMeshAgent:
   m_ObjectHideFlags: 0

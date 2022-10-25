@@ -39,16 +39,12 @@ public class GameManager : MonoBehaviour
     public GameObject spawnedChest;
     public EquipmentManager equipmentManager;
     StatsManager statsManager;
-
-    // Main //
     void Awake()
     {
         GameManager.Instance = this;
         equipmentManager = FindObjectOfType<EquipmentManager>();
         statsManager = FindObjectOfType<StatsManager>();
     }
-
-
     public void DestroyItem(GameObject item)
     {
         if (item != null)
@@ -56,7 +52,6 @@ public class GameManager : MonoBehaviour
             Destroy(item);
         }
     }
-
     public void SpawnItem(string type, GameObject item)
     {
         DestroyItem(item);
@@ -85,7 +80,6 @@ public class GameManager : MonoBehaviour
             spawnedChest = Instantiate(equipment[chestID].prefab, PM.chest);
         }
     }
-
     public void PickupItem(int itemID)
     {
         for (int i = 0; i < inventorySlots.Length; i++)
