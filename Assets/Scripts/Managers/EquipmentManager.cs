@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
 {
-    GameManager gameManager;
+    public GameManager gameManager;
     public WeaponItem rightWeapon;
     public WeaponItem leftWeapon;
     public DamageCollider rightHandDamageCollider;

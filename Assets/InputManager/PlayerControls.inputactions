@@ -244,6 +244,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ChangeWeapon",
+                    "type": "Button",
+                    "id": "4572a797-4655-4ced-888d-dcadd47ecc88",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "MouseWheel",
                     "type": "PassThrough",
                     "id": "9d978c81-ad3c-4ba7-97da-26e9df5b0272",
@@ -350,6 +359,28 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Heavy",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "55de73c6-3556-46d4-aafa-3db4f0eea0fd",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keys",
+                    "action": "ChangeWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d5c08fb-edc4-4be9-9e45-e63718cd607c",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "ChangeWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

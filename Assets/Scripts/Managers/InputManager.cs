@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     PlayerControls playerControls;
     ActionManager actionManager;
     StatsManager statsManager;
+    EquipmentManager equipmentManager;
     public AnimatorManager animatorManager;
     public Vector2 movementInput;
     public Vector2 mouseInput;
@@ -25,6 +26,7 @@ public class InputManager : MonoBehaviour
     public bool sprintInput;
     public bool changeSchemeInput;
     public bool changeStatsInput;
+    public bool changeWeaponInput;
     public bool isInteracting = false;
     public bool isSprinting = false;
     public bool isRolling = false;
@@ -36,6 +38,7 @@ public class InputManager : MonoBehaviour
         animatorManager = GetComponent<AnimatorManager>();
         actionManager = GetComponent<ActionManager>();
         statsManager = GetComponent<StatsManager>();
+        equipmentManager = GetComponent<EquipmentManager>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -56,6 +59,8 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.Dodge.canceled += i => dodgeInput = false;
             playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
             playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
+            playerControls.PlayerActions.ChangeWeapon.performed += i => changeWeaponInput = true;
+            playerControls.PlayerActions.ChangeWeapon.canceled += i => changeWeaponInput = false;
             playerControls.GameCommands.ChangeScheme.performed += i => changeSchemeInput = true;
             playerControls.GameCommands.ChangeScheme.canceled += i => changeSchemeInput = false;
             playerControls.GameCommands.ChangeStats.performed += i => changeStatsInput = true;
@@ -86,6 +91,7 @@ public class InputManager : MonoBehaviour
         HandleRoll();
         HandleMouse();
         HandleControlScheme();
+        HandleChangeWeapon();
     }
 
     private void HandleRoll()
@@ -120,6 +126,19 @@ public class InputManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
             else
                 Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    void HandleChangeWeapon()
+    {
+        if(changeWeaponInput){
+            changeWeaponInput = false;
+            equipmentManager.weaponToLoad++;
+            if(equipmentManager.weaponToLoad >= equipmentManager.gameManager.equipment.Length)
+                equipmentManager.weaponToLoad = 0;
+            equipmentManager.gameManager.DestroyItem(equipmentManager.gameManager.spawnedWeapon);
+            equipmentManager.gameManager.LoadItem(equipmentManager.weaponToLoad, "Weapon");
+
         }
     }
 
