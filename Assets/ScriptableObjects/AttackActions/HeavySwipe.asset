@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff5807e0ccb6fe54d88d05982790b3c2, type: 3}
-  m_Name: Sword
+  m_Script: {fileID: 11500000, guid: 0800b1cc5feb24b47a8303e82528abdc, type: 3}
+  m_Name: HeavySwipe
   m_EditorClassIdentifier: 
-  itemName: Sword
-  description: 
-  isTwoHanded: 0
-  Light_Attack: Chop1
-  Heavy_Attack: JumpSlash
-  lightCost: 9
-  heavyCost: 13
-  damage: 12
+  actionAnimation: HeavySwipe
+  damage: 24
+  recoveryTime: 2.5
+  maximumAttackAngle: 35
+  minimumAttackAngle: -35
+  minimumDistanceNeededToAttack: 0
+  maximumDistanceNeededToAttack: 5

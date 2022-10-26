@@ -27,7 +27,7 @@ public class StatsManager : MonoBehaviour
     [Header("Stats")]
 
     [Header("Attack Bonuses")] 
-    public int heavyModifier = 1;
+    public float heavyModifier = 1;
 
     [Header("Components")]
     public HealthBar healthBar;

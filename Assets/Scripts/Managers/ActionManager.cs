@@ -39,7 +39,7 @@ public class ActionManager : MonoBehaviour
     {
         if(statsManager.currentStamina > statsManager.actionCost)
         {
-            statsManager.heavyModifier = 2;
+            statsManager.heavyModifier = 1.5f;
             if(animatorManager.animator.GetInteger("combo") == -1)
             {
                 animatorManager.animator.SetInteger("combo", 0);

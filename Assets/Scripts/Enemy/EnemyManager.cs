@@ -18,7 +18,6 @@ public class EnemyManager : MonoBehaviour
     public Rigidbody rigidbody;
     public State currentState;
     public StatsManager currentTarget;
-    public WeaponType weaponType;
     public GameObject[] weapon;
     public MountController mount;
     public GameObject DamageEffect;
@@ -44,9 +43,12 @@ public class EnemyManager : MonoBehaviour
     public bool isTakingDamage;
     public bool isBlocking;
     public bool allowBlock;
-    public bool allowDodge;
     public int blockPercent = 50;
+    public bool allowDodge;
     public int dodgePercent = 50;
+    public bool canBackstep;
+    public bool canCircle;
+    public bool canRush;
    
     private void Awake()
     {
@@ -141,7 +143,8 @@ public class EnemyManager : MonoBehaviour
     }
 
     public void TakeHit(float damage)
-    {
+    {          
+        Invoke("ResetInvulnerability", .01f);
         if(damageReduction == 1)
             enemyAnimatorManager.animator.CrossFade("ShieldBash", .2f);
         else
@@ -167,6 +170,11 @@ public class EnemyManager : MonoBehaviour
             
         health -= damage;
         if (health <= 0) Dead();
+    }
+
+    void ResetInvulnerability()
+    {
+        enemyAnimatorManager.animator.SetBool("isTakingDamage", false);
     }
 
     public void SetDamageAbsorption(float percent)

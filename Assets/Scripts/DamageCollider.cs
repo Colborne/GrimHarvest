@@ -6,6 +6,7 @@ public class DamageCollider : MonoBehaviour
 {
     public Collider damageCollider;
     public StatsManager statsManager;
+    EquipmentManager equipmentManager;
     public float force;
     public int damage;
     private void Awake() 

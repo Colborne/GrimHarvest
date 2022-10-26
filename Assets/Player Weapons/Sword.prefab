@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageCollider: {fileID: 8542484223000526806}
   statsManager: {fileID: 0}
-  force: 500
+  force: 400
   damage: 20
 --- !u!65 &8542484223000526806
 BoxCollider:

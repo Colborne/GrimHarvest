@@ -131,14 +131,14 @@ public class InputManager : MonoBehaviour
 
     void HandleChangeWeapon()
     {
-        if(changeWeaponInput){
+        if(changeWeaponInput)
+        {
             changeWeaponInput = false;
             equipmentManager.weaponToLoad++;
             if(equipmentManager.weaponToLoad >= equipmentManager.gameManager.equipment.Length)
                 equipmentManager.weaponToLoad = 0;
             equipmentManager.gameManager.DestroyItem(equipmentManager.gameManager.spawnedWeapon);
             equipmentManager.gameManager.LoadItem(equipmentManager.weaponToLoad, "Weapon");
-
         }
     }
 

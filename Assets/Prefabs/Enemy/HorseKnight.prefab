@@ -3020,7 +3020,6 @@ MonoBehaviour:
   rigidbody: {fileID: 6775513008648355814}
   currentState: {fileID: 7486788663046006423}
   currentTarget: {fileID: 0}
-  weaponType: 1
   weapon:
   - {fileID: 6514618467110070627}
   mount: {fileID: 5018234199428823035}
@@ -3043,9 +3042,12 @@ MonoBehaviour:
   isTakingDamage: 0
   isBlocking: 0
   allowBlock: 0
-  allowDodge: 1
   blockPercent: 0
-  dodgePercent: 5
+  allowDodge: 0
+  dodgePercent: 0
+  canBackstep: 0
+  canCircle: 0
+  canRush: 0
 --- !u!195 &6775513008648355811
 NavMeshAgent:
   m_ObjectHideFlags: 0

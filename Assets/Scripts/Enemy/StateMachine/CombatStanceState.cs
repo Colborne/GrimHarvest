@@ -64,7 +64,7 @@ public class CombatStanceState : State
 
         if(!randomDestinationSet)
         {
-            randomAction = Random.Range(0,2);
+            randomAction = Random.Range(0,4);
             randomDestinationSet = true;
         }
 
@@ -119,11 +119,14 @@ public class CombatStanceState : State
 
     private void ChooseCombatAction(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)
     {
-        if(randomAction == 0)
+        if(randomAction == 0 && enemyManager.canCircle)
             WalkAroundTarget(enemyManager, enemyAnimatorManager);
-        else if(randomAction == 1)
+        else if(randomAction == 1 && enemyManager.canBackstep)
             Backstep(enemyManager, enemyAnimatorManager);
-        
+        else if(randomAction == 2 && enemyManager.canRush)
+            Rush(enemyManager, enemyAnimatorManager);   
+        else
+            Approach(enemyManager, enemyAnimatorManager);
     }
 
     private void Rush(EnemyManager enemyManager, EnemyAnimatorManager enemyAnimatorManager)

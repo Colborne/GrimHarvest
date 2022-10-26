@@ -17,6 +17,6 @@ MonoBehaviour:
   isTwoHanded: 1
   Light_Attack: Slam
   Heavy_Attack: Pumpel
-  lightCost: 10
-  heavyCost: 40
-  damage: 100
+  lightCost: 12
+  heavyCost: 23
+  damage: 15

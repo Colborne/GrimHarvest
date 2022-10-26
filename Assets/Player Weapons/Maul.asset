@@ -17,6 +17,6 @@ MonoBehaviour:
   isTwoHanded: 1
   Light_Attack: Chop1
   Heavy_Attack: Slam
-  lightCost: 10
-  heavyCost: 40
-  damage: 100
+  lightCost: 12
+  heavyCost: 20
+  damage: 13
