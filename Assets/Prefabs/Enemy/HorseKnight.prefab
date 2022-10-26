@@ -3029,7 +3029,8 @@ MonoBehaviour:
     type: 3}
   healthbar: {fileID: 0}
   damageCollider: {fileID: 4018798702306414635}
-  health: 30
+  currentHealth: 0
+  maxHealth: 70
   damageReduction: 0
   rotationSpeed: 150
   currentRecoveryTime: 0

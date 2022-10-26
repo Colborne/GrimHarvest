@@ -26,7 +26,8 @@ public class EnemyManager : MonoBehaviour
     public EnemyDamageCollider damageCollider;
 
     [Header("Stats")]
-    public float health;
+    public float currentHealth;
+    public float maxHealth;
     public float damageReduction = 0f;
     public float rotationSpeed = 360;
     public float currentRecoveryTime = 0;
@@ -56,8 +57,9 @@ public class EnemyManager : MonoBehaviour
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         rigidbody = GetComponent<Rigidbody>();
         agent.enabled = false;
+        currentHealth = maxHealth;
         if(healthbar != null){
-            GetComponent<HealthBar>().SetMaxHealth((int)health);
+            GetComponent<HealthBar>().SetMaxHealth((int)currentHealth);
             healthbar.SetActive(false);
         }
     }
@@ -81,7 +83,7 @@ public class EnemyManager : MonoBehaviour
         if(currentTarget != null && healthbar != null)
         { 
             healthbar.SetActive(true);
-            GetComponent<HealthBar>().SetCurrentHealth((int)health);
+            GetComponent<HealthBar>().SetCurrentHealth((int)currentHealth);
         }
     }
 
@@ -143,7 +145,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     public void TakeHit(float damage)
-    {          
+    {   
         Invoke("ResetInvulnerability", .01f);
         if(damageReduction == 1)
             enemyAnimatorManager.animator.CrossFade("ShieldBash", .2f);
@@ -168,8 +170,8 @@ public class EnemyManager : MonoBehaviour
         if(GetComponent<EnemyDamageCollider>())
             GetComponent<EnemyDamageCollider>().DisableDamageCollider();
             
-        health -= damage;
-        if (health <= 0) Dead();
+        currentHealth -= damage;
+        if (currentHealth <= 0) Dead();
     }
 
     void ResetInvulnerability()
