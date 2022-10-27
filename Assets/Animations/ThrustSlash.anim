@@ -55038,14 +55038,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.0333333
+  - time: 1.7333333
     functionName: CanRotate
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.5
+  - time: 2.3
     functionName: AnimSpeedReset
     data: 
     objectReferenceParameter: {fileID: 0}
