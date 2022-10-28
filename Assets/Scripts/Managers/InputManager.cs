@@ -196,7 +196,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void HandleControlScheme()
+    private void HandleControlScheme()
     {
         if(changeSchemeInput)
         {

@@ -25944,21 +25944,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.33333334
-    functionName: UseLightStamina
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 7.2
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.33333334
     functionName: CannotRotate
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.5
-    functionName: AnimSpeedIncrease
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -25973,13 +25959,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.8333333
     functionName: CloseRightDamageCollider
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.8333333
-    functionName: AnimSpeedReset
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

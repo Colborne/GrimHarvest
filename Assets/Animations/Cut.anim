@@ -21306,13 +21306,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.16666667
-    functionName: AnimSpeedIncrease
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 0.23333333
     functionName: OpenRightDamageCollider
     data: 
@@ -21322,13 +21315,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.6
     functionName: CloseRightDamageCollider
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.7
-    functionName: AnimSpeedReset
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

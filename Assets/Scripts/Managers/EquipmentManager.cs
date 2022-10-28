@@ -34,14 +34,15 @@ public class EquipmentManager : MonoBehaviour
         else
             LoadRightWeaponDamageCollider();      
     }
-    
+
     #region Damage Colliders
-    public void LoadLeftWeaponDamageCollider()
+    private void LoadLeftWeaponDamageCollider()
     {
-        leftHandDamageCollider = gameManager.spawnedShield.GetComponent<DamageCollider>();   
+        leftHandDamageCollider = gameManager.spawnedShield.GetComponent<DamageCollider>();
+        leftHandDamageCollider.damage = (int)leftWeapon.damage;   
     }
 
-    public void LoadRightWeaponDamageCollider()
+    private void LoadRightWeaponDamageCollider()
     {
         rightHandDamageCollider = gameManager.spawnedWeapon.GetComponent<DamageCollider>();
         rightHandDamageCollider.damage = (int)rightWeapon.damage;

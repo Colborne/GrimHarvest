@@ -83,17 +83,6 @@ public class StatsManager : MonoBehaviour
         staminaBar.SetCurrentStamina(currentStamina);
     }
 
-    public void UseLightStamina()
-    {
-        currentStamina = currentStamina - equipmentManager.rightWeapon.lightCost;
-        staminaBar.SetCurrentStamina(currentStamina);
-    }
-    public void UseHeavyStamina()
-    {
-        currentStamina = currentStamina - equipmentManager.rightWeapon.heavyCost;
-        staminaBar.SetCurrentStamina(currentStamina);
-    }
-
     public void RegenerateStamina()
     {
         if(inputManager.isInteracting || inputManager.isSprinting)

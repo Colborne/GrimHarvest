@@ -24733,20 +24733,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.625
-    functionName: UseHeavyStamina
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.6666667
-    functionName: AnimSpeedIncrease
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 0.7083333
     functionName: OpenRightDamageCollider
     data: 
@@ -24756,13 +24742,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.9583333
     functionName: CloseRightDamageCollider
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.0416666
-    functionName: AnimSpeedReset
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

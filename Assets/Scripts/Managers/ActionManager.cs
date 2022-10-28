@@ -22,6 +22,7 @@ public class ActionManager : MonoBehaviour
         if(statsManager.currentStamina > statsManager.actionCost)
         {
             statsManager.heavyModifier = 1;
+            statsManager.UseStamina(equipmentManager.rightWeapon.lightCost);
             animatorManager.animator.SetInteger("random", Random.Range(0,3));
             
             if(animatorManager.animator.GetInteger("combo") == -1)
@@ -40,6 +41,7 @@ public class ActionManager : MonoBehaviour
         if(statsManager.currentStamina > statsManager.actionCost)
         {
             statsManager.heavyModifier = 1.5f;
+            statsManager.UseStamina(equipmentManager.rightWeapon.heavyCost);
             if(animatorManager.animator.GetInteger("combo") == -1)
             {
                 animatorManager.animator.SetInteger("combo", 0);
@@ -56,6 +58,7 @@ public class ActionManager : MonoBehaviour
         if(statsManager.currentStamina > statsManager.actionCost)
         {
             statsManager.heavyModifier = 1;
+            statsManager.UseStamina(equipmentManager.leftWeapon.lightCost);
             animatorManager.animator.SetInteger("random", Random.Range(0,3));
             
             if(animatorManager.animator.GetInteger("combo") == -1)
@@ -74,6 +77,7 @@ public class ActionManager : MonoBehaviour
         if(statsManager.currentStamina > statsManager.actionCost)
         {
             statsManager.heavyModifier = 1.5f;
+            statsManager.UseStamina(equipmentManager.rightWeapon.heavyCost);
             if(animatorManager.animator.GetInteger("combo") == -1)
             {
                 animatorManager.animator.SetInteger("combo", 0);
@@ -89,6 +93,7 @@ public class ActionManager : MonoBehaviour
     {
         if(statsManager.currentStamina >= statsManager.rollCost)
         {
+            statsManager.UseStamina(15f);
             animatorManager.animator.CrossFade("Roll", .2f);
             animatorManager.animator.SetInteger("combo", 0);
         }

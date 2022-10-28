@@ -99,16 +99,6 @@ public class MovementManager : MonoBehaviour
             playerRigidbody.velocity = transform.forward * rollSpeed;
     }
 
-    public void AnimSpeedIncrease()
-    {
-        inputManager.animatorManager.animator.SetFloat("animSpeed", anim);
-    }
-
-    public void AnimSpeedReset()
-    {
-        inputManager.animatorManager.animator.SetFloat("animSpeed", 1f);
-        }
-
     public void CanRotate()
     {
         canRotate = true;
