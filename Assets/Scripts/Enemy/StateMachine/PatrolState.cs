@@ -54,7 +54,7 @@ public class PatrolState : State
         else
         {
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(direction * 4, normalVector);
-            enemyManager.rigidbody.velocity = projectedVelocity;
+            enemyManager.rb.velocity = projectedVelocity;
 
             enemyManager.agent.enabled = true;
             enemyManager.agent.SetDestination(enemyManager.currentTarget.transform.position);

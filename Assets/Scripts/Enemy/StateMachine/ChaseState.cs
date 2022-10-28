@@ -41,7 +41,7 @@ public class ChaseState : State
         direction.y = 0;
         direction.Normalize();
         Vector3 projectedVelocity = Vector3.ProjectOnPlane(direction * 4, normalVector);
-        enemyManager.rigidbody.velocity = projectedVelocity;
+        enemyManager.rb.velocity = projectedVelocity;
 
         if(enemyManager.isPerformingAction)
         {

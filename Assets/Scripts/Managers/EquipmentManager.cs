@@ -12,6 +12,7 @@ public class EquipmentManager : MonoBehaviour
     StatsManager stats;
     AnimatorManager animatorManager;
     public int weaponToLoad;
+    public int weaponLeftToLoad;
     private void Awake() 
     {
         animatorManager = GetComponent<AnimatorManager>();
@@ -22,24 +23,18 @@ public class EquipmentManager : MonoBehaviour
     void Start()
     {
         gameManager.LoadItem(weaponToLoad, "Weapon");
+        gameManager.LoadItem(weaponLeftToLoad, "Shield");
+        gameManager.LoadItem(5, "Helmet");
     }
 
     public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
     {
-        if(weaponItem.isTwoHanded)
-        {
-            LoadRightWeaponDamageCollider();
-            //animatorManager.animator.SetBool("isTwoHanded", true);
-        }
+        if(isLeft)
+            LoadLeftWeaponDamageCollider();
         else
-        {
-            //animatorManager.animator.SetBool("isTwoHanded", false);
-            if(isLeft)
-                LoadLeftWeaponDamageCollider();
-            else
-                LoadRightWeaponDamageCollider();      
-        }
+            LoadRightWeaponDamageCollider();      
     }
+    
     #region Damage Colliders
     public void LoadLeftWeaponDamageCollider()
     {

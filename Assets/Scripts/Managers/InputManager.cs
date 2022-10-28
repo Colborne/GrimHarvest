@@ -21,12 +21,15 @@ public class InputManager : MonoBehaviour
     public float cameraInputX;
     public float cameraInputY;
     public bool interactInput;
+    public bool leftInput;
     public bool heavyInput;
+    public bool specialInput;
     public bool dodgeInput;
     public bool sprintInput;
     public bool changeSchemeInput;
     public bool changeStatsInput;
     public bool changeWeaponInput;
+    public bool changeLeftWeaponInput;
     public bool isInteracting = false;
     public bool isSprinting = false;
     public bool isRolling = false;
@@ -53,14 +56,20 @@ public class InputManager : MonoBehaviour
             playerControls.PlayerActions.MouseWheel.performed += i => scrollInput = i.ReadValue<float>();
             playerControls.PlayerActions.Interact.performed += i => interactInput = true;
             playerControls.PlayerActions.Interact.canceled += i => interactInput = false;
+            playerControls.PlayerActions.Left.performed += i => leftInput = true;
+            playerControls.PlayerActions.Left.canceled += i => leftInput = false;
             playerControls.PlayerActions.Heavy.performed += i => heavyInput = true;
             playerControls.PlayerActions.Heavy.canceled += i => heavyInput = false;
+            playerControls.PlayerActions.Special.performed += i => specialInput = true;
+            playerControls.PlayerActions.Special.canceled += i => specialInput = false;
             playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
             playerControls.PlayerActions.Dodge.canceled += i => dodgeInput = false;
             playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
             playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
             playerControls.PlayerActions.ChangeWeapon.performed += i => changeWeaponInput = true;
             playerControls.PlayerActions.ChangeWeapon.canceled += i => changeWeaponInput = false;
+            playerControls.PlayerActions.ChangeLeftWeapon.performed += i => changeLeftWeaponInput = true;
+            playerControls.PlayerActions.ChangeLeftWeapon.canceled += i => changeLeftWeaponInput = false;
             playerControls.GameCommands.ChangeScheme.performed += i => changeSchemeInput = true;
             playerControls.GameCommands.ChangeScheme.canceled += i => changeSchemeInput = false;
             playerControls.GameCommands.ChangeStats.performed += i => changeStatsInput = true;
@@ -92,6 +101,7 @@ public class InputManager : MonoBehaviour
         HandleMouse();
         HandleControlScheme();
         HandleChangeWeapon();
+        HandleChangeLeftWeapon();
     }
 
     private void HandleRoll()
@@ -142,19 +152,47 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    void HandleChangeLeftWeapon()
+    {
+        if(changeLeftWeaponInput)
+        {
+            changeLeftWeaponInput = false;
+            equipmentManager.weaponLeftToLoad++;
+            if(equipmentManager.weaponLeftToLoad >= equipmentManager.gameManager.equipment.Length)
+                equipmentManager.weaponLeftToLoad = 0;
+            equipmentManager.gameManager.DestroyItem(equipmentManager.gameManager.spawnedShield);
+            equipmentManager.gameManager.LoadItem(equipmentManager.weaponLeftToLoad, "Shield");
+        }
+    }
+
     private void HandleAction()
     {
-        if(interactInput && !isComboing)
+        if(!isComboing)
         {
-            animatorManager.animator.SetBool("heavyInput", false);
-            interactInput = false;
-            actionManager.Use();
-        }
-        if(heavyInput && !isComboing)
-        {
-            animatorManager.animator.SetBool("heavyInput", true);
-            heavyInput = false;
-            actionManager.UseHeavy();
+            if(interactInput)
+            {
+                animatorManager.animator.SetBool("heavyInput", false);
+                interactInput = false;
+                actionManager.Use();
+            }
+            else if(heavyInput)
+            {
+                animatorManager.animator.SetBool("heavyInput", true);
+                heavyInput = false;
+                actionManager.UseHeavy();
+            }
+            else if(leftInput)
+            {
+                animatorManager.animator.SetBool("heavyInput", false);
+                leftInput = false;
+                actionManager.UseLeft();
+            }
+            else if(specialInput)
+            {
+                animatorManager.animator.SetBool("heavyInput", true);
+                specialInput = false;
+                actionManager.UseSpecial();
+            }
         }
     }
 

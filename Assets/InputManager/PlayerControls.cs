@@ -239,9 +239,27 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""94946f66-b384-4140-9c22-a06f992cb882"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Heavy"",
                     ""type"": ""Button"",
                     ""id"": ""7a741cc1-c323-41c4-81a5-b0238b78ab47"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a9b0b16-cad8-4b4c-9155-26fd60cac8af"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -269,6 +287,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""ChangeWeapon"",
                     ""type"": ""Button"",
                     ""id"": ""4572a797-4655-4ced-888d-dcadd47ecc88"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeLeftWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe60e92a-1d54-41bf-acb9-a80fa1d265a7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -398,11 +425,77 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6d5c08fb-edc4-4be9-9e45-e63718cd607c"",
-                    ""path"": ""<XInputController>/buttonNorth"",
+                    ""path"": ""<XInputController>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""ChangeWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23464f7c-606d-44fb-a31c-23049bea69e6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keys"",
+                    ""action"": ""ChangeLeftWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94a48870-e937-4eb5-8bfe-412e7b92b96e"",
+                    ""path"": ""<XInputController>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ChangeLeftWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20370291-a05d-4156-9c4f-30f5c3bddc0f"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keys"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b6ab546-859f-41cf-bc12-fe44333306c5"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d363f5ad-0876-42f9-9bbe-e3858c2352ac"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keys"",
+                    ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63076950-036e-4d8d-b03f-6644ec106275"",
+                    ""path"": ""<XInputController>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Special"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -489,10 +582,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // PlayerActions
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerActions_Left = m_PlayerActions.FindAction("Left", throwIfNotFound: true);
         m_PlayerActions_Heavy = m_PlayerActions.FindAction("Heavy", throwIfNotFound: true);
+        m_PlayerActions_Special = m_PlayerActions.FindAction("Special", throwIfNotFound: true);
         m_PlayerActions_Dodge = m_PlayerActions.FindAction("Dodge", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerActions_ChangeWeapon = m_PlayerActions.FindAction("ChangeWeapon", throwIfNotFound: true);
+        m_PlayerActions_ChangeLeftWeapon = m_PlayerActions.FindAction("ChangeLeftWeapon", throwIfNotFound: true);
         m_PlayerActions_MouseWheel = m_PlayerActions.FindAction("MouseWheel", throwIfNotFound: true);
         // GameCommands
         m_GameCommands = asset.FindActionMap("GameCommands", throwIfNotFound: true);
@@ -599,20 +695,26 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerActions;
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Interact;
+    private readonly InputAction m_PlayerActions_Left;
     private readonly InputAction m_PlayerActions_Heavy;
+    private readonly InputAction m_PlayerActions_Special;
     private readonly InputAction m_PlayerActions_Dodge;
     private readonly InputAction m_PlayerActions_Sprint;
     private readonly InputAction m_PlayerActions_ChangeWeapon;
+    private readonly InputAction m_PlayerActions_ChangeLeftWeapon;
     private readonly InputAction m_PlayerActions_MouseWheel;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
+        public InputAction @Left => m_Wrapper.m_PlayerActions_Left;
         public InputAction @Heavy => m_Wrapper.m_PlayerActions_Heavy;
+        public InputAction @Special => m_Wrapper.m_PlayerActions_Special;
         public InputAction @Dodge => m_Wrapper.m_PlayerActions_Dodge;
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
         public InputAction @ChangeWeapon => m_Wrapper.m_PlayerActions_ChangeWeapon;
+        public InputAction @ChangeLeftWeapon => m_Wrapper.m_PlayerActions_ChangeLeftWeapon;
         public InputAction @MouseWheel => m_Wrapper.m_PlayerActions_MouseWheel;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
@@ -626,9 +728,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+                @Left.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLeft;
+                @Left.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLeft;
+                @Left.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnLeft;
                 @Heavy.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHeavy;
                 @Heavy.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHeavy;
                 @Heavy.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnHeavy;
+                @Special.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSpecial;
+                @Special.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSpecial;
+                @Special.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnSpecial;
                 @Dodge.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDodge;
                 @Dodge.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDodge;
                 @Dodge.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnDodge;
@@ -638,6 +746,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ChangeWeapon.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChangeWeapon;
                 @ChangeWeapon.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChangeWeapon;
                 @ChangeWeapon.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChangeWeapon;
+                @ChangeLeftWeapon.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChangeLeftWeapon;
+                @ChangeLeftWeapon.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChangeLeftWeapon;
+                @ChangeLeftWeapon.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChangeLeftWeapon;
                 @MouseWheel.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
                 @MouseWheel.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
                 @MouseWheel.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
@@ -648,9 +759,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Left.started += instance.OnLeft;
+                @Left.performed += instance.OnLeft;
+                @Left.canceled += instance.OnLeft;
                 @Heavy.started += instance.OnHeavy;
                 @Heavy.performed += instance.OnHeavy;
                 @Heavy.canceled += instance.OnHeavy;
+                @Special.started += instance.OnSpecial;
+                @Special.performed += instance.OnSpecial;
+                @Special.canceled += instance.OnSpecial;
                 @Dodge.started += instance.OnDodge;
                 @Dodge.performed += instance.OnDodge;
                 @Dodge.canceled += instance.OnDodge;
@@ -660,6 +777,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ChangeWeapon.started += instance.OnChangeWeapon;
                 @ChangeWeapon.performed += instance.OnChangeWeapon;
                 @ChangeWeapon.canceled += instance.OnChangeWeapon;
+                @ChangeLeftWeapon.started += instance.OnChangeLeftWeapon;
+                @ChangeLeftWeapon.performed += instance.OnChangeLeftWeapon;
+                @ChangeLeftWeapon.canceled += instance.OnChangeLeftWeapon;
                 @MouseWheel.started += instance.OnMouseWheel;
                 @MouseWheel.performed += instance.OnMouseWheel;
                 @MouseWheel.canceled += instance.OnMouseWheel;
@@ -734,10 +854,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IPlayerActionsActions
     {
         void OnInteract(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
         void OnHeavy(InputAction.CallbackContext context);
+        void OnSpecial(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnChangeWeapon(InputAction.CallbackContext context);
+        void OnChangeLeftWeapon(InputAction.CallbackContext context);
         void OnMouseWheel(InputAction.CallbackContext context);
     }
     public interface IGameCommandsActions

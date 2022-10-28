@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff5807e0ccb6fe54d88d05982790b3c2, type: 3}
-  m_Name: Dagger
+  m_Script: {fileID: 11500000, guid: 5a28e8dd9e5b4b34589f9a70290bacef, type: 3}
+  m_Name: Crusader Helmet
   m_EditorClassIdentifier: 
-  itemName: Sword
+  itemName: Crusader Helmet
   description: 
-  isTwoHanded: 0
-  Light_Attack: Swipe
-  Heavy_Attack: ThrustSlash
-  lightCost: 9
-  heavyCost: 13
-  damage: 12
+  weight: 0
+  def: 0
+  bonus: 0

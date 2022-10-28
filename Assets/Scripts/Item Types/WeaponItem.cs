@@ -13,13 +13,12 @@ public class WeaponItem : Item
     }
 
     [Header("Weapon Settings")]
-    public bool isTwoHanded;
-    //[Range(0,2)] //0 = hand, 1 = crossbody, 2 = shoulder
-    //public int idleAnim;
 
     [Header("Attack Animations")]
     public string Light_Attack;
     public string Heavy_Attack;
+    public string Left_Attack;
+    public string Special_Attack;
 
     [Header("Stats")]
     public int lightCost;

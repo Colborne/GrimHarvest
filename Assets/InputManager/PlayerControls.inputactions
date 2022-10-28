@@ -217,9 +217,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "94946f66-b384-4140-9c22-a06f992cb882",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Heavy",
                     "type": "Button",
                     "id": "7a741cc1-c323-41c4-81a5-b0238b78ab47",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Special",
+                    "type": "Button",
+                    "id": "2a9b0b16-cad8-4b4c-9155-26fd60cac8af",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -247,6 +265,15 @@
                     "name": "ChangeWeapon",
                     "type": "Button",
                     "id": "4572a797-4655-4ced-888d-dcadd47ecc88",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeLeftWeapon",
+                    "type": "Button",
+                    "id": "fe60e92a-1d54-41bf-acb9-a80fa1d265a7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -376,11 +403,77 @@
                 {
                     "name": "",
                     "id": "6d5c08fb-edc4-4be9-9e45-e63718cd607c",
-                    "path": "<XInputController>/buttonNorth",
+                    "path": "<XInputController>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
                     "action": "ChangeWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23464f7c-606d-44fb-a31c-23049bea69e6",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keys",
+                    "action": "ChangeLeftWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "94a48870-e937-4eb5-8bfe-412e7b92b96e",
+                    "path": "<XInputController>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "ChangeLeftWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20370291-a05d-4156-9c4f-30f5c3bddc0f",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keys",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b6ab546-859f-41cf-bc12-fe44333306c5",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d363f5ad-0876-42f9-9bbe-e3858c2352ac",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keys",
+                    "action": "Special",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63076950-036e-4d8d-b03f-6644ec106275",
+                    "path": "<XInputController>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Special",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

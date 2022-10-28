@@ -9,22 +9,20 @@ public enum WeaponType
     Shield
 }
 
-
 public class EnemyManager : MonoBehaviour
 {
     [Header("Components")]
     public NavMeshAgent agent;
     public EnemyAnimatorManager enemyAnimatorManager;
-    public Rigidbody rigidbody;
+    public Rigidbody rb;
     public State currentState;
     public StatsManager currentTarget;
-    public GameObject[] weapon;
-    public MountController mount;
+    public EnemyDamageCollider damageCollider;
     public GameObject DamageEffect;
     public GameObject BlockEffect;
+    public MountController mount;
     public GameObject healthbar;
-    public EnemyDamageCollider damageCollider;
-
+    public GameObject[] weapon;
     [Header("Stats")]
     public float currentHealth;
     public float maxHealth;
@@ -55,10 +53,11 @@ public class EnemyManager : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         agent.enabled = false;
         currentHealth = maxHealth;
-        if(healthbar != null){
+        if(healthbar != null)
+        {
             GetComponent<HealthBar>().SetMaxHealth((int)currentHealth);
             healthbar.SetActive(false);
         }
@@ -66,7 +65,7 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        rigidbody.isKinematic = false;
+        rb.isKinematic = false;
     }
 
     void Update()
@@ -137,7 +136,8 @@ public class EnemyManager : MonoBehaviour
         if(mount != null) mount.Dead();
         GetComponent<RagdollController>().EnableRagdoll();
         Destroy(agent);
-        foreach(GameObject w in weapon){
+        foreach(GameObject w in weapon)
+        {
             w.AddComponent<Rigidbody>();
             w.GetComponent<Rigidbody>().AddExplosionForce(7.5f, w.transform.position, 5f, 7f, ForceMode.Impulse);
         }

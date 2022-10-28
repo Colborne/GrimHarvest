@@ -51,6 +51,40 @@ public class ActionManager : MonoBehaviour
         }
     }
 
+        public void UseLeft()
+    {
+        if(statsManager.currentStamina > statsManager.actionCost)
+        {
+            statsManager.heavyModifier = 1;
+            animatorManager.animator.SetInteger("random", Random.Range(0,3));
+            
+            if(animatorManager.animator.GetInteger("combo") == -1)
+            {
+                    animatorManager.animator.SetInteger("combo", 0);
+                    animatorManager.animator.SetBool("isInteracting", true);
+                    animatorManager.animator.CrossFade(equipmentManager.leftWeapon.Left_Attack, .2f);
+            }
+            else
+                animatorManager.animator.SetInteger("combo", animatorManager.animator.GetInteger("combo") + 1);
+        }
+    }
+
+    public void UseSpecial()
+    {
+        if(statsManager.currentStamina > statsManager.actionCost)
+        {
+            statsManager.heavyModifier = 1.5f;
+            if(animatorManager.animator.GetInteger("combo") == -1)
+            {
+                animatorManager.animator.SetInteger("combo", 0);
+                animatorManager.animator.SetBool("isInteracting", true);
+                animatorManager.animator.CrossFade(equipmentManager.rightWeapon.Special_Attack, .2f);
+            }
+            else
+                animatorManager.animator.SetInteger("combo", animatorManager.animator.GetInteger("combo") + 1);
+        }
+    }
+
     public void Roll()
     {
         if(statsManager.currentStamina >= statsManager.rollCost)
