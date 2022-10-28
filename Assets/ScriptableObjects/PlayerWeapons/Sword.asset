@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Sword
   description: 
-  isTwoHanded: 0
   Light_Attack: Chop1
-  Heavy_Attack: JumpSlash
+  Heavy_Attack: Upthrust
   Left_Attack: LeftSlash
-  Special_Attack: 
+  Special_Attack: JumpSlash
   lightCost: 9
   heavyCost: 13
   damage: 12

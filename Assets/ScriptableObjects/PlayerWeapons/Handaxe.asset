@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Handaxe
   description: 
-  isTwoHanded: 0
   Light_Attack: Chop1
-  Heavy_Attack: HeavyChop
+  Heavy_Attack: HeavyAttack
   Left_Attack: LeftChop
-  Special_Attack: 
+  Special_Attack: HeavyChop
   lightCost: 7
   heavyCost: 12
   damage: 10

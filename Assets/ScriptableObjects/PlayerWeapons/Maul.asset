@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Maul
   description: 
-  isTwoHanded: 1
   Light_Attack: Chop1
-  Heavy_Attack: Slam
+  Heavy_Attack: Cut
+  Left_Attack: LeftSwipeWide
+  Special_Attack: Slam
   lightCost: 12
   heavyCost: 20
   damage: 13

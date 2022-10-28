@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Hammer
   description: 
-  isTwoHanded: 1
   Light_Attack: Slam
-  Heavy_Attack: Pumpel
+  Heavy_Attack: HeavyChop
+  Left_Attack: LeftSlash
+  Special_Attack: Pumpel
   lightCost: 12
   heavyCost: 23
   damage: 15

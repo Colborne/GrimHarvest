@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Sword
   description: 
   Light_Attack: Swipe
-  Heavy_Attack: HeavySlash
+  Heavy_Attack: Cut
   Left_Attack: LeftSwipe
   Special_Attack: ThrustSlash
   lightCost: 9
