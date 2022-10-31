@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 
   Light_Attack: Chop1
   Heavy_Attack: Cut
-  Left_Attack: LeftSwipeWide
+  Left_Attack: LeftChop
   Special_Attack: Slam
   lightCost: 12
   heavyCost: 20

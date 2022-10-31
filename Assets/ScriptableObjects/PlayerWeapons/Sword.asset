@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 
   Light_Attack: Chop1
   Heavy_Attack: Upthrust
-  Left_Attack: LeftSlash
+  Left_Attack: LeftWideSlash
   Special_Attack: JumpSlash
   lightCost: 9
   heavyCost: 13

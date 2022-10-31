@@ -24,7 +24,7 @@ public class EquipmentManager : MonoBehaviour
     {
         gameManager.LoadItem(weaponToLoad, "Weapon");
         gameManager.LoadItem(weaponLeftToLoad, "Shield");
-        gameManager.LoadItem(5, "Helmet");
+        gameManager.LoadItem(6, "Helmet");
     }
 
     public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)

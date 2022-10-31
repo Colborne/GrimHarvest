@@ -16,8 +16,8 @@ MonoBehaviour:
   description: 
   Light_Attack: Swipe
   Heavy_Attack: Cut
-  Left_Attack: LeftSwipe
-  Special_Attack: ThrustSlash
+  Left_Attack: LeftSwipeWide
+  Special_Attack: HeavyAttack
   lightCost: 9
   heavyCost: 13
   damage: 12
