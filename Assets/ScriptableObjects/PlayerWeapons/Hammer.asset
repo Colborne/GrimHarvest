@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Hammer
   description: 
-  Light_Attack: Slam
-  Heavy_Attack: HeavyChop
+  Light_Attack: Hammer_Light
+  Heavy_Attack: Hammer_Heavy
   Left_Attack: LeftWideSlash
   Special_Attack: Pumpel
   lightCost: 12

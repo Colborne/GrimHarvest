@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Sword
   description: 
-  Light_Attack: Swipe
-  Heavy_Attack: Cut
+  Light_Attack: Dagger_Light
+  Heavy_Attack: Dagger_Heavy
   Left_Attack: LeftSwipeWide
   Special_Attack: HeavyAttack
   lightCost: 9
