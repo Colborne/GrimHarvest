@@ -35908,6 +35908,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.1
+    functionName: PlaySound
+    data: c000004343d
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.5333333
     functionName: DisableDamageCollider
     data: 

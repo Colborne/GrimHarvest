@@ -12,6 +12,7 @@ public enum WeaponType
 public class EnemyManager : MonoBehaviour
 {
     [Header("Components")]
+    EnemySoundManager enemySoundManager;
     public NavMeshAgent agent;
     public EnemyAnimatorManager enemyAnimatorManager;
     public Rigidbody rb;
@@ -53,6 +54,7 @@ public class EnemyManager : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+        enemySoundManager = GetComponentInChildren<EnemySoundManager>();
         rb = GetComponent<Rigidbody>();
         agent.enabled = false;
         currentHealth = maxHealth;
@@ -134,6 +136,7 @@ public class EnemyManager : MonoBehaviour
     {
         if(healthbar != null) healthbar.SetActive(false);
         if(mount != null) mount.Dead();
+        if(enemySoundManager != null) enemySoundManager.Die(enemySoundManager.deathSound);
         GetComponent<RagdollController>().EnableRagdoll();
         Destroy(agent);
         foreach(GameObject w in weapon)

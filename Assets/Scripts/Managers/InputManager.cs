@@ -145,7 +145,7 @@ public class InputManager : MonoBehaviour
         {
             changeWeaponInput = false;
             equipmentManager.weaponToLoad++;
-            if(equipmentManager.weaponToLoad >= equipmentManager.gameManager.equipment.Length)
+            if(equipmentManager.weaponToLoad >= 4)
                 equipmentManager.weaponToLoad = 0;
             equipmentManager.gameManager.DestroyItem(equipmentManager.gameManager.spawnedWeapon);
             equipmentManager.gameManager.LoadItem(equipmentManager.weaponToLoad, "Weapon");
@@ -158,7 +158,7 @@ public class InputManager : MonoBehaviour
         {
             changeLeftWeaponInput = false;
             equipmentManager.weaponLeftToLoad++;
-            if(equipmentManager.weaponLeftToLoad >= equipmentManager.gameManager.equipment.Length)
+            if(equipmentManager.weaponLeftToLoad >= 4)
                 equipmentManager.weaponLeftToLoad = 0;
             equipmentManager.gameManager.DestroyItem(equipmentManager.gameManager.spawnedShield);
             equipmentManager.gameManager.LoadItem(equipmentManager.weaponLeftToLoad, "Shield");
