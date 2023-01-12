@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public Transform draggables;
     public PlayerManager PM;
     public ingameEquipment[] equipment;
+    public GameObject[] Fish;
 
     // Main //
     void Awake()

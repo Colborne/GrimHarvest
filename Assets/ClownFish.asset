@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1ca797a9f82e448a0ef6780e68932d, type: 3}
+  m_Name: ClownFish
+  m_EditorClassIdentifier: 
+  itemName: Clownfish
+  description: 
+  Fish: {fileID: 825364578133502112, guid: 774f192b20479f74dbba34904d2bef96, type: 3}
+  variety: 1
+  baseStrength: 20
+  burstStrength: 250
+  switchTime: 1.2
+  minSpeed: -5
+  maxSpeed: 5
+  rotateSpeed: 5
+  burstLikelihood: 400

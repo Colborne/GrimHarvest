@@ -11,6 +11,7 @@ public class ToolManager : MonoBehaviour
     PickaxeManager pickaxeManager;
     WaterManager waterManager;
     SickleManager sickleManager;
+    FishManager fishManager;
     AnimatorManager animatorManager;
     public int currentTool;
     public Image[] tools;
@@ -27,6 +28,7 @@ public class ToolManager : MonoBehaviour
         waterManager = GetComponent<WaterManager>();
         pickaxeManager = GetComponent<PickaxeManager>();
         sickleManager = GetComponent<SickleManager>();
+        fishManager = GetComponent<FishManager>();
     }
     void Update()
     {
@@ -36,8 +38,9 @@ public class ToolManager : MonoBehaviour
         else if(inputManager.toolbar4Input) currentTool = 3;
         else if(inputManager.toolbar5Input) currentTool = 4;
         else if(inputManager.toolbar6Input) currentTool = 5;
+        else if(inputManager.toolbar7Input) currentTool = 6;
 
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 7; i++)
         {
             if(i == currentTool)
                 tools[i].color = new Color32(255,255,255,255);
@@ -67,6 +70,7 @@ public class ToolManager : MonoBehaviour
             hoeManager.enabled = true;
             waterManager.enabled = false;
             pickaxeManager.enabled = false;
+            fishManager.enabled = false;
             sickleManager.enabled = false;
 
             hoeManager.placement.GetComponent<MeshFilter>().sharedMesh = Placement;
@@ -78,6 +82,7 @@ public class ToolManager : MonoBehaviour
             hoeManager.enabled = false;
             waterManager.enabled = false;
             pickaxeManager.enabled = false;
+            fishManager.enabled = false;
             sickleManager.enabled = false;
 
             farmManager.placement.GetComponent<MeshRenderer>().material = farmManager.mat;
@@ -89,6 +94,7 @@ public class ToolManager : MonoBehaviour
             waterManager.enabled = true;
             pickaxeManager.enabled = false;
             sickleManager.enabled = false;
+            fishManager.enabled = false;
 
             waterManager.placement.GetComponent<MeshFilter>().sharedMesh = Placement;
             waterManager.placement.GetComponent<MeshRenderer>().material = Select;
@@ -100,6 +106,7 @@ public class ToolManager : MonoBehaviour
             waterManager.enabled = false;
             pickaxeManager.enabled = false;
             sickleManager.enabled = true;
+            fishManager.enabled = false;
 
             sickleManager.placement.GetComponent<MeshFilter>().sharedMesh = Placement;
             sickleManager.placement.GetComponent<MeshRenderer>().material = Select;
@@ -111,6 +118,7 @@ public class ToolManager : MonoBehaviour
             waterManager.enabled = false;
             pickaxeManager.enabled = false;
             sickleManager.enabled = false;
+            fishManager.enabled = false;
         }
         else if(tool == 5) //Pickaxe
         {
@@ -119,6 +127,19 @@ public class ToolManager : MonoBehaviour
             waterManager.enabled = false;
             pickaxeManager.enabled = true;
             sickleManager.enabled = false;
+            fishManager.enabled = false;
+
+            pickaxeManager.placement.GetComponent<MeshFilter>().sharedMesh = Placement;
+            pickaxeManager.placement.GetComponent<MeshRenderer>().material = Select;
+        }
+        else if(tool == 6) //Fishing Rod
+        {
+            farmManager.enabled = false;
+            hoeManager.enabled = false;
+            waterManager.enabled = false;
+            pickaxeManager.enabled = false;
+            sickleManager.enabled = false;
+            fishManager.enabled = true;
 
             pickaxeManager.placement.GetComponent<MeshFilter>().sharedMesh = Placement;
             pickaxeManager.placement.GetComponent<MeshRenderer>().material = Select;
@@ -153,6 +174,11 @@ public class ToolManager : MonoBehaviour
             animatorManager.animator.CrossFade("Axe", .2f);
         }
         else if(currentTool == 5)
+        {
+            animatorManager.animator.SetBool("isInteracting", true);
+            animatorManager.animator.CrossFade("Hoe", .2f);
+        }
+        else if(currentTool == 6)
         {
             animatorManager.animator.SetBool("isInteracting", true);
             animatorManager.animator.CrossFade("Hoe", .2f);

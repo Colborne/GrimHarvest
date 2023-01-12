@@ -104,8 +104,19 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e82d91f5-42e5-4588-aaf7-7b9178fa2619"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ca1eedd8-6ade-4d7a-845f-97be8e94bb20"",
-                    ""path"": ""<Mouse>/position"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -123,6 +134,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""8482f6c5-5b67-40ee-98be-164fb364999f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""6471094b-bf24-4d7a-9efd-fbad0130a535"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -190,6 +210,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toolbar7"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd4094ee-dff0-4a9d-ba84-7cb7385f546a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -197,6 +226,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""f8dae371-eceb-4ed5-8a2b-f935d0b562be"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45ab3c6f-5cbf-4e08-83f5-a84a5cc09a3e"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -280,6 +320,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Toolbar6"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b203c260-abaf-471c-89d7-4d3696d984b6"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toolbar7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa9b32d9-75d2-4b3d-a9fe-54d01d4cd5f0"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toolbar7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f169fb5e-05e0-4bfa-ba5c-d2e19b119a44"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -293,6 +366,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // PlayerActions
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_MouseWheel = m_PlayerActions.FindAction("MouseWheel", throwIfNotFound: true);
         m_PlayerActions_Toolbar1 = m_PlayerActions.FindAction("Toolbar1", throwIfNotFound: true);
         m_PlayerActions_Toolbar2 = m_PlayerActions.FindAction("Toolbar2", throwIfNotFound: true);
@@ -300,6 +374,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_Toolbar4 = m_PlayerActions.FindAction("Toolbar4", throwIfNotFound: true);
         m_PlayerActions_Toolbar5 = m_PlayerActions.FindAction("Toolbar5", throwIfNotFound: true);
         m_PlayerActions_Toolbar6 = m_PlayerActions.FindAction("Toolbar6", throwIfNotFound: true);
+        m_PlayerActions_Toolbar7 = m_PlayerActions.FindAction("Toolbar7", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -401,6 +476,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerActions;
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Interact;
+    private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_MouseWheel;
     private readonly InputAction m_PlayerActions_Toolbar1;
     private readonly InputAction m_PlayerActions_Toolbar2;
@@ -408,11 +484,13 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Toolbar4;
     private readonly InputAction m_PlayerActions_Toolbar5;
     private readonly InputAction m_PlayerActions_Toolbar6;
+    private readonly InputAction m_PlayerActions_Toolbar7;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
+        public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @MouseWheel => m_Wrapper.m_PlayerActions_MouseWheel;
         public InputAction @Toolbar1 => m_Wrapper.m_PlayerActions_Toolbar1;
         public InputAction @Toolbar2 => m_Wrapper.m_PlayerActions_Toolbar2;
@@ -420,6 +498,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Toolbar4 => m_Wrapper.m_PlayerActions_Toolbar4;
         public InputAction @Toolbar5 => m_Wrapper.m_PlayerActions_Toolbar5;
         public InputAction @Toolbar6 => m_Wrapper.m_PlayerActions_Toolbar6;
+        public InputAction @Toolbar7 => m_Wrapper.m_PlayerActions_Toolbar7;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -432,6 +511,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnInteract;
+                @Jump.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnJump;
                 @MouseWheel.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
                 @MouseWheel.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
                 @MouseWheel.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMouseWheel;
@@ -453,6 +535,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Toolbar6.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar6;
                 @Toolbar6.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar6;
                 @Toolbar6.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar6;
+                @Toolbar7.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar7;
+                @Toolbar7.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar7;
+                @Toolbar7.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnToolbar7;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -460,6 +545,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
                 @MouseWheel.started += instance.OnMouseWheel;
                 @MouseWheel.performed += instance.OnMouseWheel;
                 @MouseWheel.canceled += instance.OnMouseWheel;
@@ -481,6 +569,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Toolbar6.started += instance.OnToolbar6;
                 @Toolbar6.performed += instance.OnToolbar6;
                 @Toolbar6.canceled += instance.OnToolbar6;
+                @Toolbar7.started += instance.OnToolbar7;
+                @Toolbar7.performed += instance.OnToolbar7;
+                @Toolbar7.canceled += instance.OnToolbar7;
             }
         }
     }
@@ -493,6 +584,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IPlayerActionsActions
     {
         void OnInteract(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
         void OnMouseWheel(InputAction.CallbackContext context);
         void OnToolbar1(InputAction.CallbackContext context);
         void OnToolbar2(InputAction.CallbackContext context);
@@ -500,5 +592,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnToolbar4(InputAction.CallbackContext context);
         void OnToolbar5(InputAction.CallbackContext context);
         void OnToolbar6(InputAction.CallbackContext context);
+        void OnToolbar7(InputAction.CallbackContext context);
     }
 }

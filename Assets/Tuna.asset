@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1ca797a9f82e448a0ef6780e68932d, type: 3}
+  m_Name: Tuna
+  m_EditorClassIdentifier: 
+  itemName: Tuna
+  description: 
+  Fish: {fileID: 6575009321591529123, guid: df03af9496d80334c98a582f627d4b90, type: 3}
+  variety: 0
+  baseStrength: 25
+  burstStrength: 50
+  switchTime: 2.5
+  minSpeed: -3
+  maxSpeed: 3
+  rotateSpeed: 5
+  burstLikelihood: 750
