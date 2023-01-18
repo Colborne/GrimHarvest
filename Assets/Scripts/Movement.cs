@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         characterController = GetComponent<CharacterController>();
         playerRigidbody = GetComponent<Rigidbody>();
-        //camera = FindObjectOfType<CameraManager>();
+        camera = FindObjectOfType<CameraManager>();
     }
 
     void Update()
@@ -35,7 +35,7 @@ public class Movement : MonoBehaviour
 
         HandleMovement();
         HandleJump();
-        //camera.HandleAllCameraMovement();
+        camera.HandleAllCameraMovement();
     }
 
     void FixedUpdate()
@@ -73,11 +73,11 @@ public class Movement : MonoBehaviour
 
     private void HandleJump()
     {
-        if (inputManager.jumpInput)
+        if (inputManager.jumpInput && !jumping)
         {
             inputManager.interactInput = false;
             float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y));
-            playerRigidbody.AddForce(new Vector3(0, jumpForce,0), ForceMode.Impulse);
+            playerRigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             jumping = true;
             jumpCancelled = false;
             jumpTime = 0;

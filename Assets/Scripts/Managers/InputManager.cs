@@ -127,7 +127,7 @@ public class InputManager : MonoBehaviour
         Vector3 Direction = new Vector3(horizontalInput * orbit, verticalInput * orbit, 0);
         cursor.localPosition = Direction;
         cursor.rotation = Quaternion.AngleAxis(Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg, Vector3.forward);
-        step = (strength * Vector2.Distance(cursor.localPosition, Vector2.zero)) / (FindObjectOfType<FishMovement>().currentFish.baseStrength / 20);
+        step = (strength * Vector2.Distance(cursor.localPosition, Vector2.zero)) / Mathf.Max(1, (FindObjectOfType<FishMovement>().currentFish.baseStrength / 20));
 
         indicator.localPosition = new Vector3(
             FindObjectOfType<FishMovement>().rect.localPosition.x + horizontalInput * orbit, 

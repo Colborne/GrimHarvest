@@ -16,8 +16,8 @@ MonoBehaviour:
   description: 
   Fish: {fileID: 825364578133502112, guid: 774f192b20479f74dbba34904d2bef96, type: 3}
   variety: 1
-  baseStrength: 20
-  burstStrength: 250
+  baseStrength: 5
+  burstStrength: 150
   switchTime: 1.2
   minSpeed: -5
   maxSpeed: 5

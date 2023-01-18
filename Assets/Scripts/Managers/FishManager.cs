@@ -61,7 +61,7 @@ public class FishManager : MonoBehaviour
             if(inputManager.horizontalInput != 0 || inputManager.verticalInput != 0 )
                 TensionSlider.value += Time.deltaTime * 25f * inputManager.TestAngle;
             else
-                TensionSlider.value -= Time.deltaTime * (180 - Vector2.Distance(Vector2.zero, FindObjectOfType<FishMovement>().rect.localPosition)) / 5f;
+                TensionSlider.value -= Time.deltaTime * (180 - Vector2.Distance(Vector2.zero, FindObjectOfType<FishMovement>().rect.localPosition) / 10f);
 
             CatchMeter = CatchSlider.value;
             TensionMeter = TensionSlider.value;

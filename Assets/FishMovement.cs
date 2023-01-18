@@ -29,7 +29,7 @@ public class FishMovement : MonoBehaviour
         currentFish = fish;
         currentRotationSpeed = currentFish.rotateSpeed;
         rect.localPosition = Vector2.zero;
-        Radius = 12f;
+        Radius = 10f;
         strength = currentFish.baseStrength;
     }
 
